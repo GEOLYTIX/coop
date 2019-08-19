@@ -14,7 +14,7 @@ _xyz({
 
 		Object.values(_xyz.layers.list).map(layer => {
 			if(layer.group && layer.group === 'Locations'){
-				console.log(layer.key || layer.name);
+				
 				layer_dropdown_options.push({
 					[layer.key]: layer.name || layer.key
 				});
@@ -26,8 +26,8 @@ _xyz({
 		const layer_dropdown = _xyz.utils.dropdownCustom({
 			entries: layer_dropdown_options,
 			callback: e => {
-				console.log(layer_dropdown_options);
-				//_xyz.layers.list[e.]
+				console.log(e.target);
+				
 			}
 		});
 
