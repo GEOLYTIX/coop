@@ -28,6 +28,10 @@ _xyz({
 				Object.values(_xyz.layers.list).map(layer => {
 					if(layer.group && layer.group === 'Locations'){
 						layer.display = layer.key === e.target.dataset.field  ? true : false;
+						console.log({
+							showThis: layer,
+							display: layer.display
+						});
 						layer.show();
 					}
 				});
