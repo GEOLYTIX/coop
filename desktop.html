@@ -23,6 +23,8 @@
         /* MAP */
         #Map {
             height: 400px;
+            grid-row: 1;
+            grid-column: 2;
         }
 
         #Map>._attribution {
@@ -41,11 +43,16 @@
             font-weight: bold;
         }
 
+        #layer_dropdown {
+            grid-row: 1;
+            grid-column: 1;
+        }
+
     </style>
 
 </head>
 
-<body>
+<body style="grid-template-columns: 1fr 2fr;">
 
     <h3>Hello World</h3>
 
