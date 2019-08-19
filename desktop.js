@@ -12,9 +12,19 @@ _xyz({
 			}
 		});
 
+		const layer_dropdown_options = [];
+
+		Object.values(_xyz.layers.list).map(layer => {
+			if(layer.group && layer.group === 'Locations'){
+				layer_dropdown_options.push({
+					dataField: layer.key,
+					label: layer.name
+				});
+			}
+		});
 
 		const layer_dropdown = _xyz.utils.dropdownCustom({
-			entries: Object.values(_xyz.layers.list).filter(layer => { return layer.group && layer.group === 'Locations'}),
+			entries: layer_dropdown_options,
 			callback: e => { console.log(e.target); }
 		});
 
