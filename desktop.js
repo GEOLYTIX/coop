@@ -14,11 +14,14 @@ _xyz({
 
 		Object.values(_xyz.layers.list).map(layer => {
 			if(layer.group && layer.group === 'Locations'){
+				console.log(layer.key || layer.name);
 				layer_dropdown_options.push({
 					[layer.key]: layer.name || layer.key
 				});
 			}
 		});
+
+		console.log(layer_dropdown_options);
 
 		const layer_dropdown = _xyz.utils.dropdownCustom({
 			entries: layer_dropdown_options,
