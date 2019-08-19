@@ -11,7 +11,7 @@ _xyz({
 
 		const core_layer_key = 'Wellbeing Index';
 		const core_layer_themes = _xyz.layers.list[core_layer_key].style.themes;
-		const core_layer_themes_options;
+		const core_layer_themes_options = [];
 
 		Object.keys(_xyz.layers.list[core_layer_key].style.themes).map(key => {
 			core_layer_themes_options.push(key);
