@@ -26,13 +26,13 @@
         }
 
         /* MAP */
-        #Map {
+        #_map {
             height: 400px;
             grid-row: 1;
             grid-column: 2;
         }
 
-        #Map>._attribution {
+        #_map>._attribution {
             z-index: 999;
             position: absolute;
             bottom: 0;
@@ -60,12 +60,9 @@
 <body>
     <div class="grid" style="grid-template-columns: 1fr 2fr;">
         
-   
-        <!--<h3>Hello World</h3>-->
-       <div id="layer_dropdown">hey</div>
+       <div id="layer_dropdown"></div>
 
-        <div id="Map">
-            map
+        <div id="_map">
             <div class="_attribution">
                 <a target="_blank" href="https://github.com/geolytix/xyz">GEOLYTIX XYZ</a>;
                 <a target="_blank" href="https://leafletjs.com/">Leaflet</a>;
@@ -75,8 +72,6 @@
         </div>
 
     </div>
-
-
     
 
 </body>

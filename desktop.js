@@ -4,7 +4,7 @@ _xyz({
 	host: document.head.dataset.dir,
 	callback: _xyz => {
 		_xyz.mapview.create({
-			target: document.getElementById('Map'),
+			target: document.getElementById('_map'),
 			scrollWheelZoom: true,
 			zoomControl: true,
 			btn: {
