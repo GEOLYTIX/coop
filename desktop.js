@@ -13,10 +13,12 @@ _xyz({
 		});
 
 
-		_xyz.utils.dropdownCustom({
+		const layer_dropdown = _xyz.utils.dropdownCustom({
 			entries: Object.values(_xyz.layers.list).filter(layer => { return layer.group && layer.group === 'Locations'}),
 			callback: e => { console.log(e.target); }
 		});
+
+		document.getElementById('layer_dropdown').appendChild(layer_dropdown);
 
 	}
 });
