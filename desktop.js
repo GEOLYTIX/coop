@@ -12,8 +12,11 @@ _xyz({
 			}
 		});
 
-		Object.values(_xyz.layers.list).map(layer => {
-			console.log(layer);
+
+		_xyz.utils.dropdownCustom({
+			entries: Object.values(_xyz.layers.list).filter(layer => { return layer.group && layer.group === 'Locations'}),
+			callback: e => { console.log(e.target); }
 		});
+
 	}
 });
