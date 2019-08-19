@@ -1,5 +1,3 @@
-console.log('Hello World');
-
 _xyz({
 	host: document.head.dataset.dir,
 	callback: _xyz => {
@@ -17,15 +15,17 @@ _xyz({
 		Object.values(_xyz.layers.list).map(layer => {
 			if(layer.group && layer.group === 'Locations'){
 				layer_dropdown_options.push({
-					dataField: layer.key,
-					label: layer.name
+					[layer.key]: layer.name || layer.key
 				});
 			}
 		});
 
 		const layer_dropdown = _xyz.utils.dropdownCustom({
 			entries: layer_dropdown_options,
-			callback: e => { console.log(e.target); }
+			callback: e => {
+				console.log(layer_dropdown_options);
+				//_xyz.layers.list[e.]
+			}
 		});
 
 		document.getElementById('layer_dropdown').appendChild(layer_dropdown);
