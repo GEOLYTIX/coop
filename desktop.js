@@ -26,8 +26,10 @@ _xyz({
 			callback: e => {
 				//console.log(e.target);
 				Object.values(_xyz.layers.list).map(layer => {
-					layer.display = layer.key === e.target.dataset.field ? true : false;
-					layer.show();
+					if(layer.group && layer.group === 'Locations'){
+						layer.display = layer.key === e.target.dataset.field  ? true : false;
+						layer.show();
+					}
 				});
 				
 			}
