@@ -21,12 +21,14 @@ _xyz({
 			}
 		});
 
-		console.log(layer_dropdown_options);
-
 		const layer_dropdown = _xyz.utils.dropdownCustom({
 			entries: layer_dropdown_options,
 			callback: e => {
-				console.log(e.target);
+				//console.log(e.target);
+				Object.values(_xyz.layers.list).map(layer => {
+					layer.display = layer.key === e.target.dataset.field ? true : false;
+					layer.show();
+				});
 				
 			}
 		});
