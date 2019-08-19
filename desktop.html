@@ -20,6 +20,27 @@
             font-family: arial;
         }
 
+        /* MAP */
+        #Map {
+            height: 400px;
+        }
+
+        #Map>._attribution {
+            z-index: 999;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            text-align: left;
+            white-space: nowrap;
+            background-color: #fff;
+            opacity: 0.9;
+            padding: 5px;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
     </style>
 
 </head>
@@ -27,6 +48,15 @@
 <body>
 
     <h3>Hello World</h3>
+
+    <div id="Map">
+        <div class="_attribution">
+            <a target="_blank" href="https://github.com/geolytix/xyz">GEOLYTIX XYZ</a>;
+            <a target="_blank" href="https://leafletjs.com/">Leaflet</a>;
+            <a target="_blank" href="https://www.mapbox.com">© Mapbox</a>;
+            <a target="_blank" href="https://www.openstreetmap.org/copyright">© OpenStreetMap</a>
+        </div>
+    </div>
 
 </body>
 
