@@ -20,6 +20,11 @@
             font-family: arial;
         }
 
+        .viewport {
+            width: 100vw;
+            height: 100vh;
+        }
+
         /* MAP */
         #Map {
             height: 400px;
@@ -52,9 +57,11 @@
 
 </head>
 
-<body style="grid-template-columns: 1fr 2fr;">
+<body>
 
-    <h3>Hello World</h3>
+    <div class="viewport" style="grid-template-columns: 1fr 2fr;">
+
+    <!--<h3>Hello World</h3>-->
 
     <div id="layer_dropdown"></div>
 
