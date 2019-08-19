@@ -27,6 +27,7 @@ _xyz({
 		});
 
 		const core_layer_themes_dropdown = _xyz.utils.dropdownCustom({
+			placeholder: 'Select thematic style',
 			entries: core_layer_themes_options,
 			callback: e => {
 				console.log(e.target);
