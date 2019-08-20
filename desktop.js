@@ -32,37 +32,20 @@ _xyz({
 
 
 		const core_layer_themes_dropdown = _xyz.utils.dropdownCustom({
-			//placeholder: Object.keys(core_layer.style.themes)[0],
 			entries: core_layer_themes_options,
 			singleSelect: true,
 			selectedIndex: 0,
 			callback: e => {
 				
-
 				e.stopPropagation();
 
-				//for(let i = 0; i < e.target.parentNode.children.length; i++){
-				//	if(e.target.parentNode.children[i] !== e.target){
-						//e.target.parentNode.children[i].classList.remove('selected');
-				//	}
-				//}
 				core_layer_themes_dropdown.querySelector('.head').textContent = e.target.textContent;
 
+				//console.log(e.target);
 				
+				let new_theme = core_layer.style.themes[e.target.dataset.field];
 
-				console.log(e.target);
-				//let new_theme = core_layer.style.themes[e.target.dataset.field];
-
-				//e.target.classList.add('selected');
-
-
-				//console.log(new_theme);
-				//console.log(e.target.textContent);
-				//console.log(e.target.dataset.field);
-
-				//e.target.textContent = core_layer.style.themes[e.target.dataset.field] ||
-
-				/*let style = Object.assign({}, core_layer.style.default);
+				let style = Object.assign({}, core_layer.style.default);
 
 				let new_style = function(){
 					if (new_theme.type === 'categorized') {
@@ -90,7 +73,7 @@ _xyz({
 				core_layer.style.theme = new_theme;
 				core_layer.loaded = false;
 				// apply theme
-				core_layer.get();*/
+				core_layer.get();
 			}
 		});
 
