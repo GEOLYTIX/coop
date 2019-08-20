@@ -35,9 +35,12 @@ _xyz({
 			placeholder: Object.keys(core_layer.style.themes)[0],
 			entries: core_layer_themes_options,
 			callback: e => {
-				//e.stopPropagation();
+				
+				e.stopPropagation();
 
-				e.target.parentNode.children.forEach(child => child.classList.remove('selected'));
+				for(let i = 0; i < e.target.parentNode.children.length; i++){
+					e.target.parentNode.children[i].classList.remove('selected')
+				}
 
 				
 
