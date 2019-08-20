@@ -33,9 +33,10 @@ _xyz({
 			placeholder: 'Select thematic style',
 			entries: core_layer_themes_options,
 			callback: e => {
+				console.log(e.target);
 				let new_theme = core_layer.style.themes[e.target.dataset.field];
 
-				e.target.classList.add('selected');
+				//e.target.classList.add('selected');
 
 				console.log(new_theme);
 				console.log(e.target.textContent);
