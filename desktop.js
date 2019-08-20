@@ -38,11 +38,11 @@ _xyz({
 				
 				e.stopPropagation();
 
-				for(let i = 0; i < e.target.parentNode.children.length; i++){
-					if(e.target.parentNode.children[i] !== e.target){
-						e.target.parentNode.children[i].classList.remove('selected');
-					}
-				}
+				//for(let i = 0; i < e.target.parentNode.children.length; i++){
+				//	if(e.target.parentNode.children[i] !== e.target){
+						//e.target.parentNode.children[i].classList.remove('selected');
+				//	}
+				//}
 
 				
 
