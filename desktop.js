@@ -35,7 +35,11 @@ _xyz({
 			callback: e => {
 				let new_theme = core_layer.style.themes[e.target.dataset.field];
 
-				let style = Object.assign({}, core_layer.style.default);
+				console.log(new_theme);
+
+				//e.target.textContent = core_layer.style.themes[e.target.dataset.field] ||
+
+				/*let style = Object.assign({}, core_layer.style.default);
 
 				let new_style = function(){
 					if (new_theme.type === 'categorized') {
@@ -63,7 +67,7 @@ _xyz({
 				core_layer.style.theme = new_theme;
 				core_layer.loaded = false;
 				// apply theme
-				core_layer.get();
+				core_layer.get();*/
 			}
 		});
 
