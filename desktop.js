@@ -35,7 +35,9 @@ _xyz({
 			//placeholder: Object.keys(core_layer.style.themes)[0],
 			entries: core_layer_themes_options,
 			singleSelect: true,
+			selectedIndex: 0,
 			callback: e => {
+				
 				
 				//e.stopPropagation();
 
