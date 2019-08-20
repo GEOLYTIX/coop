@@ -37,7 +37,7 @@ _xyz({
 
 				let new_style = function(){
 					if (new_theme.type === 'categorized') {
-						return Object.assign({}, style, new_theme.cat[properties[new_theme.field]] || {});
+						return Object.assign({}, style, new_theme.cat[core_layer.mvt_fields[new_theme.field]] || {});
 					}
 
 					if (new_theme.type === 'graduated') {
@@ -47,8 +47,8 @@ _xyz({
 
 						for (let i = 0; i < new_theme.cat_arr.length; i++) {
 
-							if (!properties[new_theme.field]) return style;
-							if (parseFloat(properties[new_theme.field]) < parseFloat(new_theme.cat_arr[i][0])) break;
+							if (!core_layer.mvt_fields[new_theme.field]) return style;
+							if (parseFloat(core_layer.mvt_fields[new_theme.field]) < parseFloat(new_theme.cat_arr[i][0])) break;
 
 							new_theme.cat_style = new_theme.cat_arr[i][1];
 						}
