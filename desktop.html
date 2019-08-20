@@ -20,13 +20,17 @@
             font-family: arial;
         }
 
+        .viewport {
+            margin: 30px;
+            -webkit-box-shadow: 2px -2px 7px 2px rgba(187,187,187,1);
+            -moz-box-shadow: 2px -2px 7px 2px rgba(187,187,187,1);
+            box-shadow: 2px -2px 7px 2px rgba(187,187,187,1);
+        }
+
         .grid {
             display: grid;
             grid-gap: 5mm;
             margin: 30px;
-            /*-webkit-box-shadow: 2px -2px 7px 2px rgba(187,187,187,1);
-            -moz-box-shadow: 2px -2px 7px 2px rgba(187,187,187,1);
-            box-shadow: 2px -2px 7px 2px rgba(187,187,187,1);*/
         }
 
         .grid-container {
@@ -85,6 +89,8 @@
 
 <body>
 
+    <div class="viewport">
+
     <div class="grid-container" style="grid-template-columns: 1fr 1fr 1fr;">
 
         <div id="layer_dropdown"></div>
@@ -107,7 +113,7 @@
         </div>
 
     </div>
-    
+    </div>
 
 </body>
 
