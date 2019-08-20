@@ -37,7 +37,7 @@ _xyz({
 			callback: e => {
 				//e.stopPropagation();
 
-				e.target.parentNode.children.map(child => child.classList.remove('selected'));
+				e.target.parentNode.children.forEach(child => child.classList.remove('selected'));
 
 				
 
