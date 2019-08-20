@@ -14,6 +14,8 @@ _xyz({
 		const core_layer_themes = _xyz.layers.list[core_layer_key].style.themes;
 		const core_layer_themes_options = [];
 
+		console.log(core_layer);
+
 		Object.keys(core_layer.style.themes).map(key => {
 			core_layer_themes_options.push(key);
 		});
