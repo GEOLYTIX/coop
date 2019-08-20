@@ -30,13 +30,18 @@ _xyz({
 		});
 
 		const core_layer_themes_dropdown = _xyz.utils.dropdownCustom({
-			placeholder: 'Select thematic style',
+			//placeholder: 'Select thematic style',
 			entries: core_layer_themes_options,
 			callback: e => {
+				e.stopPropagation();
+
+				if (e.target.classList.contains('selected')) {}
+
 				console.log(e.target);
 				let new_theme = core_layer.style.themes[e.target.dataset.field];
 
 				//e.target.classList.add('selected');
+
 
 				console.log(new_theme);
 				console.log(e.target.textContent);
