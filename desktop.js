@@ -69,14 +69,14 @@ _xyz({
 					}
 				}();
 
-				console.log(new_style);
-				console.log(new_theme);
+				//console.log(new_style);
+				//console.log(new_theme);
 				//core_layer.style = new_style;
-				//core_layer.style.theme = new_theme;
-				//core_layer.loaded = false;
+				core_layer.style.theme = new_theme;
+				core_layer.loaded = false;
 				console.log(core_layer);
 				// apply theme
-				//core_layer.get();
+				core_layer.get();
 			}
 		});
 
