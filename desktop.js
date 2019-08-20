@@ -14,7 +14,7 @@ _xyz({
 		const core_layer_themes = _xyz.layers.list[core_layer_key].style.themes;
 		const core_layer_themes_options = [];
 
-		console.log(core_layer);
+		//console.log(core_layer);
 
 		Object.keys(core_layer.style.themes).map(key => {
 			core_layer_themes_options.push(key);
@@ -69,9 +69,11 @@ _xyz({
 					}
 				}();
 
-				core_layer.style = new_style;
-				core_layer.style.theme = new_theme;
-				core_layer.loaded = false;
+				console.log(new_style);
+				console.log(new_theme);
+				//core_layer.style = new_style;
+				//core_layer.style.theme = new_theme;
+				//core_layer.loaded = false;
 				console.log(core_layer);
 				// apply theme
 				//core_layer.get();
