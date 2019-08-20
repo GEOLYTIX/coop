@@ -36,7 +36,7 @@ _xyz({
 			entries: core_layer_themes_options,
 			callback: e => {
 				
-				e.stopPropagation();
+				//e.stopPropagation();
 
 				//for(let i = 0; i < e.target.parentNode.children.length; i++){
 				//	if(e.target.parentNode.children[i] !== e.target){
