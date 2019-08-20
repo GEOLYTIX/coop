@@ -29,23 +29,27 @@ _xyz({
 			}
 		});
 
+
+
 		const core_layer_themes_dropdown = _xyz.utils.dropdownCustom({
-			//placeholder: 'Select thematic style',
+			placeholder: Object.keys(core_layer.style.themes)[0],
 			entries: core_layer_themes_options,
 			callback: e => {
-				e.stopPropagation();
+				//e.stopPropagation();
 
-				if (e.target.classList.contains('selected')) {}
+				e.target.parentNode.children.map(child => child.classList.remove('selected'));
+
+				
 
 				console.log(e.target);
-				let new_theme = core_layer.style.themes[e.target.dataset.field];
+				//let new_theme = core_layer.style.themes[e.target.dataset.field];
 
 				//e.target.classList.add('selected');
 
 
-				console.log(new_theme);
-				console.log(e.target.textContent);
-				console.log(e.target.dataset.field);
+				//console.log(new_theme);
+				//console.log(e.target.textContent);
+				//console.log(e.target.dataset.field);
 
 				//e.target.textContent = core_layer.style.themes[e.target.dataset.field] ||
 
