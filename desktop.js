@@ -38,14 +38,15 @@ _xyz({
 			selectedIndex: 0,
 			callback: e => {
 				
-				
-				//e.stopPropagation();
+
+				e.stopPropagation();
 
 				//for(let i = 0; i < e.target.parentNode.children.length; i++){
 				//	if(e.target.parentNode.children[i] !== e.target){
 						//e.target.parentNode.children[i].classList.remove('selected');
 				//	}
 				//}
+				core_layer_themes_dropdown.querySelector('.head').textContent = e.target.textContent;
 
 				
 
