@@ -39,7 +39,9 @@ _xyz({
 				e.stopPropagation();
 
 				for(let i = 0; i < e.target.parentNode.children.length; i++){
-					e.target.parentNode.children[i].classList.remove('selected')
+					if(e.target.parentNode.children[i] !== e.target){
+						e.target.parentNode.children[i].classList.remove('selected');
+					}
 				}
 
 				
@@ -103,7 +105,11 @@ _xyz({
 			}
 		});
 
+
 		document.getElementById('layer_dropdown').appendChild(layer_dropdown);
+
+
+		core_layer_themes_dropdown.children[0].classList.add('selected');
 		document.getElementById('core_layer_themes_dropdown').appendChild(core_layer_themes_dropdown);
 
 	}
