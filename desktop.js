@@ -32,8 +32,9 @@ _xyz({
 
 
 		const core_layer_themes_dropdown = _xyz.utils.dropdownCustom({
-			placeholder: Object.keys(core_layer.style.themes)[0],
+			//placeholder: Object.keys(core_layer.style.themes)[0],
 			entries: core_layer_themes_options,
+			singleSelect: true,
 			callback: e => {
 				
 				//e.stopPropagation();
