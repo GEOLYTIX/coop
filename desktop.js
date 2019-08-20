@@ -35,7 +35,11 @@ _xyz({
 			callback: e => {
 				let new_theme = core_layer.style.themes[e.target.dataset.field];
 
+				e.target.classList.add('selected');
+
 				console.log(new_theme);
+				console.log(e.target.textContent);
+				console.log(e.target.dataset.field);
 
 				//e.target.textContent = core_layer.style.themes[e.target.dataset.field] ||
 
