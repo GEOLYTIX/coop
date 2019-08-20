@@ -29,10 +29,15 @@
             box-shadow: 2px -2px 7px 2px rgba(187,187,187,1);
         }
 
+        .grid-container {
+            display: grid;
+            grid-gap: 5mm;
+        }
+
         /* map */
         #_map {
             height: 600px;
-            grid-row: 2;
+            grid-row: 1;
             grid-column: 2;
         }
 
@@ -64,12 +69,13 @@
 
         #core_layer_themes_dropdown {
             grid-row: 1;
-            grid-column: 2;
+            grid-column: 3;
             z-index: 1005;
-            width: 350px;
+            align-content: right;
+            /*width: 350px;
             position: relative;
             top: 0;
-            left: calc(100% - 350px);
+            left: calc(100% - 350px);*/
         }
 
     </style>
@@ -77,11 +83,18 @@
 </head>
 
 <body>
+
+    <div class="grid-container" style="grid-template-columns: 1fr 1fr 1fr;">
+
+        <div id="layer_dropdown"></div>
+        <div id="core_layer_themes_dropdown"></div>
+    
+    </div>
+
     <div class="grid" style="grid-template-columns: 1fr 2fr;">
         
-       <div id="layer_dropdown"></div>
-
-       <div id="core_layer_themes_dropdown"></div>
+       <!--<div id="layer_dropdown"></div>
+       <div id="core_layer_themes_dropdown"></div>-->
 
         <div id="_map">
             <div class="_attribution">

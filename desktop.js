@@ -14,8 +14,6 @@ _xyz({
 		const core_layer_themes = _xyz.layers.list[core_layer_key].style.themes;
 		const core_layer_themes_options = [];
 
-		//console.log(core_layer);
-
 		Object.keys(core_layer.style.themes).map(key => {
 			core_layer_themes_options.push(key);
 		});
@@ -29,8 +27,6 @@ _xyz({
 			}
 		});
 
-
-
 		const core_layer_themes_dropdown = _xyz.utils.dropdownCustom({
 			entries: core_layer_themes_options,
 			singleSelect: true,
@@ -40,8 +36,6 @@ _xyz({
 				e.stopPropagation();
 
 				core_layer_themes_dropdown.querySelector('.head').textContent = e.target.textContent;
-
-				//console.log(e.target);
 				
 				let new_theme = core_layer.style.themes[e.target.dataset.field];
 
@@ -69,12 +63,8 @@ _xyz({
 					}
 				}();
 
-				//console.log(new_style);
-				//console.log(new_theme);
-				//core_layer.style = new_style;
 				core_layer.style.theme = new_theme;
 				core_layer.loaded = false;
-				console.log(core_layer);
 				// apply theme
 				core_layer.get();
 			}
@@ -97,9 +87,6 @@ _xyz({
 
 
 		document.getElementById('layer_dropdown').appendChild(layer_dropdown);
-
-
-		core_layer_themes_dropdown.children[0].classList.add('selected');
 		document.getElementById('core_layer_themes_dropdown').appendChild(core_layer_themes_dropdown);
 
 	}
