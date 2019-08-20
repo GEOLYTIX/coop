@@ -10,10 +10,11 @@ _xyz({
 		const layer_dropdown_options = [];
 
 		const core_layer_key = 'Wellbeing Index';
+		const core_layer = _xyz.layers.list[core_layer_key];
 		const core_layer_themes = _xyz.layers.list[core_layer_key].style.themes;
 		const core_layer_themes_options = [];
 
-		Object.keys(_xyz.layers.list[core_layer_key].style.themes).map(key => {
+		Object.keys(core_layer.style.themes).map(key => {
 			core_layer_themes_options.push(key);
 		});
 
@@ -30,7 +31,37 @@ _xyz({
 			placeholder: 'Select thematic style',
 			entries: core_layer_themes_options,
 			callback: e => {
-				console.log(e.target);
+				let new_theme = core_layer.style.themes[e.target.dataset.field];
+
+				let style = Object.assign({}, core_layer.style.default);
+
+				let new_style = function(){
+					if (new_theme.type === 'categorized') {
+						return Object.assign({}, style, new_theme.cat[properties[new_theme.field]] || {});
+					}
+
+					if (new_theme.type === 'graduated') {
+
+						new_theme.cat_arr = Object.entries(new_theme.cat).sort((a, b) => parseFloat(a[0]) - parseFloat(b[0]));
+						new_theme.cat_style = {};
+
+						for (let i = 0; i < new_theme.cat_arr.length; i++) {
+
+							if (!properties[new_theme.field]) return style;
+							if (parseFloat(properties[new_theme.field]) < parseFloat(new_theme.cat_arr[i][0])) break;
+
+							new_theme.cat_style = new_theme.cat_arr[i][1];
+						}
+
+						return Object.assign({}, style, new_theme.cat_style);
+					}
+				}();
+
+				core_layer.style = new_style;
+				core_layer.style.theme = new_theme;
+				core_layer.loaded = false;
+				// apply theme
+				core_layer.get();
 			}
 		});
 
@@ -41,7 +72,8 @@ _xyz({
 				Object.values(_xyz.layers.list).map(layer => {
 					if(layer.group && layer.group === 'Locations'){
 						layer.display = layer.key === e.target.dataset.field  ? true : false;
-						layer.get();
+						console.log('do soemthing with this layer ' + layer.key);
+						//layer.get();
 					}
 				});
 				
