@@ -85,11 +85,6 @@ _xyz({
 
 		// select feature
 		_xyz.locations.select = location => {
-			console.log('select something');
-			console.log({
-				layer: location.layer,
-				key: core_layer_key
-			});
 			location.layer === core_layer_key ? selectFromCoreLayer(location) : selectArea(location);
 		}
 
@@ -123,9 +118,6 @@ _xyz({
 			let current_area = document.getElementById('current_area');
 
 			xhr.onload = e => {
-
-				console.log(e.target.response);
-				console.log('select area');
 
 				if (e.target.status !== 200) return;
 
