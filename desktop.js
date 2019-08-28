@@ -10,10 +10,11 @@ _xyz({
 		// to apply on search results
 		_xyz.gazetteer.style = {
 			stroke: true,
-            color: "#6E6875",
+            color: "#FFF",
+            opacity: 0.3,
             weight: 2,
-            fillColor: "#95A3A4",
-            fillOpacity: 0.2,
+            fillColor: "#FFF",
+            fillOpacity: 0.3,
             fill: true
         };
 
@@ -84,6 +85,11 @@ _xyz({
 
 		// select feature
 		_xyz.locations.select = location => {
+			console.log('select something');
+			console.log({
+				layer: location.layer,
+				key: core_layer_key
+			});
 			location.layer === core_layer_key ? selectFromCoreLayer(location) : selectArea(location);
 		}
 
@@ -118,6 +124,9 @@ _xyz({
 
 			xhr.onload = e => {
 
+				console.log(e.target.response);
+				console.log('select area');
+
 				if (e.target.status !== 200) return;
 
 				// show headers
@@ -143,8 +152,19 @@ _xyz({
 
 			if(_xyz.gazetteer.current_location) { // deselect previous feature from gazetteer
 				_xyz.gazetteer.current_location = null;
-				let tables = document.querySelector('.grid.tables');
-				tables.innerHTML = '';
+
+				// hide previous headers
+				let headers = document.querySelectorAll('.grid.tables .headers');
+				for(let i = 0; i < headers.length; i++){
+					headers[i].style.display = 'none';
+				}
+
+				// remove previous table content
+				let tables = document.querySelectorAll('.grid.tables .tabs');
+				for(let i = 0; i < tables.length; i++){
+					tables[i].innerHTML = '';
+				}
+				
 				current_area.classList.remove("shaded");
 				current_area.innerHTML = '';
 			}
