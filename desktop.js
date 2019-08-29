@@ -1,27 +1,32 @@
 _xyz({
-	host: document.head.dataset.dir,
-	callback: _xyz => {
-		_xyz.mapview.create({
-			target: document.getElementById('_map'),
-			scrollWheelZoom: true,
-			zoomControl: true
-		});
+    host: document.head.dataset.dir,
+    callback: _xyz => {
+        _xyz.mapview.create({
+            target: document.getElementById('_map'),
+            scrollWheelZoom: true,
+            zoomControl: true
+        });
 
-		// to apply on search results
-		_xyz.gazetteer.style = {
-			stroke: true,
+        // to apply on search results
+        _xyz.gazetteer.style = {
+            stroke: true,
             color: "#FFF",
             opacity: 0.3,
             weight: 2,
             fillColor: "#FFF",
             fillOpacity: 0.3,
-            fill: true
+            fill: true,
+            icon: {
+                url: "https://raw.githubusercontent.com/GEOLYTIX/MapIcons/master/poi_pin_filled/poi_simple_pin.svg?sanitize=true",
+                anchor: [40, 80],
+                size: 80
+            }
         };
 
         // to apply on the core layer
         const core_layer_style = {
-        	stroke: true,
-        	color: '#FFF',
+            stroke: true,
+            color: '#FFF',
             weight: 2,
             fillColor: '#FFF',
             fillOpacity: 0.2,
@@ -30,178 +35,194 @@ _xyz({
 
         // get core layer properties
         const core_layer_key = 'Wellbeing Index';
-		const core_layer = _xyz.layers.list[core_layer_key];
-		const core_layer_themes = _xyz.layers.list[core_layer_key].style.themes;
+        const core_layer = _xyz.layers.list[core_layer_key];
+        const core_layer_themes = _xyz.layers.list[core_layer_key].style.themes;
 
-		// show core layer and make legend
-		core_layer.view();
-		makeLegend(core_layer);
+        // show core layer and make legend
+        core_layer.view();
+        makeLegend(core_layer);
 
+        // make dropdown options
+        const layer_dropdown_options = [];
+        const core_layer_themes_options = [];
 
-		// make dropdown options
-		const layer_dropdown_options = [];
-		const core_layer_themes_options = [];
+        Object.keys(core_layer.style.themes).map(key => {
+            core_layer_themes_options.push(key);
+        });
 
-		Object.keys(core_layer.style.themes).map(key => {
-			core_layer_themes_options.push(key);
-		});
+        Object.values(_xyz.layers.list).map(layer => {
+            if (layer.group && layer.group === 'Locations') {
+                layer_dropdown_options.push({
+                    [layer.key]: layer.name || layer.key });
+            }
+        });
 
-		Object.values(_xyz.layers.list).map(layer => {
-			if(layer.group && layer.group === 'Locations'){
-				layer_dropdown_options.push({ [layer.key]: layer.name || layer.key });
-			}
-		});
+        // create themes dropdown
+        const core_layer_themes_dropdown = _xyz.utils.dropdownCustom({
+            entries: core_layer_themes_options,
+            singleSelect: true,
+            selectedIndex: 0,
+            callback: e => {
+                e.stopPropagation();
+                core_layer_themes_dropdown.querySelector('.head').textContent = e.target.textContent;
+                core_layer.style.theme = core_layer.style.themes[e.target.dataset.field];
+                core_layer.loaded = false;
+                core_layer.get();
+                core_layer.view.update();
+                makeLegend(core_layer);
+            }
+        });
 
-		// create themes dropdown
-		const core_layer_themes_dropdown = _xyz.utils.dropdownCustom({
-			entries: core_layer_themes_options,
-			singleSelect: true,
-			selectedIndex: 0,
-			callback: e => {
-				e.stopPropagation();
-				core_layer_themes_dropdown.querySelector('.head').textContent = e.target.textContent;
-				core_layer.style.theme = core_layer.style.themes[e.target.dataset.field];
-				core_layer.loaded = false;
-				core_layer.get();
-				core_layer.view.update();
-				makeLegend(core_layer);
-			}		
-		});
+        // add theme dropdown to DOM
+        document.getElementById('core_layer_themes_dropdown').appendChild(core_layer_themes_dropdown);
 
-		// add theme dropdown to DOM
-		document.getElementById('core_layer_themes_dropdown').appendChild(core_layer_themes_dropdown);
+        // intialize gazetteer
+        _xyz.gazetteer.init({
+            target: document.getElementById('layer_search'),
+            callback: () => {} // dummy callback placeholder if needed
+        });
 
+        // remove selected feature from map when popup is closed
+        _xyz.map.on('popupclose', () => {
+            if (_xyz.locations.current) _xyz.locations.current.remove();
+        });
 
-		// intialize gazetteer
-		_xyz.gazetteer.init({
-			target: document.getElementById('layer_search'),
-			callback: () => {} // dummy callback placeholder if needed
-		});
+        // select feature
+        _xyz.locations.select = location => location.layer === core_layer_key ? selectFromCoreLayer(location) : selectArea(location);
 
-		// remove selected feature from map when popup is closed
-		_xyz.map.on('popupclose', () => {
-			if(_xyz.locations.current) _xyz.locations.current.remove();
-		});
+        // make legend obvs
+        function makeLegend(layer) {
+            document.getElementById('xyz_legend').innerHTML = '';
+            if (layer.style.theme) {
+                document.getElementById('xyz_legend').appendChild(_xyz.utils.wire()
+                    `<div>${layer.name || ''}`);
+                document.getElementById('xyz_legend').appendChild(_xyz.utils.wire()
+                    `<small>${layer.style.theme.label || ''}`);
+                document.getElementById('xyz_legend').appendChild(layer.style.legend);
+            }
+        }
 
-		// select feature
-		_xyz.locations.select = location => {
-			location.layer === core_layer_key ? selectFromCoreLayer(location) : selectArea(location);
-		}
+        function selectArea(location) { // selects area from gazetteer
 
-		// make legend obvs
-		function makeLegend(layer){
-			document.getElementById('xyz_legend').innerHTML = '';
-			if (layer.style.theme) {
-				document.getElementById('xyz_legend').appendChild(_xyz.utils.wire()`<div>${layer.name || ''}`);
-				document.getElementById('xyz_legend').appendChild(_xyz.utils.wire()`<small>${layer.style.theme.label || ''}`);
-				document.getElementById('xyz_legend').appendChild(layer.style.legend);
-			}
-		}
+            const xhr = new XMLHttpRequest();
 
-		function selectArea(location){ // selects area from gazetteer
+            xhr.open('GET',
+                _xyz.host + '/api/location/select/id?' +
+                _xyz.utils.paramString({
+                    locale: _xyz.workspace.locale.key,
+                    layer: location.layer,
+                    table: location.table,
+                    id: location.id,
+                    token: _xyz.token
+                }));
 
-			const xhr = new XMLHttpRequest();
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.responseType = 'json';
 
-			xhr.open('GET',
-				_xyz.host + '/api/location/select/id?' +
-				_xyz.utils.paramString({
-					locale: _xyz.workspace.locale.key,
-					layer: location.layer,
-					table: location.table,
-					id: location.id,
-					token: _xyz.token
-				}));
+            let current_area = document.getElementById('current_area');
 
-			xhr.setRequestHeader('Content-Type', 'application/json');
-			xhr.responseType = 'json';
+            xhr.onload = e => {
 
-			let current_area = document.getElementById('current_area');
+                if (e.target.status !== 200) return;
 
-			xhr.onload = e => {
+                // show headers
+                let headers = document.querySelectorAll('div div.headers');
+                for (let i = 0; i < headers.length; i++) {
+                    headers[i].style.display = 'block';
+                }
 
-				if (e.target.status !== 200) return;
+                location.infoj = e.target.response.infoj;
+                location.geometry = e.target.response.geomj;
+                location.marker = location.marker.map(coord => parseFloat(coord));
 
-				// show headers
-				let headers = document.querySelectorAll('div div.headers'); 
-				for(let i = 0; i < headers.length; i++){
-					headers[i].style.display = 'block';
-				}
+                const _location = _xyz.locations.location(location); // make location
 
-				location.infoj = e.target.response.infoj;
-				location.geometry = e.target.response.geomj;
+                _xyz.gazetteer.current_location = _location; // make it current
 
-				const _location = _xyz.locations.location(location); // make location
-				_xyz.gazetteer.current_location = _location; // make it current
+                _xyz.gazetteer.current_location.Marker = _xyz.geom.geoJSON({
+                    json: {
+                        type: "Feature",
+                        geometry: {
+                            type: "Point",
+                            coordinates: _xyz.utils.turf.pointOnFeature(_location.geometry).geometry.coordinates
+                        }
+                    },
+                    style: _xyz.gazetteer.style
+                });
 
-				// Create location view.
-				_location.view();
-				_location.draw(_xyz.gazetteer.style);
-				_location.flyTo();
+                // Create location view.
+                _location.view();
+                _location.draw(_xyz.gazetteer.style);
+                _location.flyTo();
 
-				current_area.classList.add("shaded");
-				current_area.appendChild(_location.view.node);
-			}
+                current_area.classList.add("shaded");
+                current_area.appendChild(_location.view.node);
+            }
 
-			if(_xyz.gazetteer.current_location) { // deselect previous feature from gazetteer
-				_xyz.gazetteer.current_location = null;
+            if (_xyz.gazetteer.current_location) { // deselect previous feature from gazetteer
 
-				// hide previous headers
-				let headers = document.querySelectorAll('.grid.tables .headers');
-				for(let i = 0; i < headers.length; i++){
-					headers[i].style.display = 'none';
-				}
+                _xyz.map.removeLayer(_xyz.gazetteer.current_location.Layer);
+                _xyz.map.removeLayer(_xyz.gazetteer.current_location.Marker);
 
-				// remove previous table content
-				let tables = document.querySelectorAll('.grid.tables .tabs');
-				for(let i = 0; i < tables.length; i++){
-					tables[i].innerHTML = '';
-				}
-				
-				current_area.classList.remove("shaded");
-				current_area.innerHTML = '';
-			}
-			
-			xhr.send();
-		}
+                _xyz.gazetteer.current_location = null;
 
-		function selectFromCoreLayer(location){ // select feature from the core layer
+                // hide previous headers
+                let headers = document.querySelectorAll('.grid.tables .headers');
+                for (let i = 0; i < headers.length; i++) {
+                    headers[i].style.display = 'none';
+                }
 
-			const xhr = new XMLHttpRequest();
+                // remove previous table content
+                let tables = document.querySelectorAll('.grid.tables .tabs');
+                for (let i = 0; i < tables.length; i++) {
+                    tables[i].innerHTML = '';
+                }
 
-			xhr.open('GET',
-				_xyz.host + '/api/location/select/id?' +
-				_xyz.utils.paramString({
-					locale: _xyz.workspace.locale.key,
-					layer: location.layer,
-					table: location.table,
-					id: location.id,
-					token: _xyz.token
-				}));
+                current_area.classList.remove("shaded");
+                current_area.innerHTML = '';
+            }
 
-			xhr.setRequestHeader('Content-Type', 'application/json');
-			xhr.responseType = 'json';
+            xhr.send();
+        }
 
-			xhr.onload = e => {
+        function selectFromCoreLayer(location) { // select feature from the core layer
 
-				if (e.target.status !== 200) return;
+            const xhr = new XMLHttpRequest();
 
-				location.infoj = e.target.response.infoj;
-				location.geometry = e.target.response.geomj;
+            xhr.open('GET',
+                _xyz.host + '/api/location/select/id?' +
+                _xyz.utils.paramString({
+                    locale: _xyz.workspace.locale.key,
+                    layer: location.layer,
+                    table: location.table,
+                    id: location.id,
+                    token: _xyz.token
+                }));
 
-				const _location = _xyz.locations.location(location); // make location
-				_xyz.locations.current = _location; // make it current
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.responseType = 'json';
 
-				// Create location view.
-				_location.view();
-				_location.draw(core_layer_style);
+            xhr.onload = e => {
 
-				_xyz.mapview.popup({ // make popup
-					latlng: [_location.marker[1], _location.marker[0]],
-					content: _location.view.node,
-					closeButton: true
-				});
-			}
-			xhr.send();
-		}
-	}
+                if (e.target.status !== 200) return;
+
+                location.infoj = e.target.response.infoj;
+                location.geometry = e.target.response.geomj;
+
+                const _location = _xyz.locations.location(location); // make location
+                _xyz.locations.current = _location; // make it current
+
+                // Create location view.
+                _location.view();
+                _location.draw(core_layer_style);
+
+                _xyz.mapview.popup({ // make popup
+                    latlng: [_location.marker[1], _location.marker[0]],
+                    content: _location.view.node,
+                    closeButton: true
+                });
+            }
+            xhr.send();
+        }
+    }
 });
