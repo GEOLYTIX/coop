@@ -253,9 +253,13 @@ _xyz({
                 callback: e => {
                     e.stopPropagation();
 
+                    document.querySelector('.gazetteer input').value = '';
+
                     document.getElementById('xyz_locale_dropdown_2').innerHTML = '';
 
                     locale_dropdown_1.querySelector('.head').textContent = e.target.textContent;
+
+
 
                     let layer = _xyz.layers.list["Local Authority"];
 
@@ -294,6 +298,8 @@ _xyz({
                             callback: e => {
 
                                 e.stopPropagation();
+
+                                document.querySelector('.gazetteer input').value = '';
 
                                 selectArea({
                                     layer: layer.key,
