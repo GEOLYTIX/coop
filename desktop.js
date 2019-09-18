@@ -76,10 +76,15 @@ _xyz({
         // add theme dropdown to DOM
         document.getElementById('core_layer_themes_dropdown').appendChild(core_layer_themes_dropdown);
 
+        // add first locale dropdown
+        document.getElementById('xyz_locale_dropdown_1').appendChild(createRegionList());
+
         // intialize gazetteer
         _xyz.gazetteer.init({
             target: document.getElementById('layer_search'),
-            callback: () => {} // dummy callback placeholder if needed
+            callback: () => {
+                document.getElementById('xyz_locale_dropdown_1').appendChild(createRegionList());
+            }
         });
 
         // remove selected feature from map when popup is closed
@@ -133,7 +138,6 @@ _xyz({
 
                 location.infoj = e.target.response.infoj;
                 location.geometry = e.target.response.geomj;
-                location.marker = location.marker.map(coord => parseFloat(coord));
 
                 const _location = _xyz.locations.location(location); // make location
 
@@ -223,6 +227,91 @@ _xyz({
                 });
             }
             xhr.send();
+        }
+
+        function createRegionList(){
+
+            document.getElementById('xyz_locale_dropdown_1').innerHTML = '';
+            document.getElementById('xyz_locale_dropdown_2').innerHTML = '';
+
+            let locale_dropdown_1 = _xyz.utils.dropdownCustom({
+                entries: [
+                {"E15000006": "Eastern"},
+                {"E15000004": "East Midlands"},
+                {"E15000007": "London"},
+                {"E15000001": "North East"},
+                {"N08000001": "Northern Ireland"},
+                {"E15000002": "North West"},
+                {"S92000003": "Scotland"},
+                {"E15000008": "South East"},
+                {"E15000009": "South West"},
+                {"W08000001": "Wales"},
+                {"E15000005": "West Midlands"},
+                {"E15000003": "Yorkshire and The Humber"}],
+                singleSelect: true,
+                placeholder: 'Select region',
+                callback: e => {
+                    e.stopPropagation();
+
+                    document.getElementById('xyz_locale_dropdown_2').innerHTML = '';
+
+                    locale_dropdown_1.querySelector('.head').textContent = e.target.textContent;
+
+                    let layer = _xyz.layers.list["Local Authority"];
+
+                    layer.filter = {};
+                    layer.filter.current = {};
+                    layer.filter.current["regioncode"] = {};
+                    layer.filter.current["regioncode"].match = e.target.dataset.field;
+
+                    const _xhr = new XMLHttpRequest();
+
+                    _xhr.open('GET', _xyz.host + '/api/layer/table?' + _xyz.utils.paramString({
+                        locale: _xyz.workspace.locale.key,
+                        layer: "Local Authority",
+                        table: "Overview",
+                        filter: JSON.stringify(layer.filter.current),
+                        token: _xyz.token
+                    }));
+
+                    _xhr.setRequestHeader('Content-Type', 'application/json');
+                    _xhr.responseType = 'json';
+
+                    _xhr.onload = e => {
+
+                        if (e.target.status !== 200) return;
+
+                        let entries = [];
+
+                        e.target.response.forEach(each => {
+                            entries.push({[each.qid]: each.lad_name});
+                        });
+
+                        const locale_dropdown_2 = _xyz.utils.dropdownCustom({
+                            entries: entries,
+                            singleSelect: true,
+                            placeholder: 'Select Local Authority District',
+                            callback: e => {
+
+                                e.stopPropagation();
+
+                                selectArea({
+                                    layer: layer.key,
+                                    table: layer.table,
+                                    id: e.target.dataset.field
+                                });
+
+                                locale_dropdown_2.querySelector('.head').textContent = e.target.textContent;
+                            }
+                        });
+
+                        document.getElementById('xyz_locale_dropdown_2').appendChild(locale_dropdown_2);
+                    }
+                    _xhr.send();
+                }
+            });
+
+            return locale_dropdown_1;
         }
     }
 });
