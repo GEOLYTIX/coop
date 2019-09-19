@@ -92,6 +92,16 @@ _xyz({
             if (_xyz.locations.current) _xyz.locations.current.remove();
         });
 
+        document.querySelector('#xyz_map_toggles').appendChild(_xyz.utils.wire()`
+            <table><tr><td col-span=2>
+            <label class="checkbox"><small style="vertical-align: super;">Show LSOAs.</small>
+            <input type="checkbox"
+            onchange=${ e => {
+
+                e.target.checked ? _xyz.layers.list["LSOA"].show() : _xyz.layers.list["LSOA"].remove();
+
+            }}><div class="checkbox_i"></div></td></tr></table>`);
+
         // select feature
         _xyz.locations.select = location => location.layer === core_layer_key ? selectFromCoreLayer(location) : selectArea(location);
 
