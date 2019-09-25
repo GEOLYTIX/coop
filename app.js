@@ -1,3 +1,13 @@
+// to apply on the core layer
+const core_layer_style = {
+    stroke: true,
+    color: '#FFF',
+    weight: 2,
+    fillColor: '#FFF',
+    fillOpacity: 0.2,
+    fill: true
+}
+
 _xyz({
     host: document.head.dataset.dir,
     callback: _xyz => {
@@ -27,16 +37,6 @@ _xyz({
         const core_layer_key = 'Wellbeing Index';
         const core_layer = _xyz.layers.list[core_layer_key];
         const core_layer_themes = _xyz.layers.list[core_layer_key].style.themes;
-
-        // to apply on the core layer
-        const core_layer_style = {
-            stroke: true,
-            color: '#FFF',
-            weight: 2,
-            fillColor: '#FFF',
-            fillOpacity: 0.2,
-            fill: true
-        }
 
         // show core layer and make legend
         core_layer.view();
