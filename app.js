@@ -21,7 +21,7 @@ _xyz({
         _xyz.gazetteer.style = {
             stroke: true,
             color: "#FFF",
-            opacity: 0.3,
+            opacity: 0.7,
             weight: 4,
             fillColor: "#FFF",
             fillOpacity: 0.3,
