@@ -2,7 +2,7 @@
 const core_layer_style = {
     stroke: true,
     color: '#FFF',
-    weight: 2,
+    weight: 3,
     fillColor: '#FFF',
     fillOpacity: 0.2,
     fill: true
