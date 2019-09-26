@@ -20,7 +20,7 @@ _xyz({
         // to apply on search results
         _xyz.gazetteer.style = {
             stroke: true,
-            color: "#FFF",
+            color: "#00729A",
             opacity: 0.7,
             weight: 4,
             fillColor: "#FFF",
