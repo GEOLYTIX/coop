@@ -66,6 +66,7 @@ function createRegionList(_xyz) { // create region dropdown
                 locale: _xyz.workspace.locale.key,
                 layer: "Local Authority",
                 table: "Overview",
+                orderby: "lad_name",
                 filter: JSON.stringify(layer.filter.current),
                 token: _xyz.token
             }));
