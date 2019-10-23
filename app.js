@@ -34,7 +34,7 @@ _xyz({
         };
 
         // get core layer properties
-        const core_layer_key = 'Wellbeing Index';
+        const core_layer_key = 'Community Wellbeing Index';
         const core_layer = _xyz.layers.list[core_layer_key];
         const core_layer_themes = _xyz.layers.list[core_layer_key].style.themes;
 
