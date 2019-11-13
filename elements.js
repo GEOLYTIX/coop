@@ -24,7 +24,7 @@ function createRegionList(_xyz) { // create region dropdown
           dropdown_3_id = 'xyz_locale_dropdown_3';
 
     document.getElementById(dropdown_1_id).innerHTML = '';
-    document.getElementById(dropdown_2_id).innerHTML = '';
+    //document.getElementById(dropdown_2_id).innerHTML = '';
 
     let locale_dropdown_1 = _xyz.utils.dropdownCustom({
         entries: [
@@ -48,7 +48,7 @@ function createRegionList(_xyz) { // create region dropdown
 
             document.querySelector('.gazetteer input').value = '';
 
-            document.getElementById(dropdown_2_id).innerHTML = '';
+            //document.getElementById(dropdown_2_id).innerHTML = '';
 
             locale_dropdown_1.querySelector('.head').textContent = e.target.textContent;
 
@@ -60,13 +60,13 @@ function createRegionList(_xyz) { // create region dropdown
                 target_id: dropdown_2_id
             });
 
-            createSecondaryList(e, _xyz, {
+            /*createSecondaryList(e, _xyz, {
                 layer: "Constituencies",
                 table: "Overview",
                 label: "constituency_name",
                 placeholder: "Select Constituency",
                 target_id: dropdown_3_id
-            });
+            });*/
 
             //createLADList(_xyz);
 
@@ -263,6 +263,7 @@ function createSecondaryList(e, _xyz, params){
         target_id: dropdown_2_id
     }
     */
+    document.getElementById(params.target_id).innerHTML = '';
 
     let layer = _xyz.layers.list[params.layer];
 
