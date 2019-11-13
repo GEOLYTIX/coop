@@ -323,6 +323,10 @@ function createSecondaryList(_e, _xyz, params){
             }
         });
 
+        console.log(locale_dropdown);
+
+        console.log(document.getElementById(params.target_id));
+
         document.getElementById(params.target_id).appendChild(locale_dropdown);
     }
 
