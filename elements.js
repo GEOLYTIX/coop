@@ -63,7 +63,7 @@ function createRegionList(_xyz) { // create region dropdown
                         label: "constituency_name",
                         placeholder: "Select Constituency",
                         target_id: 'xyz_locale_dropdown_3'
-                    });
+                    }, e);
                 }
             }, e);
 
@@ -80,7 +80,7 @@ function createRegionList(_xyz) { // create region dropdown
                         label: "lad_name",
                         placeholder: "Select Local Authority District",
                         target_id: 'xyz_locale_dropdown_2'
-                    });
+                    }, e);
                 }
             }, e);
         }
@@ -98,7 +98,7 @@ function createSecondaryList(_xyz, params, _e){
     layer.filter = {};
     layer.filter.current = {};
     layer.filter.current["regioncode"] = {};
-    if(_e) layer.filter.current["regioncode"].match = _e.target.dataset.field;
+    layer.filter.current["regioncode"].match = _e.target.dataset.field;
 
     const _xhr = new XMLHttpRequest();
 
