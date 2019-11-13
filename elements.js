@@ -288,6 +288,15 @@ function createSecondaryList(_e, _xyz, params){
         token: _xyz.token
     }));
 
+    console.log(_xyz.host + '/api/layer/table?' + _xyz.utils.paramString({
+        locale: _xyz.workspace.locale.key,
+        layer: params.layer,
+        table: params.table,
+        orderby: params.label,
+        filter: JSON.stringify(layer.filter.current),
+        token: _xyz.token
+    }));
+
     _xhr.setRequestHeader('Content-Type', 'application/json');
     _xhr.responseType = 'json';
 
