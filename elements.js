@@ -52,7 +52,7 @@ function createRegionList(_xyz) { // create region dropdown
 
             locale_dropdown_1.querySelector('.head').textContent = e.target.textContent;
 
-            createSecondaryList(_xyz, {
+            createSecondaryList(e, _xyz, {
                 layer: "Local Authority",
                 table: "Overview",
                 label: "lad_name",
@@ -60,7 +60,7 @@ function createRegionList(_xyz) { // create region dropdown
                 target_id: dropdown_2_id
             });
 
-            createSecondaryList(_xyz, {
+            createSecondaryList(e, _xyz, {
                 layer: "Constituencies",
                 table: "Overview",
                 label: "constituency_name",
@@ -252,7 +252,7 @@ function createConstituencyList(_xyz){
     _xhr.send();
 }
 
-function createSecondaryList(_xyz, params){
+function createSecondaryList(e, _xyz, params){
 
     /*
     params = {
