@@ -57,7 +57,7 @@ function createRegionList(_xyz) { // create region dropdown
                 table: "Overview",
                 label: "lad_name",
                 placeholder: "Select Local Authority District",
-                target_id: dropdown_2_id
+                target_id: 'xyz_locale_dropdown_2' //dropdown_2_id
             });
 
             /*createSecondaryList(e, _xyz, {
