@@ -287,7 +287,7 @@ function createSecondaryList(_e, _xyz, params){
     _xhr.setRequestHeader('Content-Type', 'application/json');
     _xhr.responseType = 'json';
 
-    _xyz.onload = e => {
+    _xhr.onload = e => {
 
         console.log(e.target.response);
 
