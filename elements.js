@@ -50,36 +50,46 @@ function createRegionList(_xyz) { // create region dropdown
 
             locale_dropdown_1.querySelector('.head').textContent = e.target.textContent;
 
-            createSecondaryList(e, _xyz, {
+            createSecondaryList(_xyz, {
                 layer: "Local Authority",
                 table: "Overview",
                 label: "lad_name",
                 placeholder: "Select Local Authority District",
                 target_id: 'xyz_locale_dropdown_2',
-                callback: ev => {
-                    //document.getElementById('xyz_locale_dropdown_3').innerHTML = '';
-                    document.getElementById('xyz_locale_dropdown_3').querySelector('.head').textContent = '';
+                callback: () => {
+                    createSecondaryList(_xyz, {
+                        layer: "Constituencies",
+                        table: "Overview",
+                        label: "constituency_name",
+                        placeholder: "Select Constituency",
+                        target_id: 'xyz_locale_dropdown_3'
+                    });
                 }
-            });
+            }, e);
 
-            createSecondaryList(e, _xyz, {
+            createSecondaryList(_xyz, {
                 layer: "Constituencies",
                 table: "Overview",
                 label: "constituency_name",
                 placeholder: "Select Constituency",
                 target_id: 'xyz_locale_dropdown_3',
-                callback: ev => {
-                    //document.getElementById('xyz_locale_dropdown_2').innerHTML = '';
-                    document.getElementById('xyz_locale_dropdown_2').querySelector('.head').textContent = '';
+                callback: () => {
+                    createSecondaryList(_xyz, {
+                        layer: "Local Authority",
+                        table: "Overview",
+                        label: "lad_name",
+                        placeholder: "Select Local Authority District",
+                        target_id: 'xyz_locale_dropdown_2'
+                    });
                 }
-            });
+            }, e);
         }
     });
 
     return locale_dropdown_1;
 }
 
-function createSecondaryList(_e, _xyz, params){
+function createSecondaryList(_xyz, params, _e){
 
     document.getElementById(params.target_id).innerHTML = '';
 
@@ -88,7 +98,7 @@ function createSecondaryList(_e, _xyz, params){
     layer.filter = {};
     layer.filter.current = {};
     layer.filter.current["regioncode"] = {};
-    layer.filter.current["regioncode"].match = _e.target.dataset.field;
+    if(_e) layer.filter.current["regioncode"].match = _e.target.dataset.field;
 
     const _xhr = new XMLHttpRequest();
 
