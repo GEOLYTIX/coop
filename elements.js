@@ -263,6 +263,8 @@ function createSecondaryList(e, _xyz, params){
         target_id: dropdown_2_id
     }
     */
+
+
     document.getElementById(params.target_id).innerHTML = '';
 
     let layer = _xyz.layers.list[params.layer];
@@ -287,6 +289,8 @@ function createSecondaryList(e, _xyz, params){
     _xhr.responseType = 'json';
 
     _xyz.onload = e => {
+
+        console.log(e.target.response);
 
         if (e.target.status !== 200) return;
 
