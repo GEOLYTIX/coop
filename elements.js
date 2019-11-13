@@ -57,13 +57,7 @@ function createRegionList(_xyz) { // create region dropdown
                 placeholder: "Select Local Authority District",
                 target_id: 'xyz_locale_dropdown_2',
                 callback: () => {
-                    createSecondaryList(_xyz, {
-                        layer: "Constituencies",
-                        table: "Overview",
-                        label: "constituency_name",
-                        placeholder: "Select Constituency",
-                        target_id: 'xyz_locale_dropdown_3'
-                    }, e);
+                    document.querySelector('#xyz_locale_dropdown_3 .head').textContent = "Select Constituency";
                 }
             }, e);
 
@@ -74,13 +68,7 @@ function createRegionList(_xyz) { // create region dropdown
                 placeholder: "Select Constituency",
                 target_id: 'xyz_locale_dropdown_3',
                 callback: () => {
-                    createSecondaryList(_xyz, {
-                        layer: "Local Authority",
-                        table: "Overview",
-                        label: "lad_name",
-                        placeholder: "Select Local Authority District",
-                        target_id: 'xyz_locale_dropdown_2'
-                    }, e);
+                    document.querySelector('#xyz_locale_dropdown_2 .head').textContent = "Select Local Authority District";
                 }
             }, e);
         }
