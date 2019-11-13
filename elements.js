@@ -252,8 +252,11 @@ function createConstituencyList(_xyz){
     _xhr.send();
 }
 
-function createSecondaryList(e, _xyz, params){
+function createSecondaryList(_e, _xyz, params){
 
+    console.log('createSecondaryList');
+
+    console.log(params);
     /*
     params = {
         layer: "Local Authority",
@@ -272,7 +275,7 @@ function createSecondaryList(e, _xyz, params){
     layer.filter = {};
     layer.filter.current = {};
     layer.filter.current["regioncode"] = {};
-    layer.filter.current["regioncode"].match = e.target.dataset.field;
+    layer.filter.current["regioncode"].match = _e.target.dataset.field;
 
     const _xhr = new XMLHttpRequest();
 
@@ -306,19 +309,19 @@ function createSecondaryList(e, _xyz, params){
             entries: entries,
             singleSelect: true,
             placeholder: params.placeholder,
-            callback: e => {
+            callback: __e => {
 
-                e.stopPropagation();
+                __e.stopPropagation();
 
                 document.querySelector('.gazetteer input').value = '';
 
                 selectArea(_xyz, {
                     layer: layer.key,
                     table: layer.table,
-                    id: e.target.dataset.field
+                    id: __e.target.dataset.field
                 });
 
-                locale_dropdown.querySelector('.head').textContent = e.target.textContent;
+                locale_dropdown.querySelector('.head').textContent = __e.target.textContent;
             }
         });
 
