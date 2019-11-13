@@ -55,7 +55,10 @@ function createRegionList(_xyz) { // create region dropdown
                 table: "Overview",
                 label: "lad_name",
                 placeholder: "Select Local Authority District",
-                target_id: 'xyz_locale_dropdown_2'
+                target_id: 'xyz_locale_dropdown_2',
+                callback: ev => {
+                    document.getElementById('xyz_locale_dropdown_3').innerHTML = '';
+                }
             });
 
             createSecondaryList(e, _xyz, {
@@ -63,7 +66,10 @@ function createRegionList(_xyz) { // create region dropdown
                 table: "Overview",
                 label: "constituency_name",
                 placeholder: "Select Constituency",
-                target_id: 'xyz_locale_dropdown_3'
+                target_id: 'xyz_locale_dropdown_3',
+                callback: ev => {
+                    document.getElementById('xyz_locale_dropdown_2').innerHTML = '';
+                }
             });
         }
     });
@@ -125,6 +131,8 @@ function createSecondaryList(_e, _xyz, params){
                 });
 
                 locale_dropdown.querySelector('.head').textContent = __e.target.textContent;
+
+                if(params.callback) params.callback();
             }
         });
 
