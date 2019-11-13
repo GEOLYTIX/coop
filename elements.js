@@ -253,10 +253,6 @@ function createConstituencyList(_xyz){
 }
 
 function createSecondaryList(_e, _xyz, params){
-
-    console.log('createSecondaryList');
-
-    console.log(params);
     /*
     params = {
         layer: "Local Authority",
@@ -288,15 +284,6 @@ function createSecondaryList(_e, _xyz, params){
         token: _xyz.token
     }));
 
-    console.log(_xyz.host + '/api/layer/table?' + _xyz.utils.paramString({
-        locale: _xyz.workspace.locale.key,
-        layer: params.layer,
-        table: params.table,
-        orderby: params.label,
-        filter: JSON.stringify(layer.filter.current),
-        token: _xyz.token
-    }));
-
     _xhr.setRequestHeader('Content-Type', 'application/json');
     _xhr.responseType = 'json';
 
@@ -313,6 +300,8 @@ function createSecondaryList(_e, _xyz, params){
                 [each.qid]: each[params.label]
             });
         });
+
+        console.log(entries);
 
         const locale_dropdown = _xyz.utils.dropdownCustom({
             entries: entries,
