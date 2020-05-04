@@ -1,4 +1,5 @@
 SELECT
+  id,
   dd_name,
   ind_wellb * 100 AS ind_wellb,
   indeduca * 100 AS indeduca,
