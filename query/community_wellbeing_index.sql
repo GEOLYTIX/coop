@@ -10,4 +10,5 @@ SELECT
   indrelat * 100 AS indrelat,
   indequal * 100 AS indequal,
   indvoice * 100 AS indvoice
-FROM coop.uk_coop_restrict_wellbeing LIMIT 99;
+FROM coop.uk_coop_restrict_wellbeing
+WHERE true ${viewport} ${filter} FETCH FIRST 99 ROW ONLY;
