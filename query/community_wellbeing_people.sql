@@ -20,4 +20,4 @@ SELECT
   round(eco_free_school_meals_scot * 100) AS eco_free_school_meals_scot,
   round(eco_unemployment * 100) AS eco_unemployment
 FROM coop.uk_coop_restrict_wellbeing
-WHERE true ${viewport} ${filter} FETCH FIRST 99 ROW ONLY;
+WHERE true ${viewport} ${filter} FETCH FIRST 9 ROW ONLY;
