@@ -1,4 +1,4 @@
-SELECT
+      SELECT
  id,
  dd_name,
  '#FFD60C' AS backgroundcolour,
@@ -13,7 +13,7 @@ SELECT
  round(indequal * 100) AS indequal,
  round(indvoice * 100) AS indvoice
 FROM coop.uk_coop_restrict_wellbeing
-WHERE dd_name LIKE 'Penkridge'
+WHERE dd_name LIKE '${loc}'
 
 UNION ALL
 
