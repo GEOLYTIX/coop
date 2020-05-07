@@ -20,4 +20,4 @@ SELECT
   round(voi_coop_member_engagement * 100) AS voi_coop_member_engagement,
   round(voi_signing_petitions * 100) AS voi_signing_petitions
 FROM coop.uk_coop_restrict_wellbeing
-WHERE true ${viewport} ${filter} FETCH FIRST 99 ROW ONLY;
+WHERE true ${viewport} ${filter} FETCH FIRST 9 ROW ONLY;
