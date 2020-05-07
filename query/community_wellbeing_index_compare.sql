@@ -1,6 +1,7 @@
 SELECT
   id,
   dd_name,
+  '#FFD60C' AS backgroundcolour,
   round(ind_wellb * 100) AS ind_wellb,
   round(indeduca * 100) AS indeduca,
   round(indhealt * 100) AS indhealt,
