@@ -1,5 +1,5 @@
 window.onload = () => _xyz({
-  host: 'http://localhost:3000/coop',
+  host: 'https://xyz-coop-dev.now.sh/coop',
   hooks: true,
   locale: 'Wellbeing',
   callback: init
