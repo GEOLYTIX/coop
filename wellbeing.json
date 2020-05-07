@@ -7,6 +7,9 @@
     "community wellbeing - index": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_index.sql"
     },
+    "community wellbeing - index compare": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_index_compare.sql"
+    },
     "community wellbeing - people": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_people.sql"
     },
