@@ -1,225 +1,45 @@
 {
   "templates": {
+    "wellbeing": {
+      "_template": "http://localhost:3000/coop/views/wellbeing.html",
+      "__template": "https://cdn.jsdelivr.net/gh/GEOLYTIX/coop/wellbeing.html",
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/wellbeing.html"
+    },
     "community wellbeing - index": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_index.sql"
     },
+    "community wellbeing - index compare": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_index_compare.sql"
+    },    
     "community wellbeing - people": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_people.sql"
     },
+    "community wellbeing - people compare": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_people_compare.sql"
+    },      
     "community wellbeing - place": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_place.sql"
+    },
+    "community wellbeing - place compare": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_place_compare.sql"
     },
     "community wellbeing - relationships": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_relationships.sql"
     },
+    "community wellbeing - relationships compare": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_relationships_compare.sql"
+    },
     "community wellbeing - chart": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_chart.sql"
+    },
+    "get_lad_from_region": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/get_lad_from_region.sql"
+    },
+    "get_constituency_from_region": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/get_constituency_from_region.sql"
     }
   },
   "locales": {
-    "UK": {
-      "gazetteer": {
-        "placeholder": "eg. N15",
-        "datasets": [
-          {
-            "layer": "postcode",
-            "table": "coop.postal_postcode_2018_05",
-            "label": "rm_format"
-          },
-          {
-            "layer": "postcode",
-            "table": "coop.postal_postcode_2018_05",
-            "qterm": "str_format",
-            "label": "rm_format"
-          },
-          {
-            "layer": "seamless_towns",
-            "table": "coop.sl",
-            "label": "dd_name",
-            "leading_wildcard": true
-          }
-        ]
-      },
-      "bounds": {
-        "north": 67,
-        "east": 9,
-        "south": 44,
-        "west": -16
-      },
-      "view": {
-        "lng": -3,
-        "lat": 54
-      },
-      "maskBounds": true,
-      "minZoom": 6,
-      "maxZoom": 17,
-      "layers": {
-        "Mapbox Baselayer": {
-          "group": "Base maps",
-          "display": true,
-          "attribution": {
-            "© Mapbox": "https://www.mapbox.com/about/maps",
-            "© OpenStreetMap": "http://www.openstreetmap.org/copyright"
-          },
-          "format": "tiles",
-          "URI": "/styles/v1/dbauszus/ciozrimi3002bdsm8bjtn2v1y/tiles/256/{z}/{x}/{y}?&provider=MAPBOX&host=https://api.mapbox.com"
-        },
-        "seamless_towns": {
-          "display": true,
-          "name": "Seamless Towns",
-          "format": "mvt",
-          "dbs": "XYZ",
-          "srid": "3857",
-          "geom": "geom",
-          "tables": {
-            "10": null,
-            "11": "coop.sl"
-          },
-          "qID": "gid",
-          "infoj": [
-            {
-              "field": "id",
-              "inline": true
-            },
-            {
-              "field": "localename"
-            },
-            {
-              "field": "locale_id",
-              "inline": true
-            },
-            {
-              "field": "town_name"
-            },
-            {
-              "field": "town_id",
-              "inline": true
-            },
-            {
-              "field": "census11pp",
-              "type": "integer"
-            },
-            {
-              "field": "dd_name"
-            },
-            {
-              "field": "ind_relat",
-              "type": "numeric"
-            },
-            {
-              "field": "n_ind_relat",
-              "type": "numeric"
-            },
-            {
-              "field": "indequal",
-              "type": "numeric"
-            },
-            {
-              "field": "n_indequal",
-              "type": "numeric"
-            },
-            {
-              "field": "indvoice",
-              "type": "numeric"
-            },
-            {
-              "field": "n_indvoice",
-              "type": "numeric"
-            },
-            {
-              "field": "indecono",
-              "type": "numeric"
-            },
-            {
-              "field": "n_indecono",
-              "type": "numeric"
-            },
-            {
-              "field": "indhealt",
-              "type": "numeric"
-            },
-            {
-              "field": "n_indhealt",
-              "type": "numeric"
-            },
-            {
-              "field": "indeduca",
-              "type": "numeric"
-            },
-            {
-              "field": "n_indeduca",
-              "type": "numeric"
-            },
-            {
-              "field": "indcultu",
-              "type": "numeric"
-            },
-            {
-              "field": "n_indcultu",
-              "type": "numeric"
-            },
-            {
-              "field": "indhousi",
-              "type": "numeric"
-            },
-            {
-              "field": "n_indhousi",
-              "type": "numeric"
-            },
-            {
-              "field": "indtrans",
-              "type": "numeric"
-            },
-            {
-              "field": "n_indtrans",
-              "type": "numeric"
-            },
-            {
-              "field": "ind_wellb",
-              "type": "numeric"
-            },
-            {
-              "field": "n_ind_wellb",
-              "type": "numeric"
-            },
-            {
-              "field": "marker"
-            }
-          ]
-        },
-        "postcode": {
-          "name": "Postal Code",
-          "format": "cluster",
-          "dbs": "XYZ",
-          "geom": "geom_4326",
-          "table": "coop.postal_postcode_2018_05",
-          "cluster_kmeans": 0.05,
-          "cluster_dbscan": 0.01,
-          "cluster_label": "rm_format",
-          "qID": "id",
-          "infoj": [
-            {
-              "field": "id",
-              "inline": true
-            },
-            {
-              "field": "rm_format",
-              "inline": true
-            }
-          ]
-        },
-        "Mapbox Labels": {
-          "group": "Base maps",
-          "display": true,
-          "attribution": {
-            "© Mapbox": "https://www.mapbox.com/about/maps",
-            "© OpenStreetMap": "http://www.openstreetmap.org/copyright"
-          },
-          "format": "tiles",
-          "URI": "/styles/v1/dbauszus/cj9puo8pr5o0c2sovhdwhkc7z/tiles/256/{z}/{x}/{y}?&provider=MAPBOX&host=https://api.mapbox.com"
-        }
-      }
-    },
     "Wellbeing": {
       "gazetteer": {
         "placeholder": "Search postcode, locale, constituency, local authority, town, county, region or country",
@@ -284,6 +104,16 @@
           "format": "tiles",
           "URI": "/maptile/2.1/maptile/newest/hybrid.day/{z}/{x}/{y}/256/png8?&provider=HERE&host=https://1.aerial.maps.api.here.com"
         },
+        "LSOA": {
+          "format": "mvt",
+          "srid": "3857",
+          "geom": "geom_3857_10m",
+          "dbs": "XYZ",
+          "tables": {
+            "12": null,
+            "13": "coop.vw_uk_glx_geodata_admin_lsoa"
+          }
+        },
         "Community Wellbeing": {
           "format": "mvt",
           "display": true,
@@ -291,7 +121,7 @@
           "geom": "geom_3857",
           "dbs": "XYZ",
           "table": "coop.uk_coop_restrict_wellbeing",
-          "_mvt_cache": "coop.uk_coop_restrict_wellbeing__mvt",
+          "mvt_cache": "coop.uk_coop_restrict_wellbeing__mvt",
           "qID": "id",
           "infoj": [
             {
@@ -299,97 +129,15 @@
               "field": "dd_name"
             },
             {
-              "label": "Community Wellbeing Score:",
+              "label": "Community Wellbeing Score",
               "field": "ind_wellb",
               "fieldfx": "ROUND(ind_wellb * 100)",
+              "class": "score_value",
               "type": "integer",
               "inline": true
             },
             {
-              "group": "Wellbeing Index",
-              "label": "Education",
-              "field": "indeduca",
-              "fieldfx": "ROUND(indeduca * 100)",
-              "level": 2,
-              "inline": true,
-              "type": "integer"
-            },
-            {
-              "group": "Wellbeing Index",
-              "label": "Health",
-              "field": "indhealt",
-              "fieldfx": "ROUND(indhealt * 100)",
-              "level": 2,
-              "inline": true,
-              "type": "integer"
-            },
-            {
-              "group": "Wellbeing Index",
-              "label": "Economy",
-              "field": "indecono",
-              "fieldfx": "ROUND(indecono * 100)",
-              "level": 2,
-              "inline": true,
-              "type": "integer"
-            },
-            {
-              "group": "Wellbeing Index",
-              "label": "Culture",
-              "field": "indcultu",
-              "fieldfx": "ROUND(indcultu * 100)",
-              "level": 2,
-              "inline": true,
-              "type": "integer"
-            },
-            {
-              "group": "Wellbeing Index",
-              "label": "Transport",
-              "field": "indtrans",
-              "fieldfx": "ROUND(indtrans * 100)",
-              "level": 2,
-              "inline": true,
-              "type": "integer"
-            },
-            {
-              "group": "Wellbeing Index",
-              "label": "Housing",
-              "field": "indhousi",
-              "fieldfx": "ROUND(indhousi * 100)",
-              "level": 2,
-              "inline": true,
-              "type": "integer"
-            },
-            {
-              "group": "Wellbeing Index",
-              "label": "Relations",
-              "field": "indrelat",
-              "fieldfx": "ROUND(indrelat * 100)",
-              "level": 2,
-              "inline": true,
-              "type": "integer"
-            },
-            {
-              "group": "Wellbeing Index",
-              "label": "Equality",
-              "field": "indequal",
-              "fieldfx": "ROUND(indequal * 100)",
-              "level": 2,
-              "inline": true,
-              "type": "integer"
-            },
-            {
-              "group": "Wellbeing Index",
-              "label": "Voice",
-              "field": "indvoice",
-              "fieldfx": "ROUND(indvoice * 100)",
-              "level": 2,
-              "inline": true,
-              "type": "integer"
-            },
-            {
-              "group": "Wellbeing Index",
               "type": "dataview",
-              "expanded": true,
               "target": "location",
               "query": "community wellbeing - chart",
               "chart": {
@@ -449,40 +197,55 @@
                   "field": "ind_wellb"
                 },
                 {
-                  "title": "Education",
-                  "field": "indeduca"
+                  "title": "PEOPLE",
+                  "columns": [
+                    {
+                      "title": "Education",
+                      "field": "indeduca"
+                    },
+                    {
+                      "title": "Health",
+                      "field": "indhealt"
+                    },
+                    {
+                      "title": "Economy",
+                      "field": "indecono"
+                    }
+                  ]
                 },
                 {
-                  "title": "Health",
-                  "field": "indhealt"
+                  "title": "PLACE",
+                  "columns": [
+                    {
+                      "title": "Culture",
+                      "field": "indcultu"
+                    },
+                    {
+                      "title": "Transport",
+                      "field": "indtrans"
+                    },
+                    {
+                      "title": "Housing",
+                      "field": "indhousi"
+                    }
+                  ]
                 },
                 {
-                  "title": "Economy",
-                  "field": "indecono"
-                },
-                {
-                  "title": "Culture",
-                  "field": "indcultu"
-                },
-                {
-                  "title": "Transport",
-                  "field": "indtrans"
-                },
-                {
-                  "title": "Housing",
-                  "field": "indhousi"
-                },
-                {
-                  "title": "Relationships",
-                  "field": "indrelat"
-                },
-                {
-                  "title": "Equality",
-                  "field": "indequal"
-                },
-                {
-                  "title": "Voice",
-                  "field": "indvoice"
+                  "title": "RELATIONSHIPS",
+                  "columns": [
+                    {
+                      "title": "Relationships",
+                      "field": "indrelat"
+                    },
+                    {
+                      "title": "Equality",
+                      "field": "indequal"
+                    },
+                    {
+                      "title": "Voice",
+                      "field": "indvoice"
+                    }
+                  ]
                 }
               ]
             },
@@ -497,76 +260,91 @@
                   "field": "dd_name"
                 },
                 {
-                  "title": "Access to schools",
-                  "field": "edu_access_schools"
+                  "title": "EDUCATION",
+                  "columns": [
+                    {
+                      "title": "Access to schools",
+                      "field": "edu_access_schools"
+                    },
+                    {
+                      "title": "Access to good schools",
+                      "field": "edu_access_good_schools"
+                    },
+                    {
+                      "title": "Access to adult edutcation",
+                      "field": "edu_access_adult_edu"
+                    },
+                    {
+                      "title": "Access to libraries",
+                      "field": "edu_access_libraries"
+                    },
+                    {
+                      "title": "School quality",
+                      "field": "edu_school_quality"
+                    }
+                  ]
                 },
                 {
-                  "title": "Access to good schools",
-                  "field": "edu_access_good_schools"
+                  "title": "HEALTH",
+                  "columns": [
+                    {
+                      "title": "Access to health services",
+                      "field": "hea_access_health_services"
+                    },
+                    {
+                      "title": "Hypertension and Heart Failure",
+                      "field": "hea_hypertension_heart_failure"
+                    },
+                    {
+                      "title": "Drugs used in diabetes",
+                      "field": "hea_drugs_used_diabetes"
+                    },
+                    {
+                      "title": "Anti- depressants",
+                      "field": "hea_antidepressants"
+                    },
+                    {
+                      "title": "Obesity",
+                      "field": "hea_obesity"
+                    },
+                    {
+                      "title": "Dementia",
+                      "field": "hea_dementia"
+                    }
+                  ]
                 },
                 {
-                  "title": "Access to good schools",
-                  "field": "edu_access_adult_edu"
-                },
-                {
-                  "title": "Access to libraries",
-                  "field": "edu_access_libraries"
-                },
-                {
-                  "title": "School quality",
-                  "field": "edu_school_quality"
-                },
-                {
-                  "title": "Access to health services",
-                  "field": "hea_access_health_services"
-                },
-                {
-                  "title": "Hypertension and Heart Failure",
-                  "field": "hea_hypertension_heart_failure"
-                },
-                {
-                  "title": "Drugs used in diabetes",
-                  "field": "hea_drugs_used_diabetes"
-                },
-                {
-                  "title": "Anti- depressants",
-                  "field": "hea_antidepressants"
-                },
-                {
-                  "title": "Obesity",
-                  "field": "hea_obesity"
-                },
-                {
-                  "title": "Dementia",
-                  "field": "hea_dementia"
-                },
-                {
-                  "title": "Proximity of work to home",
-                  "field": "eco_proximity_work_home"
-                },
-                {
-                  "title": "Hours worked",
-                  "field": "eco_hours_worked"
-                },
-                {
-                  "title": "Household Income",
-                  "field": "eco_household_income"
-                },
-                {
-                  "title": "Vacant commercial units",
-                  "field": "eco_vacant_commercial_units"
-                },
-                {
-                  "title": "Free school meals - rest of UK",
-                  "field": "eco_free_school_meals_rest_uk"
-                },
-                {
-                  "title": "Free school meals - Scotland",
-                  "field": "eco_free_school_meals_scot"
-                },
-                {
-                  "title": "Unemployment",
-                  "field": "eco_unemployment"
+                  "title": "ECONOMY",
+                  "columns": [
+                    {
+                    "title": "Proximity of work to home",
+                    "field": "eco_proximity_work_home"
+                  },
+                  {
+                    "title": "Hours worked",
+                    "field": "eco_hours_worked"
+                  },
+                  {
+                    "title": "Household Income",
+                    "field": "eco_household_income"
+                  },
+                  {
+                    "title": "Vacant commercial units",
+                    "field": "eco_vacant_commercial_units"
+                  },
+                  {
+                    "title": "Free school meals - rest of UK",
+                    "field": "eco_free_school_meals_rest_uk"
+                  },
+                  {
+                    "title": "Free school meals - Scotland",
+                    "field": "eco_free_school_meals_scot"
+                  },
+                  {
+                    "title": "Unemployment",
+                    "field": "eco_unemployment"
+                  }
+                ]
                 }
               ]
             },
@@ -581,56 +359,71 @@
                   "field": "dd_name"
                 },
                 {
-                  "field": "cul_places_worship",
-                  "title": "Places of worship"
+                  "title": "CULTURE",
+                  "columns": [
+                    {
+                      "field": "cul_places_worship",
+                      "title": "Places of worship"
+                    },
+                    {
+                      "field": "cul_types_workers",
+                      "title": "Types of workers"
+                    },
+                    {
+                      "field": "cul_areas_leisure",
+                      "title": "Areas for leisure"
+                    },
+                    {
+                      "field": "cul_museums",
+                      "title": "Museums"
+                    },
+                    {
+                      "field": "cul_listed_buildings",
+                      "title": "Areas for leisure"
+                    }
+                  ]
                 },
                 {
-                  "field": "cul_types_workers",
-                  "title": "Types of workers"
+                  "title": "TRANSPORT",
+                  "columns": [
+                    {
+                      "field": "tra_communication_internet",
+                      "title": "Internet"
+                    },
+                    {
+                      "field": "tra_public_transport",
+                      "title": "Public Transport"
+                    }
+                  ]
                 },
                 {
-                  "field": "cul_areas_leisure",
-                  "title": "Areas for leisure"
-                },
-                {
-                  "field": "cul_museums",
-                  "title": "Museums"
-                },
-                {
-                  "field": "cul_listed_buildings",
-                  "title": "Areas for leisure"
-                },
-                {
-                  "field": "tra_communication_internet",
-                  "title": "Communication - internet"
-                },
-                {
-                  "field": "tra_public_transport",
-                  "title": "Communication - internet"
-                },
-                {
-                  "field": "hou_affordability",
-                  "title": "Affordability"
-                },
-                {
-                  "field": "hou_overcrowding",
-                  "title": "Overcrowding"
-                },
-                {
-                  "field": "hou_green_space",
-                  "title": "Green Space"
-                },
-                {
-                  "field": "hou_public_spaces",
-                  "title": "Public spaces"
-                },
-                {
-                  "field": "hou_pollution",
-                  "title": "Pollution"
-                },
-                {
-                  "field": "hou_air_quality",
-                  "title": "Pollution"
+                  "title": "HOUSING",
+                  "columns": [
+                    {
+                      "field": "hou_affordability",
+                      "title": "Affordability"
+                    },
+                    {
+                      "field": "hou_overcrowding",
+                      "title": "Overcrowding"
+                    },
+                    {
+                      "field": "hou_green_space",
+                      "title": "Green Space"
+                    },
+                    {
+                      "field": "hou_public_spaces",
+                      "title": "Public spaces"
+                    },
+                    {
+                      "field": "hou_pollution",
+                      "title": "Pollution"
+                    },
+                    {
+                      "field": "hou_air_quality",
+                      "title": "Pollution"
+                    }
+                  ]
                 }
               ]
             },
@@ -645,80 +438,90 @@
                   "field": "dd_name"
                 },
                 {
-                  "field": "rel_social_spaces",
-                  "title": "Social spaces"
+                  "title": "RELATIONSHIPS",
+                  "columns": [
+                    {
+                      "field": "rel_social_spaces",
+                      "title": "Social spaces"
+                    },
+                    {
+                      "field": "rel_presence_young",
+                      "title": "Presence of young children"
+                    },
+                    {
+                      "field": "rel_one_person_hhd_50plus",
+                      "title": "One person household, aged 50+"
+                    },
+                    {
+                      "field": "rel_proximity_work_home",
+                      "title": "Proximity of work to home"
+                    },
+                    {
+                      "field": "rel_hhd_churn",
+                      "title": "Household churn"
+                    },
+                    {
+                      "field": "rel_lt_health",
+                      "title": "Long-term health status"
+                    },
+                    {
+                      "field": "rel_crime",
+                      "title": "Crime in the locale"
+                    },
+                    {
+                      "field": "rel_crime_tc",
+                      "title": "Crime in town centre"
+                    }
+                  ]
                 },
                 {
-                  "field": "rel_presence_young",
-                  "title": "Presence of young children"
-                },
-                {
-                  "field": "rel_one_person_hhd_50plus",
-                  "title": "One person household, aged 50+"
-                },
-                {
-                  "field": "rel_proximity_work_home",
-                  "title": "Proximity of work to home"
-                },
-                {
-                  "field": "rel_hhd_churn",
-                  "title": "Household churn"
-                },
-                {
-                  "field": "rel_lt_health",
-                  "title": "Long-term health status"
-                },
-                {
-                  "field": "rel_crime",
-                  "title": "Crime in the locale"
-                },
-                {
-                  "field": "rel_crime_tc",
-                  "title": "Crime in town centre"
-                },
-                {
-                  "field": "equ_house_price_gap",
-                  "title": "House price gap"
-                },
-                {
-                  "field": "equ_second_home_own",
-                  "title": "Second home ownership"
-                },
-                {
-                  "field": "equ_indep_schools_lon_se",
-                  "title": "Independent schools (london & se)"
-                },
-                {
-                  "field": "equ_indep_schools_rest_uk",
-                  "title": "Independent schools (rest of UK)"
-                },
-                {
-                  "field": "equ_qualifications",
-                  "title": "Qualifications"
-                },
-                {
-                  "field": "equ_ethnic_equality",
-                  "title": "Ethnic eequality"
-                },
-                {
-                  "field": "equ_relative_affluence",
-                  "title": "Relative Affluence"
-                },
-                {
-                  "field": "equ_lt_security",
-                  "title": "Long term security"
-                },
-                {
-                  "field": "voi_voter_turnout",
-                  "title": "Voter turnout"
-                },
-                {
-                  "field": "voi_coop_member_engagement",
-                  "title": "Coop member engagement"
-                },
-                {
-                  "field": "voi_signing_petitions",
-                  "title": "Signing of petitions"
+                  "title": "EQUALITY",
+                  "columns": [
+                    {
+                      "field": "equ_house_price_gap",
+                      "title": "House price gap"
+                    },
+                    {
+                      "field": "equ_second_home_own",
+                      "title": "Second home ownership"
+                    },
+                    {
+                      "field": "equ_indep_schools_lon_se",
+                      "title": "Independent schools (london & se)"
+                    },
+                    {
+                      "field": "equ_indep_schools_rest_uk",
+                      "title": "Independent schools (rest of UK)"
+                    },
+                    {
+                      "field": "equ_qualifications",
+                      "title": "Qualifications"
+                    },
+                    {
+                      "field": "equ_ethnic_equality",
+                      "title": "Ethnic eequality"
+                    },
+                    {
+                      "field": "equ_relative_affluence",
+                      "title": "Relative Affluence"
+                    },
+                    {
+                      "field": "equ_lt_security",
+                      "title": "Long term security"
+                    },
+                    {
+                      "field": "voi_voter_turnout",
+                      "title": "Voter turnout"
+                    },
+                    {
+                      "field": "voi_coop_member_engagement",
+                      "title": "Coop member engagement"
+                    },
+                    {
+                      "field": "voi_signing_petitions",
+                      "title": "Signing of petitions"
+                    }
+                  ]
                 }
               ]
             }
@@ -729,7 +532,6 @@
               "fillOpacity": 0.4
             },
             "highlight": {
-              "strokeColor": "#FFD60C",
               "fillColor": "#FFD60C",
               "fillOpacity": 0.3,
               "strokeWidth": 2
@@ -1107,6 +909,313 @@
               }
             }
           }
+        },
+        "Community Wellbeing Filter": {
+          "format": "mvt",
+          "srid": "3857",
+          "geom": "geom_3857",
+          "dbs": "XYZ",
+          "table": "coop.uk_coop_restrict_wellbeing",
+          "qID": "id",
+          "infoj": [
+            {
+              "label": "dd_name",
+              "field": "dd_name"
+            },
+            {
+              "label": "region",
+              "field": "region",
+              "filter": {
+                "in": [
+                  "Scotland",
+                  "Wales",
+                  "North East",
+                  "North West",
+                  "London",
+                  "South West",
+                  "Eastern",
+                  "Yorkshire and The Humber",
+                  "West Midlands",
+                  "East Midlands",
+                  "Northern Ireland",
+                  "South East"
+                ]
+              }
+            },
+            {
+              "label": "localename",
+              "field": "localename"
+            }
+          ]
+        },
+        "Seamless towns and suburbs": {
+          "format": "mvt",
+          "srid": "3857",
+          "geom": "geom_3857",
+          "dbs": "XYZ",
+          "table": "coop.uk_glx_geodata_seamless_combined"
+        },
+        "Local Authority": {
+          "format": "mvt",
+          "srid": "3857",
+          "geom": "geom_3857_200m",
+          "dbs": "XYZ",
+          "table": "coop.vw_uk_glx_geodata_admin_lad",
+          "infoj": [
+            {
+              "label": "id",
+              "field": "id"
+            },
+            {
+              "label": "lad_name",
+              "field": "lad_name",
+              "filter": "match"
+            },
+            {
+              "label": "regionname",
+              "field": "regionname",
+              "filter": {
+                "in": [
+                  "Scotland",
+                  "Wales",
+                  "North East",
+                  "North West",
+                  "London",
+                  "South West",
+                  "Eastern",
+                  "Yorkshire and The Humber",
+                  "West Midlands",
+                  "East Midlands",
+                  "Northern Ireland",
+                  "South East"
+                ]
+              }
+            }
+          ]
+        },
+        "Constituencies": {
+          "format": "mvt",
+          "srid": "3857",
+          "geom": "geom_3857",
+          "dbs": "XYZ",
+          "table": "coop.uk_open_admin_constituencies_regions"
+        },
+        "Postal Code": {
+          "format": "cluster",
+          "dbs": "XYZ",
+          "geom": "geom_p_4326",
+          "table": "geodata.uk_glx_geodata_postal_postcode",
+          "cluster_label": "rm_format",
+          "cluster_kmeans": 0.05
+        },
+        "Search Boundaries": {
+          "format": "mvt",
+          "srid": "3857",
+          "geom": "search_geom_3857",
+          "dbs": "XYZ",
+          "table": "coop.vw_uk_glx_geodata_search"
+        },
+        "Mapbox Labels": {
+          "group": "Base maps",
+          "attribution": {
+            "© Mapbox": "https://www.mapbox.com/about/maps",
+            "© OpenStreetMap": "http://www.openstreetmap.org/copyright"
+          },
+          "format": "tiles",
+          "URI": "/styles/v1/dbauszus/cj9puo8pr5o0c2sovhdwhkc7z/tiles/256/{z}/{x}/{y}?&provider=MAPBOX&host=https://api.mapbox.com"
+        }
+      }
+    },
+    "UK": {
+      "gazetteer": {
+        "placeholder": "eg. N15",
+        "datasets": [
+          {
+            "layer": "postcode",
+            "table": "coop.postal_postcode_2018_05",
+            "label": "rm_format"
+          },
+          {
+            "layer": "postcode",
+            "table": "coop.postal_postcode_2018_05",
+            "qterm": "str_format",
+            "label": "rm_format"
+          },
+          {
+            "layer": "seamless_towns",
+            "table": "coop.sl",
+            "label": "dd_name",
+            "leading_wildcard": true
+          }
+        ]
+      },
+      "bounds": {
+        "north": 67,
+        "east": 9,
+        "south": 44,
+        "west": -16
+      },
+      "view": {
+        "lng": -3,
+        "lat": 54
+      },
+      "maskBounds": true,
+      "minZoom": 6,
+      "maxZoom": 17,
+      "layers": {
+        "Mapbox Baselayer": {
+          "group": "Base maps",
+          "display": true,
+          "attribution": {
+            "© Mapbox": "https://www.mapbox.com/about/maps",
+            "© OpenStreetMap": "http://www.openstreetmap.org/copyright"
+          },
+          "format": "tiles",
+          "URI": "/styles/v1/dbauszus/ciozrimi3002bdsm8bjtn2v1y/tiles/256/{z}/{x}/{y}?&provider=MAPBOX&host=https://api.mapbox.com"
+        },
+        "seamless_towns": {
+          "display": true,
+          "name": "Seamless Towns",
+          "format": "mvt",
+          "dbs": "XYZ",
+          "srid": "3857",
+          "geom": "geom",
+          "tables": {
+            "10": null,
+            "11": "coop.sl"
+          },
+          "qID": "gid",
+          "infoj": [
+            {
+              "field": "id",
+              "inline": true
+            },
+            {
+              "field": "localename"
+            },
+            {
+              "field": "locale_id",
+              "inline": true
+            },
+            {
+              "field": "town_name"
+            },
+            {
+              "field": "town_id",
+              "inline": true
+            },
+            {
+              "field": "census11pp",
+              "type": "integer"
+            },
+            {
+              "field": "dd_name"
+            },
+            {
+              "field": "ind_relat",
+              "type": "numeric"
+            },
+            {
+              "field": "n_ind_relat",
+              "type": "numeric"
+            },
+            {
+              "field": "indequal",
+              "type": "numeric"
+            },
+            {
+              "field": "n_indequal",
+              "type": "numeric"
+            },
+            {
+              "field": "indvoice",
+              "type": "numeric"
+            },
+            {
+              "field": "n_indvoice",
+              "type": "numeric"
+            },
+            {
+              "field": "indecono",
+              "type": "numeric"
+            },
+            {
+              "field": "n_indecono",
+              "type": "numeric"
+            },
+            {
+              "field": "indhealt",
+              "type": "numeric"
+            },
+            {
+              "field": "n_indhealt",
+              "type": "numeric"
+            },
+            {
+              "field": "indeduca",
+              "type": "numeric"
+            },
+            {
+              "field": "n_indeduca",
+              "type": "numeric"
+            },
+            {
+              "field": "indcultu",
+              "type": "numeric"
+            },
+            {
+              "field": "n_indcultu",
+              "type": "numeric"
+            },
+            {
+              "field": "indhousi",
+              "type": "numeric"
+            },
+            {
+              "field": "n_indhousi",
+              "type": "numeric"
+            },
+            {
+              "field": "indtrans",
+              "type": "numeric"
+            },
+            {
+              "field": "n_indtrans",
+              "type": "numeric"
+            },
+            {
+              "field": "ind_wellb",
+              "type": "numeric"
+            },
+            {
+              "field": "n_ind_wellb",
+              "type": "numeric"
+            },
+            {
+              "field": "marker"
+            }
+          ]
+        },
+        "postcode": {
+          "name": "Postal Code",
+          "format": "cluster",
+          "dbs": "XYZ",
+          "geom": "geom_4326",
+          "table": "coop.postal_postcode_2018_05",
+          "cluster_kmeans": 0.05,
+          "cluster_dbscan": 0.01,
+          "cluster_label": "rm_format",
+          "qID": "id",
+          "infoj": [
+            {
+              "field": "id",
+              "inline": true
+            },
+            {
+              "field": "rm_format",
+              "inline": true
+            }
+          ]
         },
         "Mapbox Labels": {
           "group": "Base maps",
