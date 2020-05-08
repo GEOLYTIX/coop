@@ -1,8 +1,8 @@
 {
   "templates": {
     "wellbeing": {
-      "_template": "http://localhost:3000/coop/views/wellbeing.html",
-      "__template": "https://cdn.jsdelivr.net/gh/GEOLYTIX/coop/wellbeing.html",
+      "__template": "http://localhost:3000/coop/views/wellbeing.html",
+      "_template": "https://cdn.jsdelivr.net/gh/GEOLYTIX/coop/wellbeing.html",
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/wellbeing.html"
     },
     "community wellbeing - index": {
