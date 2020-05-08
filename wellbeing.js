@@ -19,11 +19,60 @@ function init(_xyz) {
     }
   });
 
+  _xyz.gazetteer.init({
+    group: document.getElementById('Gazetteer')
+  });
+
+
   const layer_wellbeing = _xyz.layers.list['Community Wellbeing'];
 
-  const lad_layer = _xyz.layers.list['Local Authority'];
+  layer_wellbeing.L.setOpacity(0.5);
 
-  
+
+  document.getElementById('OpacitySlider').appendChild(_xyz.utils.wire()`
+    <div class="input-range">
+    <input
+      type="range"
+      min=0
+      value=0.5
+      max=1
+      step=0.1
+      oninput=${e => {
+      layer_wellbeing.L.setOpacity(parseFloat(e.target.value));
+    }}>`);
+
+
+  const layer_labels = _xyz.layers.list['Mapbox Labels']
+
+  document.getElementById('LabelsChk').appendChild(_xyz.utils.wire()`
+  <label
+    style="margin-top: 5px;"
+    class="input-checkbox">
+    <input
+      type="checkbox"
+      checked=${!!layer_labels.display}
+      onchange=${e => {
+      if (e.target.checked) return layer_labels.show();
+      layer_labels.remove();
+    }}>
+    </input>
+    <div></div><span>Show Labels`)
+
+
+  document.getElementById('MapToggle').appendChild(_xyz.utils.wire()`
+  <button
+    class="xyz-icon icon-expander"
+    onclick=${e => {
+      e.stopPropagation();
+      e.target.closest('.expandable').classList.toggle('not-expanded');
+      // group.list
+      //   .filter(layer => layer.display)
+      //   .forEach(layer => layer.remove())
+
+    }}>`)
+
+
+  const lad_layer = _xyz.layers.list['Local Authority'];
 
   const constituencies_layer = _xyz.layers.list['Constituencies'];
 
@@ -123,8 +172,8 @@ function init(_xyz) {
 
     const xhr = new XMLHttpRequest();
 
-    xhr.open('GET', _xyz.host + '/api/query/get_constituency_from_region?dbs=XYZ&region='+region)
-  
+    xhr.open('GET', _xyz.host + '/api/query/get_constituency_from_region?dbs=XYZ&region=' + region)
+
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.responseType = 'json';
     xhr.onload = e => {
@@ -136,35 +185,35 @@ function init(_xyz) {
         <div
           class="head"
           onclick=${e => {
-            e.preventDefault();
-            e.target.parentElement.classList.toggle('active');
-          }}>
+          e.preventDefault();
+          e.target.parentElement.classList.toggle('active');
+        }}>
           <span>none</span>
           <div class="icon"></div>
         </div>
         <ul>
           ${e.target.response.constituency_name.map(
-            constituency => _xyz.utils.wire()`
+          constituency => _xyz.utils.wire()`
             <li onclick=${e => {
               hideLayer();
-                const drop = e.target.closest('.btn-drop');
-                drop.querySelector('span').textContent = constituency;
-                drop.classList.toggle('active');
-      
-                constituencies_layer.filter.current = {
-                  constituency_name: {
-                    match: constituency
-                  }
-                }
+              const drop = e.target.closest('.btn-drop');
+              drop.querySelector('span').textContent = constituency;
+              drop.classList.toggle('active');
 
-                constituencies_layer.show();
-      
-                constituencies_layer.zoomToExtent();
-      
-              }}>${constituency}`)}`);
+              constituencies_layer.filter.current = {
+                constituency_name: {
+                  match: constituency
+                }
+              }
+
+              constituencies_layer.show();
+
+              constituencies_layer.zoomToExtent();
+
+            }}>${constituency}`)}`);
 
     };
-  
+
     xhr.send();
 
   }
@@ -173,8 +222,8 @@ function init(_xyz) {
 
     const xhr = new XMLHttpRequest();
 
-    xhr.open('GET', _xyz.host + '/api/query/get_lad_from_region?dbs=XYZ&region='+region)
-  
+    xhr.open('GET', _xyz.host + '/api/query/get_lad_from_region?dbs=XYZ&region=' + region)
+
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.responseType = 'json';
     xhr.onload = e => {
@@ -186,35 +235,35 @@ function init(_xyz) {
         <div
           class="head"
           onclick=${e => {
-            e.preventDefault();
-            e.target.parentElement.classList.toggle('active');
-          }}>
+          e.preventDefault();
+          e.target.parentElement.classList.toggle('active');
+        }}>
           <span>none</span>
           <div class="icon"></div>
         </div>
         <ul>
           ${e.target.response.lad_name.map(
-            lad => _xyz.utils.wire()`
+          lad => _xyz.utils.wire()`
             <li onclick=${e => {
               hideLayer();
-                const drop = e.target.closest('.btn-drop');
-                drop.querySelector('span').textContent = lad;
-                drop.classList.toggle('active');
-      
-                lad_layer.filter.current = {
-                  lad_name: {
-                    match: lad
-                  }
-                }
+              const drop = e.target.closest('.btn-drop');
+              drop.querySelector('span').textContent = lad;
+              drop.classList.toggle('active');
 
-                lad_layer.show();
-      
-                lad_layer.zoomToExtent();
-      
-              }}>${lad}`)}`);
+              lad_layer.filter.current = {
+                lad_name: {
+                  match: lad
+                }
+              }
+
+              lad_layer.show();
+
+              lad_layer.zoomToExtent();
+
+            }}>${lad}`)}`);
 
     };
-  
+
     xhr.send();
 
   }
@@ -282,37 +331,51 @@ function init(_xyz) {
   _xyz.dataviews.create(table_relationships);
 
 
-    const locale = document.getElementById('Locale');
-    _xyz.locations.selectCallback = location => {
+  const locale = document.getElementById('Locale');
+  _xyz.locations.selectCallback = location => {
 
-      const dd_name = location.infoj.find(entry => entry.field === 'dd_name');
+    const dd_name = location.infoj.find(entry => entry.field === 'dd_name');
 
-      table_index.queryparams.loc = dd_name.value;
+    table_index.queryparams.loc = dd_name.value;
 
-      table_index.update();
+    table_index.update();
 
-      table_people.queryparams.loc = dd_name.value;
+    table_people.queryparams.loc = dd_name.value;
 
-      table_people.update();
+    table_people.update();
 
-      table_place.queryparams.loc = dd_name.value;
+    table_place.queryparams.loc = dd_name.value;
 
-      table_place.update();
+    table_place.update();
 
-      table_relationships.queryparams.loc = dd_name.value;
+    table_relationships.queryparams.loc = dd_name.value;
 
-      table_relationships.update();      
-  
-      location.style = {
-        strokeColor: '#FFD60C',
-        strokeWidth: 3
-      }
-  
-      location.draw();
-  
-      locale.innerHTML = '';
-  
-      locale.appendChild(_xyz.locations.view.infoj(location));
-    }    
+    table_relationships.update();
+
+    location.style = {
+      strokeColor: '#FFD60C',
+      strokeWidth: 3
+    }
+
+    location.draw();
+
+    locale.innerHTML = '';
+
+    location.view = _xyz.locations.view.infoj(location);
+
+    locale.appendChild(location.view);
+  }
+
+  _xyz.hooks.current.locations.forEach(_hook => {
+
+    let hook = _hook.split('!');
+
+    _xyz.locations.select({
+      locale: _xyz.workspace.locale.key,
+      layer: _xyz.layers.list[decodeURIComponent(hook[0])],
+      table: hook[1],
+      id: hook[2]
+    });
+  });
 
 }
