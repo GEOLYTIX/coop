@@ -1,9 +1,8 @@
 {
   "templates": {
     "wellbeing": {
-      "__template": "http://localhost:3000/coop/views/wellbeing.html",
-      "_template": "https://cdn.jsdelivr.net/gh/GEOLYTIX/coop/wellbeing.html",
-      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/wellbeing.html"
+      "template": "http://localhost:3000/coop/views/wellbeing.html",
+      "__template": "https://api.github.com/repos/GEOLYTIX/coop/contents/wellbeing.html"
     },
     "community wellbeing - index": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_index.sql"
@@ -42,27 +41,14 @@
   "locales": {
     "Wellbeing": {
       "gazetteer": {
-        "placeholder": "Search postcode, locale, constituency, local authority, town, county, region or country",
-        "datasets": [
-          {
-            "layer": "Search Boundaries",
-            "table": "coop.vw_uk_glx_geodata_search",
-            "label": "search_string",
-            "leading_wildcard": true
-          },
-          {
-            "layer": "LSOA",
-            "table": "coop.vw_uk_glx_geodata_admin_lsoa",
-            "label": "lsoa_search",
-            "leading_wildcard": true
-          },
-          {
-            "layer": "Postal Code",
-            "table": "geodata.uk_glx_geodata_postal_postcode",
-            "label": "rm_format",
-            "leading_wildcard": true
-          }
-        ]
+        "provider": "GOOGLE",
+        "code": "GB",
+        "placeholder": "eg. South Tottenham",
+        "datasets": [{
+          "layer": "Community Wellbeing",
+          "table": "coop.uk_coop_restrict_wellbeing",
+          "label": "dd_name"
+        }]
       },
       "bounds": {
         "north": 67,
@@ -528,12 +514,10 @@
           },
           "style": {
             "default": {
-              "fillColor": "#EEE",
-              "fillOpacity": 0.4
+              "fillColor": "#EEE"
             },
             "highlight": {
               "fillColor": "#FFD60C",
-              "fillOpacity": 0.3,
               "strokeWidth": 2
             },
             "themes": {
@@ -1017,6 +1001,7 @@
         },
         "Mapbox Labels": {
           "group": "Base maps",
+          "display": true,
           "attribution": {
             "© Mapbox": "https://www.mapbox.com/about/maps",
             "© OpenStreetMap": "http://www.openstreetmap.org/copyright"
