@@ -1,12 +1,13 @@
 window.onload = () => _xyz({
-  //host: 'http://localhost:3000/coop',
-  host: 'https://xyz-coop-dev.now.sh/coop',
+  host: '/coop',
   hooks: true,
   locale: 'Wellbeing',
   callback: init
 })
 
 function init(_xyz) {
+
+  const layer_wellbeing = _xyz.layers.list['Community Wellbeing'];
 
   _xyz.mapview.create({
     target: document.getElementById('Map'),
@@ -73,8 +74,6 @@ function init(_xyz) {
         }}>${theme[0]}`)}`);
 
   legend.appendChild(_xyz.layers.view.style.legend(layer_wellbeing));
-
-  const layer_wellbeing = _xyz.layers.list['Community Wellbeing'];
 
   layer_wellbeing.L.setOpacity(0.5);
 
