@@ -17,8 +17,7 @@ SELECT
   round(eco_hours_worked * 100) AS eco_hours_worked,
   round(eco_household_income * 100) AS eco_household_income,
   round(eco_vacant_commercial_units * 100) AS eco_vacant_commercial_units,
-  round(eco_free_school_meals_rest_uk * 100) AS eco_free_school_meals_rest_uk,
-  round(eco_free_school_meals_scot * 100) AS eco_free_school_meals_scot,
+  round(eco_free_school_meals * 100) AS eco_free_school_meals,
   round(eco_unemployment * 100) AS eco_unemployment
 FROM coop.uk_coop_restrict_wellbeing
 WHERE dd_name LIKE '${loc}'
@@ -48,8 +47,7 @@ CROSS JOIN lateral
   round(eco_hours_worked * 100) AS eco_hours_worked,
   round(eco_household_income * 100) AS eco_household_income,
   round(eco_vacant_commercial_units * 100) AS eco_vacant_commercial_units,
-  round(eco_free_school_meals_rest_uk * 100) AS eco_free_school_meals_rest_uk,
-  round(eco_free_school_meals_scot * 100) AS eco_free_school_meals_scot,
+  round(eco_free_school_meals * 100) AS eco_free_school_meals,
   round(eco_unemployment * 100) AS eco_unemployment
 FROM coop.uk_coop_restrict_wellbeing w
 ORDER BY w.geom_p_4326 <-> a.geom_p
