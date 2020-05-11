@@ -41,17 +41,17 @@ function init(_xyz) {
 
 
 
-  const legend_container = document.getElementById('legend-container');
+  // const legend_container = document.getElementById('legend-container');
 
-  legend_container.addEventListener('click', e => {
-    e.preventDefault();
-    e.stopPropagation();
-  }, false)
+  // legend_container.addEventListener('click', e => {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  // }, false);
 
-  legend_container.addEventListener('touchend', e => {
-    e.preventDefault();
-    e.stopPropagation();
-  }, false)
+  // legend_container.addEventListener('touchend', e => {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  // }, false);
 
   const legend = document.getElementById('Legend');
 
