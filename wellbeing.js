@@ -44,8 +44,9 @@ function init(_xyz) {
   const legend_container = document.getElementById('legend-container');
 
   legend_container.addEventListener('click', e => {
+    e.preventDefault();
     e.stopPropagation();
-  })
+  }, false)
 
   const legend = document.getElementById('Legend');
 
@@ -89,7 +90,9 @@ function init(_xyz) {
       layer_wellbeing.L.setOpacity(parseFloat(e.target.value));
     }}>`);
 
-  const layer_labels = _xyz.layers.list['Mapbox Labels']
+  const layer_labels = _xyz.layers.list['Mapbox Labels'];
+
+  layer_labels.L.setZIndex(1000);
 
   document.getElementById('LabelsChk').appendChild(_xyz.utils.wire()`
   <label
