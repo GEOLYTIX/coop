@@ -19,57 +19,12 @@ function init(_xyz) {
     }
   });
 
+
+
   _xyz.gazetteer.init({
     group: document.getElementById('Gazetteer')
   });
 
-
-  const layer_wellbeing = _xyz.layers.list['Community Wellbeing'];
-
-  layer_wellbeing.L.setOpacity(0.5);
-
-
-  document.getElementById('OpacitySlider').appendChild(_xyz.utils.wire()`
-    <div class="input-range">
-    <input
-      type="range"
-      min=0
-      value=0.5
-      max=1
-      step=0.1
-      oninput=${e => {
-      layer_wellbeing.L.setOpacity(parseFloat(e.target.value));
-    }}>`);
-
-
-  const layer_labels = _xyz.layers.list['Mapbox Labels']
-
-  document.getElementById('LabelsChk').appendChild(_xyz.utils.wire()`
-  <label
-    style="margin-top: 5px;"
-    class="input-checkbox">
-    <input
-      type="checkbox"
-      checked=${!!layer_labels.display}
-      onchange=${e => {
-      if (e.target.checked) return layer_labels.show();
-      layer_labels.remove();
-    }}>
-    </input>
-    <div></div><span>Show Labels`)
-
-
-  document.getElementById('MapToggle').appendChild(_xyz.utils.wire()`
-  <button
-    class="xyz-icon icon-expander"
-    onclick=${e => {
-      e.stopPropagation();
-      e.target.closest('.expandable').classList.toggle('not-expanded');
-      // group.list
-      //   .filter(layer => layer.display)
-      //   .forEach(layer => layer.remove())
-
-    }}>`)
 
 
   const lad_layer = _xyz.layers.list['Local Authority'];
@@ -77,14 +32,19 @@ function init(_xyz) {
   const constituencies_layer = _xyz.layers.list['Constituencies'];
 
   function hideLayer() {
-
     lad_layer.remove();
-
     constituencies_layer.remove();
-
   };
 
   hideLayer();
+
+
+
+  const legend_container = document.getElementById('legend-container');
+
+  legend_container.addEventListener('click', e => {
+    e.stopPropagation();
+  })
 
   const legend = document.getElementById('Legend');
 
@@ -94,7 +54,7 @@ function init(_xyz) {
     class="head"
     onclick=${e => {
       e.preventDefault();
-      e.target.parentElement.classList.toggle('active');
+      e.target.closest('.btn-drop').classList.toggle('active');
     }}>
     <span>${Object.keys(layer_wellbeing.style.themes)[0]}</span>
     <div class="icon"></div>
@@ -114,20 +74,47 @@ function init(_xyz) {
 
   legend.appendChild(_xyz.layers.view.style.legend(layer_wellbeing));
 
-  const regions = [
-    "Scotland",
-    "Wales",
-    "North East",
-    "North West",
-    "London",
-    "South West",
-    "Eastern",
-    "Yorkshire and The Humber",
-    "West Midlands",
-    "East Midlands",
-    "Northern Ireland",
-    "South East"
-  ];
+  const layer_wellbeing = _xyz.layers.list['Community Wellbeing'];
+
+  layer_wellbeing.L.setOpacity(0.5);
+
+  document.getElementById('OpacitySlider').appendChild(_xyz.utils.wire()`
+    <div class="input-range">
+    <input
+      type="range"
+      min=0
+      value=0.5
+      max=1
+      step=0.1
+      oninput=${e => {
+      layer_wellbeing.L.setOpacity(parseFloat(e.target.value));
+    }}>`);
+
+  const layer_labels = _xyz.layers.list['Mapbox Labels']
+
+  document.getElementById('LabelsChk').appendChild(_xyz.utils.wire()`
+  <label
+    style="margin-top: 5px;"
+    class="input-checkbox">
+    <input
+      type="checkbox"
+      checked=${!!layer_labels.display}
+      onchange=${e => {
+      if (e.target.checked) return layer_labels.show();
+      layer_labels.remove();
+    }}>
+    </input>
+    <div></div><span>Show Labels`)
+
+  document.getElementById('MapToggle').appendChild(_xyz.utils.wire()`
+  <button
+    class="xyz-icon icon-expander"
+    onclick=${e => {
+      e.stopPropagation();
+      e.target.closest('.expandable').classList.toggle('not-expanded');
+    }}>`)
+
+
 
   const filter_layer = _xyz.layers.list['Community Wellbeing Filter'];
 
@@ -143,7 +130,20 @@ function init(_xyz) {
     <div class="icon"></div>
   </div>
   <ul>
-    ${regions.map(
+    ${[
+      "Scotland",
+      "Wales",
+      "North East",
+      "North West",
+      "London",
+      "South West",
+      "Eastern",
+      "Yorkshire and The Humber",
+      "West Midlands",
+      "East Midlands",
+      "Northern Ireland",
+      "South East"
+    ].map(
       region => _xyz.utils.wire()`
       <li onclick=${e => {
           hideLayer();
@@ -268,70 +268,62 @@ function init(_xyz) {
 
   }
 
-  const table_index = Object.assign(
-    layer_wellbeing.dataviews.Index,
-    {
-      target: document.getElementById('table_index'),
-      layer: layer_wellbeing,
-      active: true,
-      center: true,
-      query: 'community wellbeing - index compare',
-      queryparams: {}
-    });
+
+
+  const table_index = Object.assign(layer_wellbeing.dataviews.Index, {
+    target: document.getElementById('table_index'),
+    layer: layer_wellbeing,
+    active: true,
+    center: true,
+    query: 'community wellbeing - index compare',
+    queryparams: {}
+  });
 
   delete table_index.viewport;
 
   _xyz.dataviews.create(table_index);
 
-  const table_people = Object.assign(
-    layer_wellbeing.dataviews.People,
-    {
-      target: document.getElementById('table_people'),
-      layer: layer_wellbeing,
-      active: true,
-      center: true,
-      query: 'community wellbeing - people compare',
-      queryparams: {}
-    });
+  const table_people = Object.assign(layer_wellbeing.dataviews.People, {
+    target: document.getElementById('table_people'),
+    layer: layer_wellbeing,
+    active: true,
+    center: true,
+    query: 'community wellbeing - people compare',
+    queryparams: {}
+  });
 
   delete table_people.viewport;
 
   _xyz.dataviews.create(table_people);
 
-
-  const table_place = Object.assign(
-    layer_wellbeing.dataviews.Place,
-    {
-      target: document.getElementById('table_place'),
-      layer: layer_wellbeing,
-      active: true,
-      center: true,
-      query: 'community wellbeing - place compare',
-      queryparams: {}
-    });
+  const table_place = Object.assign(layer_wellbeing.dataviews.Place, {
+    target: document.getElementById('table_place'),
+    layer: layer_wellbeing,
+    active: true,
+    center: true,
+    query: 'community wellbeing - place compare',
+    queryparams: {}
+  });
 
   delete table_place.viewport;
 
   _xyz.dataviews.create(table_place);
 
-
-  const table_relationships = Object.assign(
-    layer_wellbeing.dataviews.Relationships,
-    {
-      target: document.getElementById('table_relationships'),
-      layer: layer_wellbeing,
-      active: true,
-      center: true,
-      query: 'community wellbeing - relationships compare',
-      queryparams: {}
-    });
+  const table_relationships = Object.assign(layer_wellbeing.dataviews.Relationships, {
+    target: document.getElementById('table_relationships'),
+    layer: layer_wellbeing,
+    active: true,
+    center: true,
+    query: 'community wellbeing - relationships compare',
+    queryparams: {}
+  });
 
   delete table_relationships.viewport;
 
   _xyz.dataviews.create(table_relationships);
 
-
   const locale = document.getElementById('Locale');
+
   _xyz.locations.selectCallback = location => {
 
     const dd_name = location.infoj.find(entry => entry.field === 'dd_name');
@@ -365,6 +357,8 @@ function init(_xyz) {
 
     locale.appendChild(location.view);
   }
+
+
 
   _xyz.hooks.current.locations.forEach(_hook => {
 
