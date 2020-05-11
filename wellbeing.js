@@ -48,6 +48,11 @@ function init(_xyz) {
     e.stopPropagation();
   }, false)
 
+  legend_container.addEventListener('touchend', e => {
+    e.preventDefault();
+    e.stopPropagation();
+  }, false)
+
   const legend = document.getElementById('Legend');
 
   document.getElementById('Themes').appendChild(_xyz.utils.wire()`
