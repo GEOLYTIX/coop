@@ -319,12 +319,8 @@
                     "field": "eco_vacant_commercial_units"
                   },
                   {
-                    "title": "Free school meals - rest of UK",
-                    "field": "eco_free_school_meals_rest_uk"
-                  },
-                  {
-                    "title": "Free school meals - Scotland",
-                    "field": "eco_free_school_meals_scot"
+                    "title": "Free school meals",
+                    "field": "eco_free_school_meals"
                   },
                   {
                     "title": "Unemployment",
@@ -472,12 +468,8 @@
                       "title": "Second home ownership"
                     },
                     {
-                      "field": "equ_indep_schools_lon_se",
-                      "title": "Independent schools (london & se)"
-                    },
-                    {
-                      "field": "equ_indep_schools_rest_uk",
-                      "title": "Independent schools (rest of UK)"
+                      "field": "equ_indep_schools",
+                      "title": "Independent schools"
                     },
                     {
                       "field": "equ_qualifications",
