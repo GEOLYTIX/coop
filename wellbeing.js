@@ -55,29 +55,32 @@ function init(_xyz) {
 
   const legend = document.getElementById('Legend');
 
+  function themeSelect(e, theme) {
+    const drop = e.target.closest('.btn-drop');
+    drop.querySelector('span').textContent = theme[0];
+    drop.classList.toggle('active');
+    layer_wellbeing.style.theme = theme[1];
+    legend.innerHTML = '';
+    legend.appendChild(_xyz.layers.view.style.legend(layer_wellbeing));
+    layer_wellbeing.reload();
+  }
+
   document.getElementById('Themes').appendChild(_xyz.utils.wire()`
   <button class="btn-drop">
   <div
     class="head"
-    onclick=${e => {
-      e.preventDefault();
-      e.target.closest('.btn-drop').classList.toggle('active');
-    }}>
+    onclick=${e => dropEvent(e)}
+    ontouchend=${e => dropEvent(e)}>
     <span>${Object.keys(layer_wellbeing.style.themes)[0]}</span>
     <div class="icon"></div>
   </div>
   <ul>
     ${Object.entries(layer_wellbeing.style.themes).map(
       theme => _xyz.utils.wire()`
-      <li onclick=${e => {
-          const drop = e.target.closest('.btn-drop');
-          drop.querySelector('span').textContent = theme[0];
-          drop.classList.toggle('active');
-          layer_wellbeing.style.theme = theme[1];
-          legend.innerHTML = '';
-          legend.appendChild(_xyz.layers.view.style.legend(layer_wellbeing));
-          layer_wellbeing.reload();
-        }}>${theme[0]}`)}`);
+      <li
+        onclick=${e => themeSelect(e, theme)}
+        ontouchend=${e => themeSelect(e, theme)}
+        >${theme[0]}`)}`);
 
   legend.appendChild(_xyz.layers.view.style.legend(layer_wellbeing));
 
@@ -113,26 +116,33 @@ function init(_xyz) {
     </input>
     <div></div><span>Show Labels`)
 
-  document.getElementById('MapToggle').appendChild(_xyz.utils.wire()`
-  <button
-    class="xyz-icon icon-expander"
-    onclick=${e => {
-      e.stopPropagation();
-      e.target.closest('.expandable').classList.toggle('not-expanded');
-    }}>`)
 
+
+  const _toggleLegend = e => {
+    e.preventDefault();
+    e.stopPropagation();
+    e.target.closest('.expandable').classList.toggle('not-expanded');
+  };
+
+  document.getElementById('toggleLegend').onclick = _toggleLegend;
+
+  document.getElementById('toggleLegend').ontouchend = _toggleLegend;
 
 
   const filter_layer = _xyz.layers.list['Community Wellbeing Filter'];
+
+  function dropEvent(e){
+    e.preventDefault();
+    e.stopPropagation();
+    e.target.parentElement.classList.toggle('active');
+  }
 
   document.getElementById('Regions').appendChild(_xyz.utils.wire()`
   <button class="btn-drop">
   <div
     class="head"
-    onclick=${e => {
-      e.preventDefault();
-      e.target.parentElement.classList.toggle('active');
-    }}>
+    onclick=${e => dropEvent(e)}
+    ontouchend=${e => dropEvent(e)}>
     <span>none</span>
     <div class="icon"></div>
   </div>
