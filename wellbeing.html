@@ -111,10 +111,12 @@
       padding: 10px;
       box-shadow: 1px 1px 3px 0 #666;
       pointer-events: none;
+      touch-action: none;
     }
 
     #legend-container * {
       pointer-events: all;
+      touch-action: all;
     }
 
     #Footer {
@@ -138,6 +140,7 @@
 
     .grid-table {
       grid-column: 1/3;
+      width: 100%;
     }
 
     .table-header {
@@ -171,7 +174,7 @@
       }
 
       #Grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
       }
 
       #Logos {
