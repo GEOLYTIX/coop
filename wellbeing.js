@@ -95,9 +95,10 @@ function init(_xyz) {
     style="margin-top: 5px;"
     class="input-checkbox"
     ontouchend=${e => {
-      e.target.firstElementChild.click();
+      document.getElementById('labelToggle').click();
     }}>
     <input
+      id="labelToggle"
       type="checkbox"
       checked=${!!layer_labels.display}
       onchange=${e => {
