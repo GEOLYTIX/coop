@@ -41,18 +41,6 @@ function init(_xyz) {
 
 
 
-  // const legend_container = document.getElementById('legend-container');
-
-  // legend_container.addEventListener('click', e => {
-  //   e.preventDefault();
-  //   e.stopPropagation();
-  // }, false);
-
-  // legend_container.addEventListener('touchend', e => {
-  //   e.preventDefault();
-  //   e.stopPropagation();
-  // }, false);
-
   const legend = document.getElementById('Legend');
 
   function themeSelect(e, theme) {
@@ -105,13 +93,16 @@ function init(_xyz) {
   document.getElementById('LabelsChk').appendChild(_xyz.utils.wire()`
   <label
     style="margin-top: 5px;"
-    class="input-checkbox">
+    class="input-checkbox"
+    ontouchend=${e => {
+      e.target.firstElementChild.click();
+    }}>
     <input
       type="checkbox"
       checked=${!!layer_labels.display}
       onchange=${e => {
-      if (e.target.checked) return layer_labels.show();
-      layer_labels.remove();
+        if (e.target.checked) return layer_labels.show();
+        layer_labels.remove();
     }}>
     </input>
     <div></div><span>Show Labels`)
