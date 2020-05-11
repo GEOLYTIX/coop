@@ -6,6 +6,7 @@ SELECT
   round(cul_areas_leisure * 100) AS cul_areas_leisure,
   round(cul_museums * 100) AS cul_museums,
   round(cul_listed_buildings * 100) AS cul_listed_buildings,
+  round(tra_communication_internet * 100) AS tra_communication_internet,
   round(tra_public_transport * 100) AS tra_public_transport,
   round(hou_affordability * 100) AS hou_affordability,
   round(hou_overcrowding * 100) AS hou_overcrowding,
