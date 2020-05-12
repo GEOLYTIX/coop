@@ -4,6 +4,10 @@
       "_template": "http://localhost:3000/coop/views/wellbeing.html",
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/wellbeing.html"
     },
+    "delineo": {
+      "_template": "http://localhost:3000/coop/views/delineo.html",
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/delineo.html"
+    },
     "community wellbeing - index": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_index.sql"
     },
@@ -36,6 +40,14 @@
     },
     "get_constituency_from_region": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/get_constituency_from_region.sql"
+    },
+    "select_ll": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/select_ll.sql",
+      "dbs": "XYZ"
+    },
+    "nnearest_from_ll": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/nnearest_from_ll.sql",
+      "dbs": "XYZ"
     }
   },
   "locales": {
@@ -90,6 +102,14 @@
           "format": "tiles",
           "URI": "/maptile/2.1/maptile/newest/hybrid.day/{z}/{x}/{y}/256/png8?&provider=HERE&host=https://1.aerial.maps.api.here.com"
         },
+        "Zoomstack": {
+          "group": "Base maps",
+          "attribution": {
+              "© Ordanance Survey": "https://ordnancesurvey.co.uk"
+          },
+          "format": "tiles",
+          "URI": "https://api.ordnancesurvey.co.uk/mapping_api/v1/service/zxy/EPSG%3A3857/Light%203857/{z}/{x}/{y}.png?key=4vmpYY1uFdimsAkyGwuaFbbHEyfvA5Gy"
+        },
         "LSOA": {
           "format": "mvt",
           "srid": "3857",
@@ -106,7 +126,11 @@
           "srid": "3857",
           "geom": "geom_3857",
           "dbs": "XYZ",
-          "table": "coop.uk_coop_restrict_wellbeing",
+          "__table": "coop.uk_coop_restrict_wellbeing",
+          "tables": {
+            "8": null,
+            "9": "coop.uk_coop_restrict_wellbeing"
+          },
           "mvt_cache": "coop.uk_coop_restrict_wellbeing__mvt",
           "qID": "id",
           "infoj": [
@@ -924,13 +948,6 @@
             }
           ]
         },
-        "Seamless towns and suburbs": {
-          "format": "mvt",
-          "srid": "3857",
-          "geom": "geom_3857",
-          "dbs": "XYZ",
-          "table": "coop.uk_glx_geodata_seamless_combined"
-        },
         "Local Authority": {
           "format": "mvt",
           "srid": "3857",
@@ -1003,28 +1020,11 @@
         }
       }
     },
-    "UK": {
+    "api": {
       "gazetteer": {
-        "placeholder": "eg. N15",
-        "datasets": [
-          {
-            "layer": "postcode",
-            "table": "coop.postal_postcode_2018_05",
-            "label": "rm_format"
-          },
-          {
-            "layer": "postcode",
-            "table": "coop.postal_postcode_2018_05",
-            "qterm": "str_format",
-            "label": "rm_format"
-          },
-          {
-            "layer": "seamless_towns",
-            "table": "coop.sl",
-            "label": "dd_name",
-            "leading_wildcard": true
-          }
-        ]
+        "provider": "GOOGLE",
+        "code": "GB",
+        "placeholder": "eg. South Tottenham"
       },
       "bounds": {
         "north": 67,
@@ -1037,12 +1037,10 @@
         "lat": 54
       },
       "maskBounds": true,
-      "minZoom": 6,
+      "minZoom": 7,
       "maxZoom": 17,
       "layers": {
         "Mapbox Baselayer": {
-          "group": "Base maps",
-          "display": true,
           "attribution": {
             "© Mapbox": "https://www.mapbox.com/about/maps",
             "© OpenStreetMap": "http://www.openstreetmap.org/copyright"
@@ -1050,153 +1048,130 @@
           "format": "tiles",
           "URI": "/styles/v1/dbauszus/ciozrimi3002bdsm8bjtn2v1y/tiles/256/{z}/{x}/{y}?&provider=MAPBOX&host=https://api.mapbox.com"
         },
-        "seamless_towns": {
+        "Zoomstack": {
           "display": true,
-          "name": "Seamless Towns",
-          "format": "mvt",
-          "dbs": "XYZ",
-          "srid": "3857",
-          "geom": "geom",
-          "tables": {
-            "10": null,
-            "11": "coop.sl"
+          "attribution": {
+              "© Ordanance Survey": "https://ordnancesurvey.co.uk"
           },
-          "qID": "gid",
-          "infoj": [
-            {
-              "field": "id",
-              "inline": true
-            },
-            {
-              "field": "localename"
-            },
-            {
-              "field": "locale_id",
-              "inline": true
-            },
-            {
-              "field": "town_name"
-            },
-            {
-              "field": "town_id",
-              "inline": true
-            },
-            {
-              "field": "census11pp",
-              "type": "integer"
-            },
-            {
-              "field": "dd_name"
-            },
-            {
-              "field": "ind_relat",
-              "type": "numeric"
-            },
-            {
-              "field": "n_ind_relat",
-              "type": "numeric"
-            },
-            {
-              "field": "indequal",
-              "type": "numeric"
-            },
-            {
-              "field": "n_indequal",
-              "type": "numeric"
-            },
-            {
-              "field": "indvoice",
-              "type": "numeric"
-            },
-            {
-              "field": "n_indvoice",
-              "type": "numeric"
-            },
-            {
-              "field": "indecono",
-              "type": "numeric"
-            },
-            {
-              "field": "n_indecono",
-              "type": "numeric"
-            },
-            {
-              "field": "indhealt",
-              "type": "numeric"
-            },
-            {
-              "field": "n_indhealt",
-              "type": "numeric"
-            },
-            {
-              "field": "indeduca",
-              "type": "numeric"
-            },
-            {
-              "field": "n_indeduca",
-              "type": "numeric"
-            },
-            {
-              "field": "indcultu",
-              "type": "numeric"
-            },
-            {
-              "field": "n_indcultu",
-              "type": "numeric"
-            },
-            {
-              "field": "indhousi",
-              "type": "numeric"
-            },
-            {
-              "field": "n_indhousi",
-              "type": "numeric"
-            },
-            {
-              "field": "indtrans",
-              "type": "numeric"
-            },
-            {
-              "field": "n_indtrans",
-              "type": "numeric"
-            },
-            {
-              "field": "ind_wellb",
-              "type": "numeric"
-            },
-            {
-              "field": "n_ind_wellb",
-              "type": "numeric"
-            },
-            {
-              "field": "marker"
-            }
-          ]
+          "format": "tiles",
+          "URI": "https://api.ordnancesurvey.co.uk/mapping_api/v1/service/zxy/EPSG%3A3857/Light%203857/{z}/{x}/{y}.png?key=4vmpYY1uFdimsAkyGwuaFbbHEyfvA5Gy"
         },
-        "postcode": {
-          "name": "Postal Code",
-          "format": "cluster",
+        "locales": {
+          "display": true,
+          "format": "mvt",
+          "srid": "3857",
+          "geom": "geom_3857",
           "dbs": "XYZ",
-          "geom": "geom_4326",
-          "table": "coop.postal_postcode_2018_05",
-          "cluster_kmeans": 0.05,
-          "cluster_dbscan": 0.01,
-          "cluster_label": "rm_format",
+          "__table": "coop.uk_coop_restrict_wellbeing",
+          "tables": {
+            "8": null,
+            "9": "coop.uk_coop_restrict_wellbeing"
+          },
           "qID": "id",
           "infoj": [
             {
+              "label": "id",
               "field": "id",
               "inline": true
             },
             {
-              "field": "rm_format",
+              "label": "localename",
+              "field": "localename",
+              "inline": true
+            },
+            {
+              "label": "dd_name",
+              "field": "dd_name",
+              "inline": true
+            },
+            {
+              "label": "region",
+              "field": "region",
+              "inline": true
+            },
+            {
+              "label": "country",
+              "field": "country",
+              "inline": true
+            },
+            {
+              "label": "census11pop",
+              "field": "census11pop",
+              "inline": true
+            },
+            {
+              "label": "census11dwelling",
+              "field": "census11dwelling",
+              "inline": true
+            },
+            {
+              "label": "urban",
+              "field": "urban",
+              "inline": true
+            },
+            {
+              "label": "rural",
+              "field": "rural",
+              "inline": true
+            },
+            {
+              "label": "area_sqm",
+              "field": "area_sqm",
+              "inline": true
+            },
+            {
+              "label": "indrelat",
+              "field": "indrelat",
+              "inline": true
+            },
+            {
+              "label": "indequal",
+              "field": "indequal",
+              "inline": true
+            },
+            {
+              "label": "indvoice",
+              "field": "indvoice",
+              "inline": true
+            },
+            {
+              "label": "indecono",
+              "field": "indecono",
+              "inline": true
+            },
+            {
+              "label": "indhealt",
+              "field": "indhealt",
+              "inline": true
+            },
+            {
+              "label": "indeduca",
+              "field": "indeduca",
+              "inline": true
+            },
+            {
+              "label": "indcultu",
+              "field": "indcultu",
+              "inline": true
+            },
+            {
+              "label": "indhousi",
+              "field": "indhousi",
+              "inline": true
+            },
+            {
+              "label": "indtrans",
+              "field": "indtrans",
+              "inline": true
+            },
+            {
+              "label": "ind_wellb",
+              "field": "ind_wellb",
               "inline": true
             }
           ]
         },
         "Mapbox Labels": {
-          "group": "Base maps",
-          "display": true,
           "attribution": {
             "© Mapbox": "https://www.mapbox.com/about/maps",
             "© OpenStreetMap": "http://www.openstreetmap.org/copyright"
