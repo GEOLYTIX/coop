@@ -25,7 +25,11 @@ function init(_xyz) {
 
 
   _xyz.gazetteer.init({
-    group: document.getElementById('Gazetteer')
+    group: document.getElementById('Gazetteer'),
+    callback: entry => {
+      console.log(entry)
+      if (entry.source === 'lad') ladFilter(entry.label);
+    }
   });
 
 
@@ -128,9 +132,14 @@ function init(_xyz) {
   const filter_layer = _xyz.layers.list['Community Wellbeing Filter'];
 
   function dropEvent(e){
+    if (e.target.parentElement.classList.contains('active')) {
+      return e.target.parentElement.classList.remove('active');
+    }
+    [...document.querySelectorAll('.btn-drop')].forEach(
+      drop => drop.classList.remove('active'))
     e.preventDefault();
     e.stopPropagation();
-    e.target.parentElement.classList.toggle('active');
+    e.target.parentElement.classList.add('active');
   }
 
   document.getElementById('Regions').appendChild(_xyz.utils.wire()`
@@ -144,21 +153,27 @@ function init(_xyz) {
   </div>
   <ul>
     ${[
-      "Scotland",
-      "Wales",
+      "East Midlands",
+      "Eastern",
+      "London",
       "North East",
       "North West",
-      "London",
-      "South West",
-      "Eastern",
-      "Yorkshire and The Humber",
-      "West Midlands",
-      "East Midlands",
       "Northern Ireland",
-      "South East"
+      "Scotland",
+      "South East",
+      "South West",
+      "Wales",
+      "West Midlands",
+      "Yorkshire and The Humber"
     ].map(
       region => _xyz.utils.wire()`
       <li onclick=${e => {
+
+          table_index.query = 'community wellbeing - index compare';
+          table_people.query = 'community wellbeing - people compare';
+          table_place.query = 'community wellbeing - place compare';
+          table_relationships.query = 'community wellbeing - relationships compare';
+
           hideLayer();
           document.getElementById('Lads').innerHTML = '';
           document.getElementById('Constituencies').innerHTML = '';
@@ -208,11 +223,14 @@ function init(_xyz) {
           ${e.target.response.constituency_name.map(
           constituency => _xyz.utils.wire()`
             <li onclick=${e => {
-              hideLayer();
+
+              document.querySelector('#Lads .head > span').textContent = 'none';
+
               const drop = e.target.closest('.btn-drop');
               drop.querySelector('span').textContent = constituency;
               drop.classList.toggle('active');
 
+              hideLayer();
               constituencies_layer.filter.current = {
                 constituency_name: {
                   match: constituency
@@ -258,20 +276,12 @@ function init(_xyz) {
           ${e.target.response.lad_name.map(
           lad => _xyz.utils.wire()`
             <li onclick=${e => {
-              hideLayer();
+              
               const drop = e.target.closest('.btn-drop');
               drop.querySelector('span').textContent = lad;
               drop.classList.toggle('active');
 
-              lad_layer.filter.current = {
-                lad_name: {
-                  match: lad
-                }
-              }
-
-              lad_layer.show();
-
-              lad_layer.zoomToExtent();
+              ladFilter(lad);
 
             }}>${lad}`)}`);
 
@@ -279,6 +289,31 @@ function init(_xyz) {
 
     xhr.send();
 
+  }
+
+  function ladFilter(lad) {
+    hideLayer();
+    lad_layer.filter.current = {
+      lad_name: {
+        match: lad
+      }
+    }
+
+    lad_layer.show();
+
+    table_index.query = 'community wellbeing - index lad';
+    table_index.queryparams.lad = lad;
+
+    table_people.query = 'community wellbeing - people lad';
+    table_people.queryparams.lad = lad;
+
+    table_place.query = 'community wellbeing - place lad';
+    table_place.queryparams.lad = lad;
+
+    table_relationships.query = 'community wellbeing - relationships lad';
+    table_relationships.queryparams.lad = lad;
+
+    lad_layer.zoomToExtent();
   }
 
 
