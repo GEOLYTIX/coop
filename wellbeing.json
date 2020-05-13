@@ -126,7 +126,6 @@
           "srid": "3857",
           "geom": "geom_3857",
           "dbs": "XYZ",
-          "__table": "coop.uk_coop_restrict_wellbeing",
           "tables": {
             "8": null,
             "9": "coop.uk_coop_restrict_wellbeing"
@@ -528,6 +527,408 @@
               ]
             }
           },
+          "style": {
+            "default": {
+              "fillColor": "#EEE"
+            },
+            "highlight": {
+              "fillColor": "#FFD60C",
+              "strokeWidth": 2
+            },
+            "themes": {
+              "Community Wellbeing Score": {
+                "label": "Community Wellbeing Score",
+                "type": "graduated",
+                "field": "ind_wellb",
+                "cat_arr": [
+                  {
+                    "value": 0,
+                    "label": "Less than 40",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#FBCBF0"
+                  },
+                  {
+                    "value": 0.4,
+                    "label": "40-50",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#F7A5E5"
+                  },
+                  {
+                    "value": 0.5,
+                    "label": "50-60",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#E459CE"
+                  },
+                  {
+                    "value": 0.6,
+                    "label": "60-70",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#BD15B8"
+                  },
+                  {
+                    "value": 0.7,
+                    "label": "70 or more",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#770087"
+                  }
+                ]
+              },
+              "Education and learning": {
+                "label": "Education and learning",
+                "type": "graduated",
+                "field": "indeduca",
+                "cat_arr": [
+                  {
+                    "value": 0,
+                    "label": "Less than 40",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#E4F3CB"
+                  },
+                  {
+                    "value": 0.4,
+                    "label": "40-50",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#CDE7A7"
+                  },
+                  {
+                    "value": 0.5,
+                    "label": "50-60",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#9DCF68"
+                  },
+                  {
+                    "value": 0.6,
+                    "label": "60-70",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#6EB733"
+                  },
+                  {
+                    "value": 0.7,
+                    "label": "70 or more",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#429F09"
+                  }
+                ]
+              },
+              "Health": {
+                "label": "Health",
+                "type": "graduated",
+                "field": "indhealt",
+                "cat_arr": [
+                  {
+                    "value": 0,
+                    "label": "Less than 40",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#E4F3CB"
+                  },
+                  {
+                    "value": 0.4,
+                    "label": "40-50",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#CDE7A7"
+                  },
+                  {
+                    "value": 0.5,
+                    "label": "50-60",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#9DCF68"
+                  },
+                  {
+                    "value": 0.6,
+                    "label": "60-70",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#6EB733"
+                  },
+                  {
+                    "value": 0.7,
+                    "label": "70 or more",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#429F09"
+                  }
+                ]
+              },
+              "Economy, work and employment": {
+                "label": "Economy, work and employment",
+                "type": "graduated",
+                "field": "indecono",
+                "cat_arr": [
+                  {
+                    "value": 0,
+                    "label": "Less than 40",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#E4F3CB"
+                  },
+                  {
+                    "value": 0.4,
+                    "label": "40-50",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#CDE7A7"
+                  },
+                  {
+                    "value": 0.5,
+                    "label": "50-60",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#9DCF68"
+                  },
+                  {
+                    "value": 0.6,
+                    "label": "60-70",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#6EB733"
+                  },
+                  {
+                    "value": 0.7,
+                    "label": "70 or more",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#429F09"
+                  }
+                ]
+              },
+              "Culture, hertiage and leisure": {
+                "label": "Culture, hertiage and leisure",
+                "type": "graduated",
+                "field": "indcultu",
+                "cat_arr": [
+                  {
+                    "value": 0,
+                    "label": "Less than 40",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#d0d1e6"
+                  },
+                  {
+                    "value": 0.4,
+                    "label": "40-50",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#a6bddb"
+                  },
+                  {
+                    "value": 0.5,
+                    "label": "50-60",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#74a9cf"
+                  },
+                  {
+                    "value": 0.6,
+                    "label": "60-70",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#2b8cbe"
+                  },
+                  {
+                    "value": 0.7,
+                    "label": "70 or more",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#045a8d"
+                  }
+                ]
+              },
+              "Transport, mobility and connectivity": {
+                "label": "Transport, mobility and connectivity",
+                "type": "graduated",
+                "field": "indtrans",
+                "cat_arr": [
+                  {
+                    "value": 0,
+                    "label": "Less than 40",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#d0d1e6"
+                  },
+                  {
+                    "value": 0.4,
+                    "label": "40-50",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#a6bddb"
+                  },
+                  {
+                    "value": 0.5,
+                    "label": "50-60",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#74a9cf"
+                  },
+                  {
+                    "value": 0.6,
+                    "label": "60-70",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#2b8cbe"
+                  },
+                  {
+                    "value": 0.7,
+                    "label": "70 or more",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#045a8d"
+                  }
+                ]
+              },
+              "Housing, space and environment": {
+                "label": "Housing, space and environment",
+                "type": "graduated",
+                "field": "indtrans",
+                "cat_arr": [
+                  {
+                    "value": 0,
+                    "label": "Less than 40",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#d0d1e6"
+                  },
+                  {
+                    "value": 0.4,
+                    "label": "40-50",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#a6bddb"
+                  },
+                  {
+                    "value": 0.5,
+                    "label": "50-60",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#74a9cf"
+                  },
+                  {
+                    "value": 0.6,
+                    "label": "60-70",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#2b8cbe"
+                  },
+                  {
+                    "value": 0.7,
+                    "label": "70 or more",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#045a8d"
+                  }
+                ]
+              },
+              "Relationships and trust": {
+                "label": "Relationships and trust",
+                "type": "graduated",
+                "field": "indrelat",
+                "cat_arr": [
+                  {
+                    "value": 0,
+                    "label": "Less than 40",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#FBCBF0"
+                  },
+                  {
+                    "value": 0.4,
+                    "label": "40-50",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#F7A5E5"
+                  },
+                  {
+                    "value": 0.5,
+                    "label": "50-60",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#E459CE"
+                  },
+                  {
+                    "value": 0.6,
+                    "label": "60-70",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#BD15B8"
+                  },
+                  {
+                    "value": 0.7,
+                    "label": "70 or more",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#770087"
+                  }
+                ]
+              },
+              "Equality": {
+                "label": "Equality",
+                "type": "graduated",
+                "field": "indequal",
+                "cat_arr": [
+                  {
+                    "value": 0,
+                    "label": "Less than 40",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#FBCBF0"
+                  },
+                  {
+                    "value": 0.4,
+                    "label": "40-50",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#F7A5E5"
+                  },
+                  {
+                    "value": 0.5,
+                    "label": "50-60",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#E459CE"
+                  },
+                  {
+                    "value": 0.6,
+                    "label": "60-70",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#BD15B8"
+                  },
+                  {
+                    "value": 0.7,
+                    "label": "70 or more",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#770087"
+                  }
+                ]
+              },
+              "Voice and participation": {
+                "label": "Voice and participation",
+                "type": "graduated",
+                "field": "indvoice",
+                "cat_arr": [
+                  {
+                    "value": 0,
+                    "label": "Less than 40",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#FBCBF0"
+                  },
+                  {
+                    "value": 0.4,
+                    "label": "40-50",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#F7A5E5"
+                  },
+                  {
+                    "value": 0.5,
+                    "label": "50-60",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#E459CE"
+                  },
+                  {
+                    "value": 0.6,
+                    "label": "60-70",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#BD15B8"
+                  },
+                  {
+                    "value": 0.7,
+                    "label": "70 or more",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#770087"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "Community Wellbeing LAD": {
+          "format": "mvt",
+          "display": true,
+          "srid": "3857",
+          "geom": "geom_3857",
+          "dbs": "XYZ",
+          "tables": {
+            "8": "coop.vw_uk_glx_geodata_admin_lad",
+            "9": null
+          },
+          "mvt_cache": "coop.uk_coop_restrict_wellbeing_lad__mvt",
+          "qID": "id",
+          "infoj": [
+            {
+              "field": "id"
+            },
+            {
+              "field": "ind_wellb"
+            }
+          ],
           "style": {
             "default": {
               "fillColor": "#EEE"
