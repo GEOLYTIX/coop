@@ -13,24 +13,36 @@
     },
     "community wellbeing - index compare": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_index_compare.sql"
-    },    
+    },
+    "community wellbeing - index lad": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_index_lad.sql"
+    },
     "community wellbeing - people": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_people.sql"
     },
     "community wellbeing - people compare": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_people_compare.sql"
-    },      
+    },
+    "community wellbeing - people lad": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_people_lad.sql"
+    },
     "community wellbeing - place": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_place.sql"
     },
     "community wellbeing - place compare": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_place_compare.sql"
     },
+    "community wellbeing - place lad": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_place_lad.sql"
+    },
     "community wellbeing - relationships": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_relationships.sql"
     },
     "community wellbeing - relationships compare": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_relationships_compare.sql"
+    },
+    "community wellbeing - relationships lad": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_relationships_lad.sql"
     },
     "community wellbeing - chart": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_chart.sql"
@@ -56,11 +68,20 @@
         "provider": "GOOGLE",
         "code": "GB",
         "placeholder": "eg. South Tottenham",
-        "datasets": [{
-          "layer": "Community Wellbeing",
-          "table": "coop.uk_coop_restrict_wellbeing",
-          "label": "dd_name"
-        }]
+        "datasets": [
+          {
+            "layer": "Community Wellbeing",
+            "table": "coop.uk_coop_restrict_wellbeing",
+            "label": "dd_name"
+          },
+          {
+            "source": "lad",
+            "table": "coop.vw_uk_glx_geodata_admin_lad",
+            "label": "lad_name",
+            "geom": "geom_4326",
+            "dbs": "XYZ"
+          }
+        ]
       },
       "bounds": {
         "north": 67,
@@ -1352,7 +1373,7 @@
         "Local Authority": {
           "format": "mvt",
           "srid": "3857",
-          "geom": "geom_3857_200m",
+          "geom": "geom_3857",
           "dbs": "XYZ",
           "table": "coop.vw_uk_glx_geodata_admin_lad",
           "infoj": [
