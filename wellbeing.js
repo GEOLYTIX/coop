@@ -310,7 +310,7 @@ function init(_xyz) {
   }
 
 
-  function constFilter(constituency) {
+  function ladFilter(lad) {
     hideLayer();
     lad_layer.filter.current = {
       lad_name: {
