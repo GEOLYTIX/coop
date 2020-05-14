@@ -17,6 +17,9 @@
     "community wellbeing - index lad": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_index_lad.sql"
     },
+    "community wellbeing - index constituency": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_index_constituency.sql"
+    },
     "community wellbeing - people": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_people.sql"
     },
@@ -26,6 +29,9 @@
     "community wellbeing - people lad": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_people_lad.sql"
     },
+    "community wellbeing - people constituency": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_people_constituency.sql"
+    },    
     "community wellbeing - place": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_place.sql"
     },
@@ -35,6 +41,9 @@
     "community wellbeing - place lad": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_place_lad.sql"
     },
+    "community wellbeing - place constituency": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_place_constituency.sql"
+    },    
     "community wellbeing - relationships": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_relationships.sql"
     },
@@ -44,6 +53,9 @@
     "community wellbeing - relationships lad": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_relationships_lad.sql"
     },
+    "community wellbeing - relationships constituency": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_relationships_constituency.sql"
+    },    
     "community wellbeing - chart": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_chart.sql"
     },
@@ -70,16 +82,23 @@
         "placeholder": "eg. South Tottenham",
         "datasets": [
           {
-            "layer": "Community Wellbeing",
-            "table": "coop.uk_coop_restrict_wellbeing",
-            "label": "dd_name"
-          },
-          {
             "source": "lad",
-            "table": "coop.vw_uk_glx_geodata_admin_lad",
+            "table": "coop.vw_uk_glx_geodata_admin_lad_new",
             "label": "lad_name",
             "geom": "geom_4326",
             "dbs": "XYZ"
+          },
+          {
+            "source": "constituencies",
+            "table": "coop.uk_open_admin_constituencies_regions",
+            "label": "constituency_name",
+            "geom": "geom_4326",
+            "dbs": "XYZ"
+          },
+          {
+            "layer": "Community Wellbeing",
+            "table": "coop.uk_coop_restrict_wellbeing",
+            "label": "dd_name"
           }
         ]
       },
@@ -937,7 +956,7 @@
           "geom": "geom_3857",
           "dbs": "XYZ",
           "tables": {
-            "8": "coop.vw_uk_glx_geodata_admin_lad",
+            "8": "coop.vw_uk_glx_geodata_admin_lad_new",
             "9": null
           },
           "mvt_cache": "coop.uk_coop_restrict_wellbeing_lad__mvt",
@@ -1375,7 +1394,7 @@
           "srid": "3857",
           "geom": "geom_3857",
           "dbs": "XYZ",
-          "table": "coop.vw_uk_glx_geodata_admin_lad",
+          "table": "coop.vw_uk_glx_geodata_admin_lad_new",
           "infoj": [
             {
               "label": "id",
@@ -1414,21 +1433,6 @@
           "geom": "geom_3857",
           "dbs": "XYZ",
           "table": "coop.uk_open_admin_constituencies_regions"
-        },
-        "Postal Code": {
-          "format": "cluster",
-          "dbs": "XYZ",
-          "geom": "geom_p_4326",
-          "table": "geodata.uk_glx_geodata_postal_postcode",
-          "cluster_label": "rm_format",
-          "cluster_kmeans": 0.05
-        },
-        "Search Boundaries": {
-          "format": "mvt",
-          "srid": "3857",
-          "geom": "search_geom_3857",
-          "dbs": "XYZ",
-          "table": "coop.vw_uk_glx_geodata_search"
         },
         "Mapbox Labels": {
           "group": "Base maps",
