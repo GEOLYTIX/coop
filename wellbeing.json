@@ -79,7 +79,7 @@
       "gazetteer": {
         "provider": "GOOGLE",
         "code": "GB",
-        "placeholder": "eg. South Tottenham",
+        "placeholder": "Search postcode, locale, constituency, local authority, town, county, region or country",
         "datasets": [
           {
             "source": "lad",
@@ -116,8 +116,8 @@
       "minZoom": 6,
       "maxZoom": 17,
       "layers": {
-        "Mapbox Baselayer": {
-          "group": "Base maps",
+        "Mapbox": {
+          "group": "Maps",
           "display": true,
           "attribution": {
             "© Mapbox": "https://www.mapbox.com/about/maps",
@@ -127,7 +127,7 @@
           "URI": "/styles/v1/dbauszus/ciozrimi3002bdsm8bjtn2v1y/tiles/256/{z}/{x}/{y}?&provider=MAPBOX&host=https://api.mapbox.com"
         },
         "HERE Imagery": {
-          "group": "Base maps",
+          "group": "Maps",
           "attribution": {
             "© Here": "https://www.here.com/"
           },
@@ -135,7 +135,7 @@
           "URI": "/maptile/2.1/maptile/newest/satellite.day/{z}/{x}/{y}/256/png8?&provider=HERE&host=https://1.aerial.maps.api.here.com"
         },
         "HERE Hybrid": {
-          "group": "Base maps",
+          "group": "Maps",
           "attribution": {
             "© Here": "https://www.here.com/"
           },
@@ -143,7 +143,7 @@
           "URI": "/maptile/2.1/maptile/newest/hybrid.day/{z}/{x}/{y}/256/png8?&provider=HERE&host=https://1.aerial.maps.api.here.com"
         },
         "Zoomstack": {
-          "group": "Base maps",
+          "group": "Maps",
           "attribution": {
               "© Ordanance Survey": "https://ordnancesurvey.co.uk"
           },
@@ -155,9 +155,25 @@
           "srid": "3857",
           "geom": "geom_3857_10m",
           "dbs": "XYZ",
-          "tables": {
+          "_tables": {
             "12": null,
             "13": "coop.vw_uk_glx_geodata_admin_lsoa"
+          },
+          "table": "coop.vw_uk_glx_geodata_admin_lsoa",
+          "mvt_cache": "coop.vw_uk_glx_geodata_admin_lsoa__mvts",
+          "style": {
+            "default": {
+              "strokeWidt": 2,
+              "strokeColor": "#00729A",
+              "fillColor": "#eee",
+              "fillOpacity": 0
+            },
+            "highlight": {
+              "strokeWidth": 3,
+              "fillColor": "#00729A",
+              "fillOpacity": 0.3,
+              "strokeColor": "#00729A"
+            }
           }
         },
         "Community Wellbeing": {
@@ -190,6 +206,7 @@
               "target": "location",
               "query": "community wellbeing - chart",
               "chart": {
+                "type": "horizontalBar",
                 "labels": [
                   "Education",
                   "Health",
@@ -226,7 +243,29 @@
                       "#fed98e"
                     ]
                   }
-                ]
+                ],
+                "options": {
+                  "legend": {
+                    "display": false
+                  },
+                  "scales": {
+                    "xAxes": [
+                      {
+                        "ticks": {
+                          "display": false,
+                          "min": 0
+                        }
+                      }
+                    ]
+                  },
+                  "plugins": {
+                    "datalabels": {
+                      "display": true,
+                      "backgroundColor": "#FFFFFF",
+                      "anchor": "end"
+                    }
+                  }
+                }
               }
             }
           ],
@@ -1435,7 +1474,7 @@
           "table": "coop.uk_open_admin_constituencies_regions"
         },
         "Mapbox Labels": {
-          "group": "Base maps",
+          "group": "Maps",
           "display": true,
           "attribution": {
             "© Mapbox": "https://www.mapbox.com/about/maps",
