@@ -269,6 +269,8 @@ function init(_xyz) {
           ${e.target.response.lad_name.map(
           lad => _xyz.utils.wire()`
             <li onclick=${e => {
+
+              document.querySelector('#Constituencies .head > span').textContent = 'none';
               
               const drop = e.target.closest('.btn-drop');
               drop.querySelector('span').textContent = lad;
