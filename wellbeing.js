@@ -27,8 +27,8 @@ function init(_xyz) {
   _xyz.gazetteer.init({
     group: document.getElementById('Gazetteer'),
     callback: entry => {
-      console.log(entry)
       if (entry.source === 'lad') ladFilter(entry.label);
+      if (entry.source === 'constituencies') constFilter(entry.label);
     }
   });
 
@@ -230,16 +230,9 @@ function init(_xyz) {
               drop.querySelector('span').textContent = constituency;
               drop.classList.toggle('active');
 
-              hideLayer();
-              constituencies_layer.filter.current = {
-                constituency_name: {
-                  match: constituency
-                }
-              }
+              constFilter(constituency);
 
-              constituencies_layer.show();
 
-              constituencies_layer.zoomToExtent();
 
             }}>${constituency}`)}`);
 
@@ -291,7 +284,33 @@ function init(_xyz) {
 
   }
 
-  function ladFilter(lad) {
+  function constFilter(constituency) {
+    hideLayer();
+    constituencies_layer.filter.current = {
+      constituency_name: {
+        match: constituency
+      }
+    }
+
+    constituencies_layer.show();
+
+    table_index.query = 'community wellbeing - index constituency';
+    table_index.queryparams.constituency = constituency;
+
+    table_people.query = 'community wellbeing - people constituency';
+    table_people.queryparams.constituency = constituency;
+
+    table_place.query = 'community wellbeing - place constituency';
+    table_place.queryparams.constituency = constituency;
+
+    table_relationships.query = 'community wellbeing - relationships constituency';
+    table_relationships.queryparams.constituency = constituency;
+
+    constituencies_layer.zoomToExtent();
+  }
+
+
+  function constFilter(constituency) {
     hideLayer();
     lad_layer.filter.current = {
       lad_name: {
