@@ -5,6 +5,8 @@ window.onload = () => _xyz({
     callback: init
 })
 
+
+
 function init(_xyz) {
 
     const layer_wellbeing = _xyz.layers.list['Community Wellbeing'];
@@ -14,6 +16,8 @@ function init(_xyz) {
     const layer_constituency = _xyz.layers.list['Constituency'];
 
     const layer_lad = _xyz.layers.list['Local Authority District'];
+
+    const layer_postcode = _xyz.layers.list['Postal Code'];
 
     const layer_labels = _xyz.layers.list['Mapbox Labels'];
 
@@ -33,15 +37,33 @@ function init(_xyz) {
             }*/
     });
 
+   /*_xyz.gazetteer.style = {
+            stroke: true,
+            color: "#00729A",
+            opacity: 0.7,
+            weight: 4,
+            fillColor: "#FFF",
+            fillOpacity: 0.3,
+            fill: true
+        };*/
+
+    _xyz.gazetteer.icon = {
+      url: "https://raw.githubusercontent.com/GEOLYTIX/MapIcons/master/poi_pin_filled/poi_simple_pin.svg",
+      anchor: [40, 80],
+      size: 80
+    };
 
     _xyz.gazetteer.init({
         group: document.getElementById('Gazetteer'),
         callback: entry => {
 
             document.getElementById('Tables').style.display = "none";
+
+            console.log(entry);
             
             if (entry.source === 'lad') ladFilter(entry.label);
             if (entry.source === 'constituency') constFilter(entry.label);
+            if (entry.source === 'postcode') postcodeFilter(entry.label);
         }
     });
 
@@ -98,9 +120,57 @@ function init(_xyz) {
 
     layer_wellbeing.L.setOpacity(0.5);
     layer_wellbeing_lad.L.setOpacity(0.5);
-  
+
+    /*
+      document.getElementById('OpacitySlider').appendChild(_xyz.utils.wire()`
+        <div class="input-range">
+        <input
+          type="range"
+          min=0
+          value=0.5
+          max=1
+          step=0.1
+          oninput=${e => {
+          layer_wellbeing.L.setOpacity(parseFloat(e.target.value));
+          layer_wellbeing_lad.L.setOpacity(parseFloat(e.target.value));
+        }}>`); */
+
+    
 
     layer_labels.L.setZIndex(1000);
+
+    //return;
+
+    /*document.getElementById('LabelsChk').appendChild(_xyz.utils.wire()`
+    <label
+      style="margin-top: 5px;"
+      class="input-checkbox"
+      ontouchend=${e => {
+        document.getElementById('labelToggle').click();
+      }}>
+      <input
+        id="labelToggle"
+        type="checkbox"
+        checked=${!!layer_labels.display}
+        onchange=${e => {
+          if (e.target.checked) return layer_labels.show();
+          layer_labels.remove();
+      }}>
+      </input>
+      <div></div><span>Show Labels`)*/
+
+
+
+    /*const _toggleLegend = e => {
+      e.preventDefault();
+      e.stopPropagation();
+      e.target.closest('.expandable').classList.toggle('not-expanded');
+    };
+
+    document.getElementById('toggleLegend').onclick = _toggleLegend;
+
+    document.getElementById('toggleLegend').ontouchend = _toggleLegend;*/
+
 
     function dropEvent(e) {
         if (e.target.parentElement.classList.contains('active')) {
@@ -371,6 +441,36 @@ function init(_xyz) {
         table_relationships.queryparams.lad = lad;
 
         layer_lad.zoomToExtent();
+    }
+
+    function postcodeFilter(postcode) {
+        hideLayer();
+
+        console.log(postcode);
+
+        layer_postcode.filter.current = {
+            rm_format: {
+                match: postcode
+            }
+        }
+
+        //document.getElementById('Tables').style.display = "block";
+
+        layer_postcode.show();
+
+        table_index.query = 'community wellbeing - index postcode';
+        table_index.queryparams.postcode = postcode;
+
+        table_people.query = 'community wellbeing - people postcode';
+        table_people.queryparams.postcode = postcode;
+
+        table_place.query = 'community wellbeing - place postcode';
+        table_place.queryparams.postcode = postcode;
+
+        table_relationships.query = 'community wellbeing - relationships postcode';
+        table_relationships.queryparams.postcode = postcode;
+
+        layer_postcode.zoomToExtent();
     }
 
 
