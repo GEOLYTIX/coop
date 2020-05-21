@@ -21,7 +21,8 @@
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_index.sql"
     },
     "community wellbeing - index compare": {
-      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_index_compare.sql"
+      "__template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_index_compare.sql",
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/aga/queries/community_wellbeing_index_compare.sql"
     },
     "community wellbeing - index lad": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_index_lad.sql"
@@ -36,7 +37,8 @@
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_people.sql"
     },
     "community wellbeing - people compare": {
-      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_people_compare.sql"
+      "__template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_people_compare.sql",
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/aga/queries/community_wellbeing_people_compare.sql"
     },
     "community wellbeing - people lad": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_people_lad.sql"
@@ -51,7 +53,8 @@
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_place.sql"
     },
     "community wellbeing - place compare": {
-      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_place_compare.sql"
+      "__template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_place_compare.sql",
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/aga/queries/community_wellbeing_place_compare.sql"
     },
     "community wellbeing - place lad": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_place_lad.sql"
@@ -66,7 +69,8 @@
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_relationships.sql"
     },
     "community wellbeing - relationships compare": {
-      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_relationships_compare.sql"
+      "__template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_relationships_compare.sql",
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/aga/queries/community_wellbeing_relationships_compare.sql"
     },
     "community wellbeing - relationships lad": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_relationships_lad.sql"
@@ -101,7 +105,7 @@
         "placeholder": "Search postcode, locale, constituency, local authority, town, county, region or country",
         "datasets": [
           {
-            "source": "lad",
+            "_source": "lad",
             "layer": "Local Authority District",
             "table": "coop.vw_uk_glx_geodata_admin_lad_new",
             "label": "lad_name",
@@ -109,7 +113,7 @@
             "dbs": "XYZ"
           },
           {
-            "source": "constituency",
+            "_source": "constituency",
             "layer": "Constituency",
             "table": "coop.uk_open_admin_constituencies_regions",
             "label": "constituency_name",
@@ -119,10 +123,13 @@
           {
             "layer": "Community Wellbeing",
             "table": "coop.uk_coop_restrict_wellbeing",
-            "label": "dd_name"
+            "label": "dd_name",
+            "geom": "geom_4326",
+            "dbs": "XYZ"
           },
           {
-            "source": "postcode",
+            "_source": "postcode",
+            "layer": "Postal Code",
             "table": "geodata.uk_glx_geodata_postal_postcode",
             "label": "rm_format",
             "leading_wildcard": true,

@@ -37,33 +37,15 @@ function init(_xyz) {
             }*/
     });
 
-   /*_xyz.gazetteer.style = {
-            stroke: true,
-            color: "#00729A",
-            opacity: 0.7,
-            weight: 4,
-            fillColor: "#FFF",
-            fillOpacity: 0.3,
-            fill: true
-        };*/
-
-    _xyz.gazetteer.icon = {
-      url: "https://raw.githubusercontent.com/GEOLYTIX/MapIcons/master/poi_pin_filled/poi_simple_pin.svg",
-      anchor: [40, 80],
-      size: 80
-    };
-
     _xyz.gazetteer.init({
         group: document.getElementById('Gazetteer'),
         callback: entry => {
 
             document.getElementById('Tables').style.display = "none";
-
-            console.log(entry);
             
-            if (entry.source === 'lad') ladFilter(entry.label);
-            if (entry.source === 'constituency') constFilter(entry.label);
-            if (entry.source === 'postcode') postcodeFilter(entry.label);
+            if (entry.layer === 'Local Authority District') ladFilter(entry.label);
+            if (entry.layer === 'Constituency') constFilter(entry.label);
+            if (entry.layer === 'Postal Code') postcodeFilter(entry.label);
         }
     });
 
@@ -118,59 +100,7 @@ function init(_xyz) {
 
     legend.appendChild(_xyz.layers.view.style.legend(layer_wellbeing));
 
-    layer_wellbeing.L.setOpacity(0.5);
-    layer_wellbeing_lad.L.setOpacity(0.5);
-
-    /*
-      document.getElementById('OpacitySlider').appendChild(_xyz.utils.wire()`
-        <div class="input-range">
-        <input
-          type="range"
-          min=0
-          value=0.5
-          max=1
-          step=0.1
-          oninput=${e => {
-          layer_wellbeing.L.setOpacity(parseFloat(e.target.value));
-          layer_wellbeing_lad.L.setOpacity(parseFloat(e.target.value));
-        }}>`); */
-
-    
-
     layer_labels.L.setZIndex(1000);
-
-    //return;
-
-    /*document.getElementById('LabelsChk').appendChild(_xyz.utils.wire()`
-    <label
-      style="margin-top: 5px;"
-      class="input-checkbox"
-      ontouchend=${e => {
-        document.getElementById('labelToggle').click();
-      }}>
-      <input
-        id="labelToggle"
-        type="checkbox"
-        checked=${!!layer_labels.display}
-        onchange=${e => {
-          if (e.target.checked) return layer_labels.show();
-          layer_labels.remove();
-      }}>
-      </input>
-      <div></div><span>Show Labels`)*/
-
-
-
-    /*const _toggleLegend = e => {
-      e.preventDefault();
-      e.stopPropagation();
-      e.target.closest('.expandable').classList.toggle('not-expanded');
-    };
-
-    document.getElementById('toggleLegend').onclick = _toggleLegend;
-
-    document.getElementById('toggleLegend').ontouchend = _toggleLegend;*/
-
 
     function dropEvent(e) {
         if (e.target.parentElement.classList.contains('active')) {
@@ -210,6 +140,9 @@ function init(_xyz) {
     ].map(
       region => _xyz.utils.wire()`
       <li onclick=${e => {
+
+          _xyz.gazetteer.input.value = '';
+          document.getElementById('Tables').style.display = "none";
 
           table_index.query = 'community wellbeing - index compare';
           table_people.query = 'community wellbeing - people compare';
@@ -269,10 +202,10 @@ function init(_xyz) {
           ${Object.values(e.target.response).map(
           constituency => _xyz.utils.wire()`
             <li onclick=${e => {
+
+              _xyz.gazetteer.input.value = '';
               
               document.querySelector('#Lads .head > span').textContent = 'Select Local Authority District';
-
-              //document.querySelector('#Constituencies .head > span').textContent = 'Select Constituency';
 
               const drop = e.target.closest('.btn-drop');
               drop.querySelector('span').textContent = constituency.constituency_name;
@@ -345,9 +278,9 @@ function init(_xyz) {
           lad => _xyz.utils.wire()`
             <li onclick=${e => {
 
-              document.querySelector('#Constituencies .head > span').textContent = 'Select Constituency';
+              _xyz.gazetteer.input.value = '';
 
-              //document.querySelector('#Lads .head > span').textContent = 'Select Local Authority District';
+              document.querySelector('#Constituencies .head > span').textContent = 'Select Constituency';
               
               const drop = e.target.closest('.btn-drop');
               drop.querySelector('span').textContent = lad.lad_name;
@@ -395,7 +328,7 @@ function init(_xyz) {
             }
         }
 
-        //document.getElementById('Tables').style.display = "block";
+        document.getElementById('Tables').style.display = "block";
 
         layer_constituency.show();
 
@@ -446,8 +379,6 @@ function init(_xyz) {
     function postcodeFilter(postcode) {
         hideLayer();
 
-        console.log(postcode);
-
         layer_postcode.filter.current = {
             rm_format: {
                 match: postcode
@@ -472,7 +403,6 @@ function init(_xyz) {
 
         layer_postcode.zoomToExtent();
     }
-
 
     const table_index = Object.assign(layer_wellbeing.dataviews.Index, {
         target: document.getElementById('table_index'),
@@ -554,10 +484,27 @@ function init(_xyz) {
 
         location.style = {
             strokeColor: '#FFD60C',
-            strokeWidth: 3
+            strokeWidth: 3,
+            fillColor: "#FFFFFF",
+            fillOpacity: 0.1
         }
 
         location.draw();
+
+        location.Marker = _xyz.mapview.geoJSON({
+          geometry: {
+            type: 'Point',
+            coordinates: location.marker
+          },
+          zIndex: 2000,
+          style: new _xyz.mapview.lib.style.Style({
+            image: _xyz.mapview.icon({
+              url: "https://raw.githubusercontent.com/GEOLYTIX/MapIcons/master/poi_pin_filled/poi_simple_pin.svg",
+              scale: 0.25,
+              anchor: [0.5, 1]
+            })
+          })
+        });
 
         //locale.innerHTML = '';
 

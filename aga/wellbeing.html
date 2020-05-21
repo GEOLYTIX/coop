@@ -16,6 +16,7 @@
   <script src="${dir}/js/xyz_openlayers.js" defer></script>
 
    <script src="${dir}/api/provider/github?url=api.github.com/repos/GEOLYTIX/coop/contents/aga/wellbeing.js" defer></script>
+   <script src="http://localhost:3000/views/coop/wellbeing.js" defer></script>
 
 
   <style>
@@ -221,6 +222,11 @@
       font-size: 120%;
       margin-bottom: 5px;
       margin-top: 10px;
+    }
+
+    .table {
+      max-height: 250px;
+      overflow: auto;
     }
 
     .tabulator-col-group-cols>.tabulator-col:first-of-type {
