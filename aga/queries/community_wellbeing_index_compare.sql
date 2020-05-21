@@ -36,6 +36,5 @@ CROSS JOIN lateral
   round(indequal * 100) AS indequal,
   round(indvoice * 100) AS indvoice
 FROM coop.uk_coop_restrict_wellbeing w
-ORDER BY w.geom_p_4326 <-> a.geom_p) y
- 
-ORDER BY dd_name
+ORDER BY w.geom_p_4326 <-> a.geom_p
+LIMIT 100) y
