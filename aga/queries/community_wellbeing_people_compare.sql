@@ -51,4 +51,4 @@ CROSS JOIN lateral
   round(eco_unemployment * 100) AS eco_unemployment
 FROM coop.uk_coop_restrict_wellbeing w
 ORDER BY w.geom_p_4326 <-> a.geom_p
-LIMIT 100) y
+LIMIT 50) y

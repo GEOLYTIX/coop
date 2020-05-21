@@ -53,4 +53,4 @@ CROSS JOIN lateral
   round(voi_signing_petitions * 100) AS voi_signing_petitions
 FROM coop.uk_coop_restrict_wellbeing w
 ORDER BY w.geom_p_4326 <-> a.geom_p
-LIMIT 100) y
+LIMIT 50) y
