@@ -128,6 +128,7 @@ function init(_xyz) {
 
             _xyz.gazetteer.input.value = '';
             document.getElementById('Tables').style.display = "none";
+            document.getElementById('current-area').style.display = "none";
 
             hideLayer();
 
@@ -156,6 +157,7 @@ function init(_xyz) {
     function setConstituency(region) {
 
       document.getElementById('Tables').style.display = "none";
+      document.getElementById('current-area').style.display = "none";
 
       const xhr = new XMLHttpRequest();
 
@@ -185,8 +187,12 @@ function init(_xyz) {
               document.querySelector('#Lads .head > span').textContent = 'Select Local Authority District';
 
               const drop = e.target.closest('.btn-drop');
-              drop.querySelector('span').textContent = constituency.constituency_name;
+
               drop.classList.toggle('active');
+
+              if(constituency.constituency_name === drop.querySelector('span').textContent) return;
+
+              drop.querySelector('span').textContent = constituency.constituency_name;
 
               constFilter(constituency.constituency_name);
               
@@ -220,6 +226,7 @@ function init(_xyz) {
     function setLAD(region) {
 
       document.getElementById('Tables').style.display = "none";
+      document.getElementById('current-area').style.display = "none";
       
       const xhr = new XMLHttpRequest();
       xhr.open('GET', _xyz.host + '/api/query/get_lad_from_region2?dbs=XYZ&region=' + region)
@@ -244,10 +251,14 @@ function init(_xyz) {
               _xyz.gazetteer.input.value = '';
 
               document.querySelector('#Constituencies .head > span').textContent = 'Select Constituency';
-              
+
               const drop = e.target.closest('.btn-drop');
-              drop.querySelector('span').textContent = lad.lad_name;
+
               drop.classList.toggle('active');
+
+              if(lad.lad_name === drop.querySelector('span').textContent) return;
+
+              drop.querySelector('span').textContent = lad.lad_name;
 
               ladFilter(lad.lad_name);
               
