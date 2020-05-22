@@ -126,6 +126,8 @@ function init(_xyz) {
         ].map(region => _xyz.utils.wire()`
           <li onclick=${e => {
 
+            _xyz.map.getOverlays().getArray().map(overlay => _xyz.map.removeOverlay(overlay));
+
             _xyz.gazetteer.input.value = '';
             document.getElementById('Tables').style.display = "none";
             document.getElementById('current-area').style.display = "none";
@@ -181,6 +183,8 @@ function init(_xyz) {
           <ul>
           ${Object.values(e.target.response).map(constituency => _xyz.utils.wire()`
             <li onclick=${e => {
+
+              _xyz.map.getOverlays().getArray().map(overlay => _xyz.map.removeOverlay(overlay));
 
               _xyz.gazetteer.input.value = '';
 
@@ -247,6 +251,8 @@ function init(_xyz) {
           <ul>
           ${Object.values(e.target.response).map(lad => _xyz.utils.wire()`
             <li onclick=${e => {
+
+              _xyz.map.getOverlays().getArray().map(overlay => _xyz.map.removeOverlay(overlay));
 
               _xyz.gazetteer.input.value = '';
 
@@ -456,7 +462,7 @@ function init(_xyz) {
 
         location.draw();
 
-        location.Marker = _xyz.mapview.geoJSON({
+        /*location.Marker = _xyz.mapview.geoJSON({
           geometry: {
             type: 'Point',
             coordinates: location.marker
@@ -465,11 +471,11 @@ function init(_xyz) {
           style: new _xyz.mapview.lib.style.Style({
             image: _xyz.mapview.icon({
               url: "https://raw.githubusercontent.com/GEOLYTIX/MapIcons/master/poi_pin_filled/poi_simple_pin.svg",
-              scale: 0.25,
+              scale: 0.05,
               anchor: [0.5, 1]
             })
           })
-        });
+        });*/
 
 
         location.flyTo();
@@ -480,7 +486,5 @@ function init(_xyz) {
             coords: location.marker,
             content: location.view
         });
-
-        //locale.appendChild(location.view);
     }
 }
