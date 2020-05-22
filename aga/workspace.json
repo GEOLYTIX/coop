@@ -17,7 +17,7 @@
       "_template": "http://localhost:3000/coop/views/delineo.html",
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/delineo.html"
     },
-    "____community wellbeing - index": {
+    "community wellbeing - index": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_index.sql"
     },
     "community wellbeing - index compare": {
