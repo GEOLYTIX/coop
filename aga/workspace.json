@@ -21,8 +21,7 @@
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_index.sql"
     },
     "community wellbeing - index compare": {
-      "__template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_index_compare.sql",
-      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/aga/queries/community_wellbeing_index_compare.sql"
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_index_compare.sql"
     },
     "community wellbeing - index lad": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/aga/queries/community_wellbeing_index_lad.sql"
@@ -37,8 +36,7 @@
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/aga/queries/community_wellbeing_people.sql"
     },
     "community wellbeing - people compare": {
-      "__template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_people_compare.sql",
-      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/aga/queries/community_wellbeing_people_compare.sql"
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_people_compare.sql"
     },
     "community wellbeing - people lad": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/aga/queries/community_wellbeing_people_lad.sql"
@@ -53,8 +51,7 @@
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/aga/queries/community_wellbeing_place.sql"
     },
     "community wellbeing - place compare": {
-      "__template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_place_compare.sql",
-      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/aga/queries/community_wellbeing_place_compare.sql"
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_place_compare.sql"
     },
     "community wellbeing - place lad": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/aga/queries/community_wellbeing_place_lad.sql"
@@ -69,8 +66,7 @@
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/aga/queries/community_wellbeing_relationships.sql"
     },
     "community wellbeing - relationships compare": {
-      "__template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_relationships_compare.sql",
-      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/aga/queries/community_wellbeing_relationships_compare.sql"
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_relationships_compare.sql"
     },
     "community wellbeing - relationships lad": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/aga/queries/community_wellbeing_relationships_lad.sql"
