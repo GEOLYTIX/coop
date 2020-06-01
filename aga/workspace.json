@@ -1,6 +1,6 @@
 {
   "templates": {
-    "wellbeing": {
+    "desktop": {
       "_template": "http://localhost:3000/coop/views/desktop.html",
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/aga/desktop.html",
       "__template": "http://localhost:3000/views/coop/desktop.html"
