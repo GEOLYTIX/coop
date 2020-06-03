@@ -12,4 +12,4 @@ SELECT
  round(indequal * 100) AS indequal,
  round(indvoice * 100) AS indvoice
 FROM coop.uk_coop_restrict_wellbeing
-WHERE constituency_search ILIKE '${id}' ORDER BY dd_name;
+WHERE constituency_name ILIKE '${id}' ORDER BY dd_name;
