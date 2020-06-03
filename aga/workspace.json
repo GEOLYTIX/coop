@@ -295,10 +295,11 @@
           "srid": "3857",
           "geom": "geom_3857",
           "dbs": "XYZ",
-          "tables": {
+          "__tables": {
             "8": null,
             "9": "coop.uk_coop_restrict_wellbeing"
           },
+          "table": "coop.uk_coop_restrict_wellbeing",
           "mvt_cache": "coop.uk_coop_restrict_wellbeing__mvt",
           "qID": "id",
           "infoj": [
@@ -1105,14 +1106,14 @@
         },
         "Community Wellbeing LAD": {
           "format": "mvt",
-          "display": true,
           "srid": "3857",
           "geom": "geom_3857",
           "dbs": "XYZ",
-          "tables": {
+          "__tables": {
             "8": "coop.vw_uk_glx_geodata_admin_lad_new",
             "9": null
           },
+          "table": "coop.vw_uk_glx_geodata_admin_lad_new",
           "mvt_cache": "coop.uk_coop_restrict_wellbeing_lad__mvt",
           "qID": "id",
           "infoj": [
