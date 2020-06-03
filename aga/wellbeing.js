@@ -55,7 +55,7 @@ function init(_xyz) {
                   location.flyTo();
                   location.view = _xyz.locations.view.infoj(location);
 
-                  document.getElementById('current-area').appendChild(location.view);
+                  //document.getElementById('current-area').appendChild(location.view);
 
                   document.getElementById('table_index').innerHTML = '';
                   _xyz.dataviews.create(Object.assign({}, table_index, {
