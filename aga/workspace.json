@@ -134,6 +134,14 @@
             "leading_wildcard": true,
             "geom": "bbox_4326",
             "dbs": "XYZ"
+          },
+          {
+            "layer": "Region",
+            "table": "coop.vw_uk_glx_geodata_admin_region",
+            "label": "region_search",
+            "leading_wildcard": true,
+            "geom": "bbox_4326",
+            "dbs": "XYZ"
           }
         ]
       },
@@ -247,6 +255,43 @@
             "markerMulti": {
               "type": "target",
               "fillColor": "#cf9"
+            }
+          }
+        },
+        "Region": {
+          "format": "mvt",
+          "srid": "3857",
+          "geom": "geom_3857_1000m",
+          "srid": "3857",
+          "dbs": "XYZ",
+          "table": "coop.vw_uk_glx_geodata_admin_region",
+          "infoj": [
+            {
+              "type": "key"
+            },
+            {
+              "field": "regioncode",
+              "label": "Code",
+              "inline": true
+            },
+            {
+              "field": "regionname",
+              "label": "Region",
+              "inline": true
+            }
+          ],
+          "style": {
+            "default": {
+              "strokeWidth": 2,
+              "strokeColor": "#00729A",
+              "fillColor": "#eee",
+              "fillOpacity": 0.1
+            },
+            "highlight": {
+              "strokeWidth": 3,
+              "fillColor": "#00729A",
+              "fillOpacity": 0.3,
+              "strokeColor": "#00729A"
             }
           }
         },
