@@ -20,4 +20,4 @@ SELECT
   round(eco_free_school_meals * 100) AS eco_free_school_meals,
   round(eco_unemployment * 100) AS eco_unemployment
 FROM coop.uk_coop_restrict_wellbeing
-WHERE lad_name = '${id}' ORDER BY dd_name;
+WHERE lad_search = '${id}' ORDER BY dd_name;

@@ -5,8 +5,6 @@ window.onload = () => _xyz({
     callback: init
 })
 
-
-
 function init(_xyz) {
 
     const layer_wellbeing = _xyz.layers.list['Community Wellbeing'];
@@ -18,6 +16,8 @@ function init(_xyz) {
     const layer_lad = _xyz.layers.list['Local Authority District'];
 
     const layer_postcode = _xyz.layers.list['Postal Code'];
+
+    const layer_region = _xyz.layers.list['Region'];
 
     const layer_labels = _xyz.layers.list['Mapbox Labels'];
 
@@ -40,6 +40,7 @@ function init(_xyz) {
             if (entry.layer === 'Local Authority District') ladFilter(entry.label);
             if (entry.layer === 'Constituency') constFilter(entry.label);
             if (entry.layer === 'Postal Code') postcodeFilter(entry.label);
+            if (entry.layer === 'Region') regionFilter(entry.label);
         }
     });
 
@@ -54,6 +55,7 @@ function init(_xyz) {
         layer_lad.remove();
         layer_constituency.remove();
         layer_postcode.remove();
+        layer_region.remove();
     };
 
     hideLayer();
@@ -194,11 +196,11 @@ function init(_xyz) {
 
               drop.classList.toggle('active');
 
-              if(constituency.constituency_name === drop.querySelector('span').textContent) return;
+              if(constituency.constituency_search === drop.querySelector('span').textContent) return;
 
-              drop.querySelector('span').textContent = constituency.constituency_name;
+              drop.querySelector('span').textContent = constituency.constituency_search;
 
-              constFilter(constituency.constituency_name);
+              constFilter(constituency.constituency_search);
               
               document.getElementById('current-area').style.display = "block";
 
@@ -220,7 +222,7 @@ function init(_xyz) {
 
               document.getElementById('Tables').style.display = "block";
 
-            }}>${constituency.constituency_name}`)}`);
+            }}>${constituency.constituency_search}`)}`);
       };
 
       xhr.send();
@@ -262,11 +264,11 @@ function init(_xyz) {
 
               drop.classList.toggle('active');
 
-              if(lad.lad_name === drop.querySelector('span').textContent) return;
+              if(lad.lad_search === drop.querySelector('span').textContent) return;
 
-              drop.querySelector('span').textContent = lad.lad_name;
+              drop.querySelector('span').textContent = lad.lad_search;
 
-              ladFilter(lad.lad_name);
+              ladFilter(lad.lad_search);
               
               document.getElementById('Tables').style.display = "block";
               document.getElementById('current-area').style.display = "block";
@@ -290,7 +292,7 @@ function init(_xyz) {
                 }
               });
 
-            }}>${lad.lad_name}`)}`);
+            }}>${lad.lad_search}`)}`);
 
         };
 
@@ -303,7 +305,7 @@ function init(_xyz) {
         hideLayer();
 
         layer_constituency.filter.current = {
-            constituency_name: {
+            constituency_search: {
                 match: constituency
             }
         }
@@ -344,7 +346,7 @@ function init(_xyz) {
         hideLayer();
 
         layer_lad.filter.current = {
-            lad_name: {
+            lad_search: {
                 match: lad
             }
         }
@@ -423,6 +425,21 @@ function init(_xyz) {
         
     }
 
+    function regionFilter(region){
+
+      hideLayer();
+
+      layer_region.filter.current = {
+            region_search: {
+                like: region
+            }
+        }
+
+      layer_region.show();
+
+      layer_region.zoomToExtent();
+    }
+
     const table_index = Object.assign({}, layer_wellbeing.dataviews.Index, {
       target: document.getElementById('table_index'),
       layer: layer_wellbeing,
@@ -486,5 +503,7 @@ function init(_xyz) {
             coords: location.marker,
             content: location.view
         });
+
+        //locale.appendChild(location.view);
     }
 }

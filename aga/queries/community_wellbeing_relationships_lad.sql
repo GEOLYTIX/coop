@@ -21,4 +21,4 @@ SELECT
   round(voi_coop_member_engagement * 100) AS voi_coop_member_engagement,
   round(voi_signing_petitions * 100) AS voi_signing_petitions
 FROM coop.uk_coop_restrict_wellbeing
-WHERE lad_name = '${id}' ORDER BY dd_name;
+WHERE lad_search = '${id}' ORDER BY dd_name;

@@ -104,7 +104,7 @@
             "_source": "lad",
             "layer": "Local Authority District",
             "table": "coop.vw_uk_glx_geodata_admin_lad_new",
-            "label": "lad_name",
+            "label": "lad_search",
             "geom": "geom_4326",
             "dbs": "XYZ",
             "leading_wildcard": true
@@ -113,7 +113,7 @@
             "_source": "constituency",
             "layer": "Constituency",
             "table": "coop.uk_open_admin_constituencies_regions",
-            "label": "constituency_name",
+            "label": "constituency_search",
             "geom": "geom_4326",
             "dbs": "XYZ",
             "leading_wildcard": true

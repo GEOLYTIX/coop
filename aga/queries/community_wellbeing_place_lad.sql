@@ -16,4 +16,4 @@ SELECT
   round(hou_pollution * 100) AS hou_pollution,
   round(hou_air_quality * 100) AS hou_air_quality
 FROM coop.uk_coop_restrict_wellbeing
-WHERE lad_name = '${id}' ORDER BY dd_name;
+WHERE lad_search = '${id}' ORDER BY dd_name;
