@@ -1,5 +1,5 @@
 window.onload = () => _xyz({
-    host: '/coop',
+    host: '/coopwellbeing',
     //hooks: true,
     locale: 'Wellbeing',
     callback: init

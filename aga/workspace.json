@@ -1,9 +1,9 @@
 {
   "templates": {
-    "wellbeing": {
-      "_template": "http://localhost:3000/coop/views/wellbeing.html",
-      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/aga/wellbeing.html",
-      "__template": "http://localhost:3000/views/coop/wellbeing.html"
+    "desktop": {
+      "_template": "http://localhost:3000/coop/views/desktop.html",
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/aga/desktop.html",
+      "__template": "http://localhost:3000/views/coop/desktop.html"
     },
     "get_constituency_from_region2": {
       "template": "SELECT id, constituency_name FROM coop.uk_open_admin_constituencies_regions WHERE regionname = '${region}' ORDER BY constituency_name;",
