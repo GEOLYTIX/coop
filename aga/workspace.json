@@ -106,7 +106,8 @@
             "table": "coop.vw_uk_glx_geodata_admin_lad_new",
             "label": "lad_name",
             "geom": "geom_4326",
-            "dbs": "XYZ"
+            "dbs": "XYZ",
+            "leading_wildcard": true
           },
           {
             "_source": "constituency",
@@ -114,14 +115,16 @@
             "table": "coop.uk_open_admin_constituencies_regions",
             "label": "constituency_name",
             "geom": "geom_4326",
-            "dbs": "XYZ"
+            "dbs": "XYZ",
+            "leading_wildcard": true
           },
           {
             "layer": "Community Wellbeing",
             "table": "coop.uk_coop_restrict_wellbeing",
             "label": "dd_name",
             "geom": "geom_4326",
-            "dbs": "XYZ"
+            "dbs": "XYZ",
+            "leading_wildcard": true
           },
           {
             "_source": "postcode",
