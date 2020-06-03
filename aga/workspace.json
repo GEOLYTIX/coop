@@ -128,7 +128,7 @@
             "leading_wildcard": true,
             "geom": "bbox_4326",
             "dbs": "XYZ"
-          }
+          },
           {
             "layer": "Community Wellbeing",
             "table": "coop.uk_coop_restrict_wellbeing",
