@@ -95,14 +95,6 @@
         "placeholder": "Search postcode, locale, constituency, local authority, town, county, region or country",
         "datasets": [
           {
-            "layer": "Community Wellbeing",
-            "table": "coop.uk_coop_restrict_wellbeing",
-            "label": "locale_search",
-            "geom": "geom_4326",
-            "dbs": "XYZ",
-            "leading_wildcard": true
-          },
-          {
             "_source": "postcode",
             "layer": "Postal Code",
             "table": "geodata.uk_glx_geodata_postal_postcode",
@@ -136,6 +128,14 @@
             "leading_wildcard": true,
             "geom": "bbox_4326",
             "dbs": "XYZ"
+          }
+          {
+            "layer": "Community Wellbeing",
+            "table": "coop.uk_coop_restrict_wellbeing",
+            "label": "locale_search",
+            "geom": "geom_4326",
+            "dbs": "XYZ",
+            "leading_wildcard": true
           }
         ]
       },
