@@ -41,6 +41,50 @@ function init(_xyz) {
             if (entry.layer === 'Constituency') constFilter(entry.label);
             if (entry.layer === 'Postal Code') postcodeFilter(entry.label);
             if (entry.layer === 'Region') regionFilter(entry.label);
+            if (entry.layer === 'Community Wellbeing') {
+
+              _xyz.locations.select({
+                locale: 'Wellbeing',
+                layer: layer_wellbeing,
+                table: layer_wellbeing.table,
+                id: entry.id,
+                callback: location => {
+
+                  _xyz.locations.view.create(location);
+                  location.draw();
+                  location.flyTo();
+                  location.view = _xyz.locations.view.infoj(location);
+
+                  document.getElementById('current-area').appendChild(location.view);
+
+                  document.getElementById('table_index').innerHTML = '';
+                  _xyz.dataviews.create(Object.assign({}, table_index, {
+                    query: 'community wellbeing - index locale', id: entry.label
+                  }));
+
+                  document.getElementById('table_people').innerHTML = '';
+
+                  _xyz.dataviews.create(Object.assign({}, table_people, {
+                    query: 'community wellbeing - people locale', id: entry.label
+                  }));
+
+                  document.getElementById('table_place').innerHTML = '';
+
+                  _xyz.dataviews.create(Object.assign({}, table_place, {
+                    query: 'community wellbeing - place locale', id: entry.label
+                  }));
+
+                  document.getElementById('table_relationships').innerHTML = '';
+
+                  _xyz.dataviews.create(Object.assign({}, table_relationships, {
+                    query: 'community wellbeing - relationships locale', id: entry.label
+                  }));
+
+                }
+              });
+
+              document.getElementById('Tables').style.display = "block";
+            }
         }
     });
 
@@ -421,8 +465,7 @@ function init(_xyz) {
         _xyz.dataviews.create(Object.assign({}, table_relationships, {
           query: 'community wellbeing - relationships postcode', id: postcode
         }));
-
-        
+  
     }
 
     function regionFilter(region){
