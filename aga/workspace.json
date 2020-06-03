@@ -6,11 +6,11 @@
       "__template": "http://localhost:3000/views/coop/desktop.html"
     },
     "get_constituency_from_region2": {
-      "template": "SELECT id, constituency_name FROM coop.uk_open_admin_constituencies_regions WHERE regionname = '${region}' ORDER BY constituency_name;",
+      "template": "SELECT id, constituency_name, constituency_search FROM coop.uk_open_admin_constituencies_regions WHERE regionname = '${region}' ORDER BY constituency_name;",
       "dbs": "XYZ"
     },
     "get_lad_from_region2": {
-      "template": "  SELECT id, lad_name FROM coop.vw_uk_glx_geodata_admin_lad WHERE regionname = '${region}' ORDER BY lad_name;",
+      "template": "  SELECT id, lad_name, lad_search FROM coop.vw_uk_glx_geodata_admin_lad WHERE regionname = '${region}' ORDER BY lad_name;",
       "dbs": "XYZ"
     },
     "delineo": {
