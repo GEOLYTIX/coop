@@ -240,11 +240,11 @@ function init(_xyz) {
 
               drop.classList.toggle('active');
 
-              if(constituency.constituency_search === drop.querySelector('span').textContent) return;
+              if(constituency.constituency_name === drop.querySelector('span').textContent) return;
 
-              drop.querySelector('span').textContent = constituency.constituency_search;
+              drop.querySelector('span').textContent = constituency.constituency_name;
 
-              constFilter(constituency.constituency_search);
+              constFilter(constituency.constituency_name);
               
               document.getElementById('current-area').style.display = "block";
 
@@ -266,7 +266,7 @@ function init(_xyz) {
 
               document.getElementById('Tables').style.display = "block";
 
-            }}>${constituency.constituency_search}`)}`);
+            }}>${constituency.constituency_name}`)}`);
       };
 
       xhr.send();
@@ -310,7 +310,7 @@ function init(_xyz) {
 
               if(lad.lad_search === drop.querySelector('span').textContent) return;
 
-              drop.querySelector('span').textContent = lad.lad_search;
+              drop.querySelector('span').textContent = lad.lad_name;
 
               ladFilter(lad.lad_search);
               
@@ -336,7 +336,7 @@ function init(_xyz) {
                 }
               });
 
-            }}>${lad.lad_search}`)}`);
+            }}>${lad.lad_name}`)}`);
 
         };
 
