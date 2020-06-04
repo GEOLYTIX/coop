@@ -1,6 +1,6 @@
 window.onload = () => _xyz({
     host: '/coopwellbeing',
-    //hooks: true,
+    hooks: true,
     locale: 'Wellbeing',
     callback: init
 })
@@ -28,7 +28,12 @@ function init(_xyz) {
         scrollWheelZoom: true,
         zoomControl: {
           target: document.getElementById("map-controls")
-        }
+        },
+        view: {
+          lat: 51.5,//_xyz.hooks.current.lat,
+          lng: -0.14,//_xyz.hooks.current.lng,
+          z: 11//_xyz.hooks.current.z
+    }
       });
 
     _xyz.gazetteer.init({
