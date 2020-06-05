@@ -227,12 +227,12 @@
             },
             {
               "field": "id",
-              "label": "ID",
+              "title": "ID",
               "inline": true
             },
             {
               "field": "rm_format",
-              "label": "RM format",
+              "title": "RM format",
               "inline": true,
               "filter": "like"
             }
@@ -265,12 +265,12 @@
             },
             {
               "field": "regioncode",
-              "label": "Code",
+              "title": "Code",
               "inline": true
             },
             {
               "field": "regionname",
-              "label": "Region",
+              "title": "Region",
               "inline": true
             }
           ],
@@ -304,11 +304,11 @@
           "qID": "id",
           "infoj": [
             {
-              "label": "Locale name",
+              "title": "Locale name",
               "field": "dd_name"
             },
             {
-              "label": "Community Wellbeing Score",
+              "title": "Community Wellbeing Score",
               "field": "ind_wellb",
               "fieldfx": "ROUND(ind_wellb * 100)",
               "class": "score_value",
@@ -1517,11 +1517,11 @@
           "qID": "id",
           "infoj": [
             {
-              "label": "dd_name",
+              "title": "dd_name",
               "field": "dd_name"
             },
             {
-              "label": "region",
+              "title": "region",
               "field": "region",
               "filter": {
                 "in": [
@@ -1541,7 +1541,7 @@
               }
             },
             {
-              "label": "localename",
+              "title": "localename",
               "field": "localename"
             }
           ],
@@ -1572,18 +1572,18 @@
               "type": "key"
             },
             {
-              "label": "ID",
+              "title": "ID",
               "field": "id",
               "inline": true
             },
             {
-              "label": "LAD Name",
+              "title": "LAD Name",
               "field": "lad_name",
               "filter": "match",
               "inline": true
             },
             {
-              "label": "Region Name",
+              "title": "Region Name",
               "field": "regionname",
               "filter": {
                 "in": [
@@ -1633,22 +1633,22 @@
             },
             {
               "field": "constituency_id",
-              "label": "Constituency ID",
+              "title": "Constituency ID",
               "inline": true
             },
             {
               "field": "constituency_name",
-              "label": "Name",
+              "title": "Name",
               "inline": true
             },
             {
               "field": "regioncode",
-              "label": "Region code",
+              "title": "Region code",
               "inline": true
             },
             {
               "field": "regionname",
-              "label": "Region name",
+              "title": "Region name",
               "inline": true
             },
             {
@@ -2064,102 +2064,102 @@
           "qID": "id",
           "infoj": [
             {
-              "label": "id",
+              "title": "id",
               "field": "id",
               "inline": true
             },
             {
-              "label": "localename",
+              "title": "localename",
               "field": "localename",
               "inline": true
             },
             {
-              "label": "dd_name",
+              "title": "dd_name",
               "field": "dd_name",
               "inline": true
             },
             {
-              "label": "region",
+              "title": "region",
               "field": "region",
               "inline": true
             },
             {
-              "label": "country",
+              "title": "country",
               "field": "country",
               "inline": true
             },
             {
-              "label": "census11pop",
+              "title": "census11pop",
               "field": "census11pop",
               "inline": true
             },
             {
-              "label": "census11dwelling",
+              "title": "census11dwelling",
               "field": "census11dwelling",
               "inline": true
             },
             {
-              "label": "urban",
+              "title": "urban",
               "field": "urban",
               "inline": true
             },
             {
-              "label": "rural",
+              "title": "rural",
               "field": "rural",
               "inline": true
             },
             {
-              "label": "area_sqm",
+              "title": "area_sqm",
               "field": "area_sqm",
               "inline": true
             },
             {
-              "label": "indrelat",
+              "title": "indrelat",
               "field": "indrelat",
               "inline": true
             },
             {
-              "label": "indequal",
+              "title": "indequal",
               "field": "indequal",
               "inline": true
             },
             {
-              "label": "indvoice",
+              "title": "indvoice",
               "field": "indvoice",
               "inline": true
             },
             {
-              "label": "indecono",
+              "title": "indecono",
               "field": "indecono",
               "inline": true
             },
             {
-              "label": "indhealt",
+              "title": "indhealt",
               "field": "indhealt",
               "inline": true
             },
             {
-              "label": "indeduca",
+              "title": "indeduca",
               "field": "indeduca",
               "inline": true
             },
             {
-              "label": "indcultu",
+              "title": "indcultu",
               "field": "indcultu",
               "inline": true
             },
             {
-              "label": "indhousi",
+              "title": "indhousi",
               "field": "indhousi",
               "inline": true
             },
             {
-              "label": "indtrans",
+              "title": "indtrans",
               "field": "indtrans",
               "inline": true
             },
             {
-              "label": "ind_wellb",
+              "title": "ind_wellb",
               "field": "ind_wellb",
               "inline": true
             }
