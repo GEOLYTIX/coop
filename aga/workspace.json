@@ -223,9 +223,6 @@
           "cluster_label": "rm_format",
           "infoj": [
             {
-              "type": "key"
-            },
-            {
               "field": "id",
               "title": "ID",
               "inline": true
@@ -260,9 +257,6 @@
           "dbs": "XYZ",
           "table": "coop.vw_uk_glx_geodata_admin_region",
           "infoj": [
-            {
-              "type": "key"
-            },
             {
               "field": "regioncode",
               "title": "Code",
@@ -1569,9 +1563,6 @@
           "table": "coop.vw_uk_glx_geodata_admin_lad_new",
           "infoj": [
             {
-              "type": "key"
-            },
-            {
               "title": "ID",
               "field": "id",
               "inline": true
@@ -1628,9 +1619,6 @@
           "mvt_cache": "coop.uk_open_admin_constituencies_regions__mvts",
           "qID": "id",
           "infoj": [
-            {
-              "type": "key"
-            },
             {
               "field": "constituency_id",
               "title": "Constituency ID",
