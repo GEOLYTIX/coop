@@ -202,7 +202,6 @@
           "table": "coop.vw_uk_glx_geodata_admin_lsoa",
           "mvt_cache": "coop.vw_uk_glx_geodata_admin_lsoa__mvts",
           "style": {
-            "label": {
             "default": {
               "strokeWidth": 2,
               "strokeColor": "#00729A",
