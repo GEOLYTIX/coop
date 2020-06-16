@@ -200,7 +200,9 @@
             "13": "coop.vw_uk_glx_geodata_admin_lsoa"
           },
           "qID": "id",
-          "infoj": [],
+          "infoj": [
+            {"field": "lsoa_code"}
+          ],
           "table": "coop.vw_uk_glx_geodata_admin_lsoa",
           "mvt_cache": "coop.vw_uk_glx_geodata_admin_lsoa__mvts",
           "style": {
