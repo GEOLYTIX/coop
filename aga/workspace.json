@@ -1642,6 +1642,7 @@
             {
               "type": "dataview",
               "title": "Index",
+              "layout": "fitColumns",
               "target": "",
               "query": "",
               "columns": [
