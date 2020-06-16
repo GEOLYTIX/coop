@@ -192,6 +192,9 @@
           "srid": "3857",
           "geom": "geom_3857_10m",
           "dbs": "XYZ",
+          "hover": {
+            "field": "lsoa_code"
+          },
           "_tables": {
             "12": null,
             "13": "coop.vw_uk_glx_geodata_admin_lsoa"
@@ -199,6 +202,7 @@
           "table": "coop.vw_uk_glx_geodata_admin_lsoa",
           "mvt_cache": "coop.vw_uk_glx_geodata_admin_lsoa__mvts",
           "style": {
+            "label": {
             "default": {
               "strokeWidth": 2,
               "strokeColor": "#00729A",
