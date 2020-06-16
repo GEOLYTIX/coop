@@ -381,6 +381,7 @@
             "Index": {
               "_display": true,
               "query": "community wellbeing - index",
+              "layout": "fitColumns",
               "viewport": true,
               "selectable": true,
               "columns": [
