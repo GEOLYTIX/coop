@@ -518,7 +518,7 @@ function init(_xyz) {
 
     _xyz.locations.selectCallback = location => {
 
-      if(location.layer.key === 'LSOA') return;
+      //if(location.layer.key === 'LSOA') return;
 
         location.style = {
             strokeColor: '#FFD60C',
