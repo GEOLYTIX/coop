@@ -593,6 +593,6 @@ function init(_xyz) {
             document.getElementById('current-area').style.display = "block";
             document.getElementById('current-area').appendChild(location.view);
           }
-        )};
+        });
     }
 }
