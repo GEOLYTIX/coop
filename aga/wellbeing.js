@@ -56,12 +56,18 @@ function init(_xyz) {
 
           document.getElementById('Tables').style.display = "none";
             
-          if (entry.layer === 'Local Authority District') ladFilter(entry.label);
+          if (entry.layer === 'Local Authority District') {
+            ladFilter(entry.label);
+            select(entry);
+          }
           if (entry.layer === 'Constituency') {
             constFilter(entry.label);
             select(entry);
           }
-          if (entry.layer === 'Postal Code') postcodeFilter(entry.label);
+          if (entry.layer === 'Postal Code') {
+            postcodeFilter(entry.label);
+            select(entry);
+          }
           if (entry.layer === 'Region') regionFilter(entry.label);
           if (entry.layer === 'Community Wellbeing') {
 
