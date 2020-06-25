@@ -370,10 +370,8 @@ function init(_xyz) {
         
         hideLayer();
 
-        console.log(constituency);
-
         layer_constituency.filter.current = {
-            constituency_search: {
+            constituency_name: {
                 match: constituency
             }
         }
