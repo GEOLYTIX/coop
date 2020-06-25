@@ -582,7 +582,7 @@ function init(_xyz) {
       
       _xyz.locations.select({
           locale: 'Wellbeing',
-          layer: layer,
+          layer: _layer,
           table: entry.table,
           id: entry.id,
           callback: location => {
