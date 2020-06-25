@@ -40,13 +40,22 @@ function init(_xyz) {
         group: document.getElementById('Gazetteer'),
         callback: entry => {
 
-            document.getElementById('Tables').style.display = "none";
+          _xyz.map.getOverlays().getArray().map(overlay => _xyz.map.removeOverlay(overlay));
+
+          document.getElementById('current-area').style.display = "none";
+
+          hideLayer();
+
+          document.getElementById('Lads').innerHTML = '';
+          document.getElementById('Constituencies').innerHTML = '';
+
+          document.getElementById('Tables').style.display = "none";
             
-            if (entry.layer === 'Local Authority District') ladFilter(entry.label);
-            if (entry.layer === 'Constituency') constFilter(entry.label);
-            if (entry.layer === 'Postal Code') postcodeFilter(entry.label);
-            if (entry.layer === 'Region') regionFilter(entry.label);
-            if (entry.layer === 'Community Wellbeing') {
+          if (entry.layer === 'Local Authority District') ladFilter(entry.label);
+          if (entry.layer === 'Constituency') constFilter(entry.label);
+          if (entry.layer === 'Postal Code') postcodeFilter(entry.label);
+          if (entry.layer === 'Region') regionFilter(entry.label);
+          if (entry.layer === 'Community Wellbeing') {
 
               _xyz.locations.select({
                 locale: 'Wellbeing',
