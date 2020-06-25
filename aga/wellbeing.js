@@ -59,7 +59,7 @@ function init(_xyz) {
           document.getElementById('Tables').style.display = "none";
             
           if (entry.layer === 'Local Authority District') ladFilter(entry.label);
-          if (entry.layer === 'Constituency') constFilter(entry);
+          if (entry.layer === 'Constituency') constFilter(entry.label);
           if (entry.layer === 'Postal Code') postcodeFilter(entry.label);
           if (entry.layer === 'Region') regionFilter(entry.label);
           if (entry.layer === 'Community Wellbeing') {
@@ -369,9 +369,11 @@ function init(_xyz) {
         
         hideLayer();
 
+        console.log(constituency);
+
         layer_constituency.filter.current = {
             constituency_search: {
-                match: constituency.label
+                match: constituency
             }
         }
 
@@ -384,25 +386,25 @@ function init(_xyz) {
         document.getElementById('table_index').innerHTML = '';
 
         _xyz.dataviews.create(Object.assign({}, table_index, {
-          query: 'community wellbeing - index constituency', id: constituency.label
+          query: 'community wellbeing - index constituency', id: constituency
         }));
 
         document.getElementById('table_people').innerHTML = '';
 
         _xyz.dataviews.create(Object.assign({}, table_people, {
-          query: 'community wellbeing - people constituency', id: constituency.label
+          query: 'community wellbeing - people constituency', id: constituency
         }));
 
         document.getElementById('table_place').innerHTML = '';
 
         _xyz.dataviews.create(Object.assign({}, table_place, {
-          query: 'community wellbeing - place constituency', id: constituency.label
+          query: 'community wellbeing - place constituency', id: constituency
         }));
 
         document.getElementById('table_relationships').innerHTML = '';
 
         _xyz.dataviews.create(Object.assign({}, table_relationships, {
-          query: 'community wellbeing - relationships constituency', id: constituency.label
+          query: 'community wellbeing - relationships constituency', id: constituency
         }));
 
 
