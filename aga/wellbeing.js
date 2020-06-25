@@ -46,8 +46,8 @@ function init(_xyz) {
 
           hideLayer();
 
-          document.getElementById('Lads').innerHTML = '';
-          document.getElementById('Constituencies').innerHTML = '';
+          //document.getElementById('Lads').innerHTML = '';
+          //document.getElementById('Constituencies').innerHTML = '';
 
           document.getElementById('Tables').style.display = "none";
             
