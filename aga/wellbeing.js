@@ -40,8 +40,6 @@ function init(_xyz) {
         group: document.getElementById('Gazetteer'),
         callback: entry => {
 
-          console.log(entry);
-
           _xyz.map.getOverlays().getArray().map(overlay => _xyz.map.removeOverlay(overlay));
 
           document.getElementById('current-area').style.display = "none";
@@ -59,7 +57,10 @@ function init(_xyz) {
           document.getElementById('Tables').style.display = "none";
             
           if (entry.layer === 'Local Authority District') ladFilter(entry.label);
-          if (entry.layer === 'Constituency') constFilter(entry.label);
+          if (entry.layer === 'Constituency') {
+            constFilter(entry.label);
+            select(entry);
+          }
           if (entry.layer === 'Postal Code') postcodeFilter(entry.label);
           if (entry.layer === 'Region') regionFilter(entry.label);
           if (entry.layer === 'Community Wellbeing') {
@@ -406,21 +407,6 @@ function init(_xyz) {
         _xyz.dataviews.create(Object.assign({}, table_relationships, {
           query: 'community wellbeing - relationships constituency', id: constituency
         }));
-
-
-        /*_xyz.locations.select({
-          locale: 'Wellbeing',
-          layer: layer_constituency,
-          table: layer_constituency.table,
-          id: constituency.id,
-          callback: location => {
-            _xyz.locations.view.create(location);
-            location.draw();
-            location.flyTo();
-            location.view = _xyz.locations.view.infoj(location);
-          }
-        )};*/
-
     }
 
     function ladFilter(lad) {
@@ -588,5 +574,25 @@ function init(_xyz) {
         });
 
         //locale.appendChild(location.view);
+    }
+
+    function select(entry){
+
+      const _layer = _xyz.layers.list[entry.layer];
+      
+      _xyz.locations.select({
+          locale: 'Wellbeing',
+          layer: layer,
+          table: entry.table,
+          id: entry.id,
+          callback: location => {
+            _xyz.locations.view.create(location);
+            location.draw();
+            location.flyTo();
+            location.view = _xyz.locations.view.infoj(location);
+            document.getElementById('current-area').style.display = "block";
+            document.getElementById('current-area').appendChild(location.view);
+          }
+        )};
     }
 }
