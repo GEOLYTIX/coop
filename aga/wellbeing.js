@@ -46,13 +46,13 @@ function init(_xyz) {
 
           hideLayer();
 
-          //document.querySelector('#Regions .head > span').textContent = 'Select Region';
-          //document.getElementById('Constituencies').innerHTML = '';
-          //document.getElementById('Lads').innerHTML = '';
-          //document.getElementById('alt-info').style.display = "none";
+          document.querySelector('#Regions .head > span').textContent = 'Select Region';
+          document.getElementById('Constituencies').innerHTML = '';
+          document.getElementById('Lads').innerHTML = '';
+          document.getElementById('alt-info').style.display = "none";
 
-          document.querySelector('#Lads .head > span').textContent = 'Select Local Authority District';
-          document.querySelector('#Constituencies .head > span').textContent = 'Select Constituency';
+          //document.querySelector('#Lads .head > span').textContent = 'Select Local Authority District';
+          //document.querySelector('#Constituencies .head > span').textContent = 'Select Constituency';
 
           document.getElementById('Tables').style.display = "none";
             
