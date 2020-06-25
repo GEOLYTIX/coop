@@ -406,7 +406,7 @@ function init(_xyz) {
         }));
 
 
-        _xyz.locations.select({
+        /*_xyz.locations.select({
           locale: 'Wellbeing',
           layer: layer_constituency,
           table: layer_constituency.table,
@@ -417,7 +417,7 @@ function init(_xyz) {
             location.flyTo();
             location.view = _xyz.locations.view.infoj(location);
           }
-        )};
+        )};*/
 
     }
 
