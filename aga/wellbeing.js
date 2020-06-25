@@ -40,6 +40,8 @@ function init(_xyz) {
         group: document.getElementById('Gazetteer'),
         callback: entry => {
 
+          console.log(entry);
+
           _xyz.map.getOverlays().getArray().map(overlay => _xyz.map.removeOverlay(overlay));
 
           document.getElementById('current-area').style.display = "none";
@@ -402,6 +404,7 @@ function init(_xyz) {
         _xyz.dataviews.create(Object.assign({}, table_relationships, {
           query: 'community wellbeing - relationships constituency', id: constituency
         }));
+
     }
 
     function ladFilter(lad) {
