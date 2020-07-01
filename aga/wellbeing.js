@@ -272,7 +272,7 @@ function init(_xyz) {
 
               drop.querySelector('span').textContent = constituency.constituency_name;
 
-              constFilter(constituency.constituency_name);
+              constFilter(constituency.constituency_search);
               
               document.getElementById('current-area').style.display = "block";
 
