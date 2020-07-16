@@ -95,6 +95,14 @@
         "placeholder": "Search postcode, locale, constituency, local authority, town, county, region or country",
         "datasets": [
           {
+            "layer": "Region",
+            "table": "coop.vw_uk_glx_geodata_admin_region",
+            "label": "region_search",
+            "leading_wildcard": true,
+            "geom": "bbox_4326",
+            "dbs": "XYZ"
+          },
+          {
             "_source": "postcode",
             "layer": "Postal Code",
             "table": "geodata.uk_glx_geodata_postal_postcode",
@@ -120,14 +128,6 @@
             "geom": "geom_4326",
             "dbs": "XYZ",
             "leading_wildcard": true
-          },
-          {
-            "layer": "Region",
-            "table": "coop.vw_uk_glx_geodata_admin_region",
-            "label": "region_search",
-            "leading_wildcard": true,
-            "geom": "bbox_4326",
-            "dbs": "XYZ"
           },
           {
             "layer": "Community Wellbeing",
