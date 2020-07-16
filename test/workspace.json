@@ -1,0 +1,2179 @@
+{
+  "templates": {
+    "desktop": {
+      "_template": "http://localhost:3000/coop/views/desktop.html",
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/test/desktop.html",
+      "__template": "http://localhost:3000/views/coop/desktop.html"
+    },
+    "get_constituency_from_region2": {
+      "template": "SELECT id, constituency_name, constituency_search FROM coop.uk_open_admin_constituencies_regions WHERE regionname = '${region}' ORDER BY constituency_name;",
+      "dbs": "XYZ"
+    },
+    "get_lad_from_region2": {
+      "template": "  SELECT id, lad_name, lad_search FROM coop.vw_uk_glx_geodata_admin_lad WHERE regionname = '${region}' ORDER BY lad_name;",
+      "dbs": "XYZ"
+    },
+    "delineo": {
+      "_template": "http://localhost:3000/coop/views/delineo.html",
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/delineo.html"
+    },
+    "community wellbeing - index": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_index.sql"
+    },
+    "community wellbeing - index lad": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/aga/queries/community_wellbeing_index_lad.sql"
+    },
+    "community wellbeing - index postcode": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/aga/queries/community_wellbeing_index_postcode.sql"
+    },
+    "community wellbeing - index constituency": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/aga/queries/community_wellbeing_index_contituency.sql"
+    },
+    "community wellbeing - index locale": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/aga/queries/community_wellbeing_index_locale.sql"
+    },
+    "community wellbeing - people": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_people.sql"
+    },
+    "community wellbeing - people lad": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/aga/queries/community_wellbeing_people_lad.sql"
+    },
+    "community wellbeing - people postcode": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/aga/queries/community_wellbeing_people_postcode.sql"
+    },
+    "community wellbeing - people constituency": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/aga/queries/community_wellbeing_people_constituency.sql"
+    },
+    "community wellbeing - people locale": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/aga/queries/community_wellbeing_people_locale.sql"
+    },    
+    "community wellbeing - place": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_place.sql"
+    },
+    "community wellbeing - place lad": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/aga/queries/community_wellbeing_place_lad.sql"
+    },
+    "community wellbeing - place postcode": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/aga/queries/community_wellbeing_place_postcode.sql"
+    },
+    "community wellbeing - place constituency": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/aga/queries/community_wellbeing_place_constituency.sql"
+    },
+    "community wellbeing - place locale": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/aga/queries/community_wellbeing_place_locale.sql"
+    },    
+    "community wellbeing - relationships": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_relationships.sql"
+    },
+    "community wellbeing - relationships lad": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/aga/queries/community_wellbeing_relationships_lad.sql"
+    },
+    "community wellbeing - relationships postcode": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/aga/queries/community_wellbeing_relationships_postcode.sql"
+    },
+    "community wellbeing - relationships constituency": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/aga/queries/community_wellbeing_relationships_constituency.sql"
+    },
+    "community wellbeing - relationships locale": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/aga/queries/community_wellbeing_relationships_locale.sql"
+    },    
+    "community wellbeing - chart": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/community_wellbeing_chart.sql"
+    },
+    "select_ll": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/select_ll.sql",
+      "dbs": "XYZ"
+    },
+    "nnearest_from_ll": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/nnearest_from_ll.sql",
+      "dbs": "XYZ"
+    }
+  },
+  "locales": {
+    "Wellbeing": {
+      "gazetteer": {
+        "placeholder": "Search postcode, locale, constituency, local authority, town, county, region or country",
+        "datasets": [
+          {
+            "_source": "postcode",
+            "layer": "Postal Code",
+            "table": "geodata.uk_glx_geodata_postal_postcode",
+            "label": "rm_format",
+            "leading_wildcard": true,
+            "geom": "bbox_4326",
+            "dbs": "XYZ"
+          },
+          {
+            "_source": "lad",
+            "layer": "Local Authority District",
+            "table": "coop.vw_uk_glx_geodata_admin_lad_new",
+            "label": "lad_search",
+            "geom": "geom_4326",
+            "dbs": "XYZ",
+            "leading_wildcard": true
+          },
+          {
+            "_source": "constituency",
+            "layer": "Constituency",
+            "table": "coop.uk_open_admin_constituencies_regions",
+            "label": "constituency_search",
+            "geom": "geom_4326",
+            "dbs": "XYZ",
+            "leading_wildcard": true
+          },
+          {
+            "layer": "Region",
+            "table": "coop.vw_uk_glx_geodata_admin_region",
+            "label": "region_search",
+            "leading_wildcard": true,
+            "geom": "bbox_4326",
+            "dbs": "XYZ"
+          },
+          {
+            "layer": "Community Wellbeing",
+            "table": "coop.uk_coop_restrict_wellbeing",
+            "label": "locale_search",
+            "geom": "geom_4326",
+            "dbs": "XYZ",
+            "leading_wildcard": true
+          }
+        ]
+      },
+      "bounds": {
+        "north": 67,
+        "east": 9,
+        "south": 44,
+        "west": -16
+      },
+      "view": {
+        "lng": -3,
+        "lat": 54
+      },
+      "maskBounds": true,
+      "minZoom": 6,
+      "maxZoom": 16,
+      "layers": {
+        "Mapbox": {
+          "group": "Maps",
+          "display": true,
+          "attribution": {
+            "© Mapbox": "https://www.mapbox.com/about/maps",
+            "© OpenStreetMap": "http://www.openstreetmap.org/copyright"
+          },
+          "format": "tiles",
+          "URI": "/styles/v1/dbauszus/ciozrimi3002bdsm8bjtn2v1y/tiles/256/{z}/{x}/{y}?&provider=MAPBOX&host=https://api.mapbox.com"
+        },
+        "HERE Imagery": {
+          "group": "Maps",
+          "attribution": {
+            "© Here": "https://www.here.com/"
+          },
+          "format": "tiles",
+          "URI": "/maptile/2.1/maptile/newest/satellite.day/{z}/{x}/{y}/256/png8?&provider=HERE&host=https://1.aerial.maps.api.here.com"
+        },
+        "HERE Hybrid": {
+          "group": "Maps",
+          "attribution": {
+            "© Here": "https://www.here.com/"
+          },
+          "format": "tiles",
+          "URI": "/maptile/2.1/maptile/newest/hybrid.day/{z}/{x}/{y}/256/png8?&provider=HERE&host=https://1.aerial.maps.api.here.com"
+        },
+        "Zoomstack": {
+          "group": "Maps",
+          "attribution": {
+              "© Ordanance Survey": "https://ordnancesurvey.co.uk"
+          },
+          "format": "tiles",
+          "URI": "https://api.ordnancesurvey.co.uk/mapping_api/v1/service/zxy/EPSG%3A3857/Light%203857/{z}/{x}/{y}.png?key=4vmpYY1uFdimsAkyGwuaFbbHEyfvA5Gy"
+        },
+        "LSOA": {
+          "format": "mvt",
+          "srid": "3857",
+          "geom": "geom_3857_10m",
+          "dbs": "XYZ",
+          "_tables": {
+            "12": null,
+            "13": "coop.vw_uk_glx_geodata_admin_lsoa"
+          },
+          "table": "coop.vw_uk_glx_geodata_admin_lsoa",
+          "mvt_cache": "coop.vw_uk_glx_geodata_admin_lsoa__mvts",
+          "style": {
+            "default": {
+              "strokeWidth": 2,
+              "strokeColor": "#00729A",
+              "fillColor": "#eee",
+              "fillOpacity": 0.1
+            },
+            "highlight": {
+              "strokeWidth": 3,
+              "fillColor": "#00729A",
+              "fillOpacity": 0.3,
+              "strokeColor": "#00729A"
+            }
+          }
+        },
+        "Postal Code": {
+          "format": "cluster",
+          "dbs": "XYZ",
+          "qID": "id",
+          "geom": "geom_p_4326",
+          "srid": "4326",
+          "table": "geodata.uk_glx_geodata_postal_postcode",
+          "cluster_label": "rm_format",
+          "infoj": [
+            {
+              "type": "key"
+            },
+            {
+              "field": "id",
+              "title": "ID",
+              "inline": true
+            },
+            {
+              "field": "rm_format",
+              "title": "RM format",
+              "inline": true,
+              "filter": "like"
+            }
+          ],
+          "cluster_kmeans": 0.05,
+          "cluster_dbscan": 0.01,
+          "style": {
+            "markerMin": 20,
+            "markerMax": 40,
+            "marker": {
+              "type": "target",
+              "fillColor": "#aaa"
+            },
+            "markerMulti": {
+              "type": "target",
+              "fillColor": "#cf9"
+            }
+          }
+        },
+        "Region": {
+          "format": "mvt",
+          "srid": "3857",
+          "geom": "geom_3857_1000m",
+          "srid": "3857",
+          "dbs": "XYZ",
+          "table": "coop.vw_uk_glx_geodata_admin_region",
+          "infoj": [
+            {
+              "type": "key"
+            },
+            {
+              "field": "regioncode",
+              "title": "Code",
+              "inline": true
+            },
+            {
+              "field": "regionname",
+              "title": "Region",
+              "inline": true
+            }
+          ],
+          "style": {
+            "default": {
+              "strokeWidth": 2,
+              "strokeColor": "#00729A",
+              "fillColor": "#eee",
+              "fillOpacity": 0.1
+            },
+            "highlight": {
+              "strokeWidth": 3,
+              "fillColor": "#00729A",
+              "fillOpacity": 0.3,
+              "strokeColor": "#00729A"
+            }
+          }
+        },
+        "Community Wellbeing": {
+          "format": "mvt",
+          "display": true,
+          "srid": "3857",
+          "geom": "geom_3857",
+          "dbs": "XYZ",
+          "__tables": {
+            "8": null,
+            "9": "coop.uk_coop_restrict_wellbeing"
+          },
+          "table": "coop.uk_coop_restrict_wellbeing",
+          "mvt_cache": "coop.uk_coop_restrict_wellbeing__mvt",
+          "qID": "id",
+          "infoj": [
+            {
+              "title": "Locale name",
+              "field": "dd_name"
+            },
+            {
+              "title": "Community Wellbeing Score",
+              "field": "ind_wellb",
+              "fieldfx": "ROUND(ind_wellb * 100)",
+              "class": "score_value",
+              "type": "integer",
+              "inline": true
+            },
+            {
+              "type": "dataview",
+              "target": "location",
+              "query": "community wellbeing - chart",
+              "chart": {
+                "type": "horizontalBar",
+                "labels": [
+                  "Education",
+                  "Health",
+                  "Economy",
+                  "Culture",
+                  "Transport",
+                  "Housing",
+                  "Relations",
+                  "Equality",
+                  "Voice"
+                ],
+                "datasets": [
+                  {
+                    "fields": [
+                      "indeduca",
+                      "indhealt",
+                      "indecono",
+                      "indcultu",
+                      "indtrans",
+                      "indhousi",
+                      "indrelat",
+                      "indequal",
+                      "indvoice"
+                    ],
+                    "backgroundColor": [
+                      "#238443",
+                      "#78c679",
+                      "#c2e699",
+                      "#0570b0",
+                      "#74a9cf",
+                      "#bdc9e1",
+                      "#cc4c02",
+                      "#fe9929",
+                      "#fed98e"
+                    ]
+                  }
+                ],
+                "options": {
+                  "legend": {
+                    "display": false
+                  },
+                  "scales": {
+                    "xAxes": [
+                      {
+                        "ticks": {
+                          "display": false,
+                          "min": 0
+                        }
+                      }
+                    ]
+                  },
+                  "plugins": {
+                    "datalabels": {
+                      "display": true,
+                      "backgroundColor": "#FFFFFF",
+                      "anchor": "end"
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "dataviews": {
+            "Index": {
+              "_display": true,
+              "query": "community wellbeing - index",
+              "viewport": true,
+              "selectable": true,
+              "columns": [
+                {
+                  "title": "Locale name",
+                  "field": "dd_name"
+                },
+                {
+                  "title": "Wellbeing Score",
+                  "field": "ind_wellb"
+                },
+                {
+                  "title": "PEOPLE",
+                  "columns": [
+                    {
+                      "title": "Education",
+                      "field": "indeduca"
+                    },
+                    {
+                      "title": "Health",
+                      "field": "indhealt"
+                    },
+                    {
+                      "title": "Economy",
+                      "field": "indecono"
+                    }
+                  ]
+                },
+                {
+                  "title": "PLACE",
+                  "columns": [
+                    {
+                      "title": "Culture",
+                      "field": "indcultu"
+                    },
+                    {
+                      "title": "Transport",
+                      "field": "indtrans"
+                    },
+                    {
+                      "title": "Housing",
+                      "field": "indhousi"
+                    }
+                  ]
+                },
+                {
+                  "title": "RELATIONSHIPS",
+                  "columns": [
+                    {
+                      "title": "Relationships",
+                      "field": "indrelat"
+                    },
+                    {
+                      "title": "Equality",
+                      "field": "indequal"
+                    },
+                    {
+                      "title": "Voice",
+                      "field": "indvoice"
+                    }
+                  ]
+                }
+              ]
+            },
+            "People": {
+              "display": true,
+              "query": "community wellbeing - people",
+              "viewport": true,
+              "selectable": true,
+              "columns": [
+                {
+                  "title": "Locale name",
+                  "field": "dd_name"
+                },
+                {
+                  "title": "EDUCATION",
+                  "columns": [
+                    {
+                      "title": "Access to schools",
+                      "field": "edu_access_schools"
+                    },
+                    {
+                      "title": "Access to good schools",
+                      "field": "edu_access_good_schools"
+                    },
+                    {
+                      "title": "Access to adult edutcation",
+                      "field": "edu_access_adult_edu"
+                    },
+                    {
+                      "title": "Access to libraries",
+                      "field": "edu_access_libraries"
+                    },
+                    {
+                      "title": "School quality",
+                      "field": "edu_school_quality"
+                    }
+                  ]
+                },
+                {
+                  "title": "HEALTH",
+                  "columns": [
+                    {
+                      "title": "Access to health services",
+                      "field": "hea_access_health_services"
+                    },
+                    {
+                      "title": "Hypertension and Heart Failure",
+                      "field": "hea_hypertension_heart_failure"
+                    },
+                    {
+                      "title": "Drugs used in diabetes",
+                      "field": "hea_drugs_used_diabetes"
+                    },
+                    {
+                      "title": "Anti- depressants",
+                      "field": "hea_antidepressants"
+                    },
+                    {
+                      "title": "Obesity",
+                      "field": "hea_obesity"
+                    },
+                    {
+                      "title": "Dementia",
+                      "field": "hea_dementia"
+                    }
+                  ]
+                },
+                {
+                  "title": "ECONOMY",
+                  "columns": [
+                    {
+                    "title": "Proximity of work to home",
+                    "field": "eco_proximity_work_home"
+                  },
+                  {
+                    "title": "Hours worked",
+                    "field": "eco_hours_worked"
+                  },
+                  {
+                    "title": "Household Income",
+                    "field": "eco_household_income"
+                  },
+                  {
+                    "title": "Vacant commercial units",
+                    "field": "eco_vacant_commercial_units"
+                  },
+                  {
+                    "title": "Free school meals",
+                    "field": "eco_free_school_meals"
+                  },
+                  {
+                    "title": "Unemployment",
+                    "field": "eco_unemployment"
+                  }
+                ]
+                }
+              ]
+            },
+            "Place": {
+              "display": true,
+              "query": "community wellbeing - place",
+              "viewport": true,
+              "selectable": true,
+              "columns": [
+                {
+                  "title": "Locale name",
+                  "field": "dd_name"
+                },
+                {
+                  "title": "CULTURE",
+                  "columns": [
+                    {
+                      "field": "cul_places_worship",
+                      "title": "Places of worship"
+                    },
+                    {
+                      "field": "cul_types_workers",
+                      "title": "Types of workers"
+                    },
+                    {
+                      "field": "cul_areas_leisure",
+                      "title": "Areas for leisure"
+                    },
+                    {
+                      "field": "cul_museums",
+                      "title": "Museums"
+                    },
+                    {
+                      "field": "cul_listed_buildings",
+                      "title": "Areas for leisure"
+                    }
+                  ]
+                },
+                {
+                  "title": "TRANSPORT",
+                  "columns": [
+                    {
+                      "field": "tra_communication_internet",
+                      "title": "Internet"
+                    },
+                    {
+                      "field": "tra_public_transport",
+                      "title": "Public Transport"
+                    }
+                  ]
+                },
+                {
+                  "title": "HOUSING",
+                  "columns": [
+                    {
+                      "field": "hou_affordability",
+                      "title": "Affordability"
+                    },
+                    {
+                      "field": "hou_overcrowding",
+                      "title": "Overcrowding"
+                    },
+                    {
+                      "field": "hou_green_space",
+                      "title": "Green Space"
+                    },
+                    {
+                      "field": "hou_public_spaces",
+                      "title": "Public spaces"
+                    },
+                    {
+                      "field": "hou_pollution",
+                      "title": "Pollution"
+                    },
+                    {
+                      "field": "hou_air_quality",
+                      "title": "Pollution"
+                    }
+                  ]
+                }
+              ]
+            },
+            "Relationships": {
+              "display": true,
+              "query": "community wellbeing - relationships",
+              "viewport": true,
+              "selectable": true,
+              "columns": [
+                {
+                  "title": "Locale name",
+                  "field": "dd_name"
+                },
+                {
+                  "title": "RELATIONSHIPS",
+                  "columns": [
+                    {
+                      "field": "rel_social_spaces",
+                      "title": "Social spaces"
+                    },
+                    {
+                      "field": "rel_presence_young",
+                      "title": "Presence of young children"
+                    },
+                    {
+                      "field": "rel_one_person_hhd_50plus",
+                      "title": "One person household, aged 50+"
+                    },
+                    {
+                      "field": "rel_proximity_work_home",
+                      "title": "Proximity of work to home"
+                    },
+                    {
+                      "field": "rel_hhd_churn",
+                      "title": "Household churn"
+                    },
+                    {
+                      "field": "rel_lt_health",
+                      "title": "Long-term health status"
+                    },
+                    {
+                      "field": "rel_crime",
+                      "title": "Crime in the locale"
+                    },
+                    {
+                      "field": "rel_crime_tc",
+                      "title": "Crime in town centre"
+                    }
+                  ]
+                },
+                {
+                  "title": "EQUALITY",
+                  "columns": [
+                    {
+                      "field": "equ_house_price_gap",
+                      "title": "House price gap"
+                    },
+                    {
+                      "field": "equ_second_home_own",
+                      "title": "Second home ownership"
+                    },
+                    {
+                      "field": "equ_indep_schools",
+                      "title": "Independent schools"
+                    },
+                    {
+                      "field": "equ_qualifications",
+                      "title": "Qualifications"
+                    },
+                    {
+                      "field": "equ_ethnic_equality",
+                      "title": "Ethnic eequality"
+                    },
+                    {
+                      "field": "equ_relative_affluence",
+                      "title": "Relative Affluence"
+                    },
+                    {
+                      "field": "equ_lt_security",
+                      "title": "Long term security"
+                    },
+                    {
+                      "field": "voi_voter_turnout",
+                      "title": "Voter turnout"
+                    },
+                    {
+                      "field": "voi_coop_member_engagement",
+                      "title": "Coop member engagement"
+                    },
+                    {
+                      "field": "voi_signing_petitions",
+                      "title": "Signing of petitions"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "style": {
+            "default": {
+              "fillColor": "#EEE",
+              "fillOpacity": 0.5
+            },
+            "highlight": {
+              "fillColor": "#FFD60C",
+              "strokeWidth": 2,
+              "fillOpacity": 0.8
+            },
+            "themes": {
+              "Community Wellbeing Score": {
+                "label": "Community Wellbeing Score",
+                "type": "graduated",
+                "field": "ind_wellb",
+                "cat_arr": [
+                  {
+                    "value": 0,
+                    "label": "Less than 40",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#FBCBF0"
+                  },
+                  {
+                    "value": 0.4,
+                    "label": "40-50",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#F7A5E5"
+                  },
+                  {
+                    "value": 0.5,
+                    "label": "50-60",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#E459CE"
+                  },
+                  {
+                    "value": 0.6,
+                    "label": "60-70",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#BD15B8"
+                  },
+                  {
+                    "value": 0.7,
+                    "label": "70 or more",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#770087"
+                  }
+                ]
+              },
+              "Education and learning": {
+                "label": "Education and learning",
+                "type": "graduated",
+                "field": "indeduca",
+                "cat_arr": [
+                  {
+                    "value": 0,
+                    "label": "Less than 40",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#E4F3CB"
+                  },
+                  {
+                    "value": 0.4,
+                    "label": "40-50",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#CDE7A7"
+                  },
+                  {
+                    "value": 0.5,
+                    "label": "50-60",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#9DCF68"
+                  },
+                  {
+                    "value": 0.6,
+                    "label": "60-70",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#6EB733"
+                  },
+                  {
+                    "value": 0.7,
+                    "label": "70 or more",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#429F09"
+                  }
+                ]
+              },
+              "Health": {
+                "label": "Health",
+                "type": "graduated",
+                "field": "indhealt",
+                "cat_arr": [
+                  {
+                    "value": 0,
+                    "label": "Less than 40",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#E4F3CB"
+                  },
+                  {
+                    "value": 0.4,
+                    "label": "40-50",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#CDE7A7"
+                  },
+                  {
+                    "value": 0.5,
+                    "label": "50-60",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#9DCF68"
+                  },
+                  {
+                    "value": 0.6,
+                    "label": "60-70",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#6EB733"
+                  },
+                  {
+                    "value": 0.7,
+                    "label": "70 or more",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#429F09"
+                  }
+                ]
+              },
+              "Economy, work and employment": {
+                "label": "Economy, work and employment",
+                "type": "graduated",
+                "field": "indecono",
+                "cat_arr": [
+                  {
+                    "value": 0,
+                    "label": "Less than 40",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#E4F3CB"
+                  },
+                  {
+                    "value": 0.4,
+                    "label": "40-50",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#CDE7A7"
+                  },
+                  {
+                    "value": 0.5,
+                    "label": "50-60",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#9DCF68"
+                  },
+                  {
+                    "value": 0.6,
+                    "label": "60-70",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#6EB733"
+                  },
+                  {
+                    "value": 0.7,
+                    "label": "70 or more",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#429F09"
+                  }
+                ]
+              },
+              "Culture, hertiage and leisure": {
+                "label": "Culture, hertiage and leisure",
+                "type": "graduated",
+                "field": "indcultu",
+                "cat_arr": [
+                  {
+                    "value": 0,
+                    "label": "Less than 40",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#d0d1e6"
+                  },
+                  {
+                    "value": 0.4,
+                    "label": "40-50",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#a6bddb"
+                  },
+                  {
+                    "value": 0.5,
+                    "label": "50-60",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#74a9cf"
+                  },
+                  {
+                    "value": 0.6,
+                    "label": "60-70",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#2b8cbe"
+                  },
+                  {
+                    "value": 0.7,
+                    "label": "70 or more",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#045a8d"
+                  }
+                ]
+              },
+              "Transport, mobility and connectivity": {
+                "label": "Transport, mobility and connectivity",
+                "type": "graduated",
+                "field": "indtrans",
+                "cat_arr": [
+                  {
+                    "value": 0,
+                    "label": "Less than 40",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#d0d1e6"
+                  },
+                  {
+                    "value": 0.4,
+                    "label": "40-50",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#a6bddb"
+                  },
+                  {
+                    "value": 0.5,
+                    "label": "50-60",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#74a9cf"
+                  },
+                  {
+                    "value": 0.6,
+                    "label": "60-70",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#2b8cbe"
+                  },
+                  {
+                    "value": 0.7,
+                    "label": "70 or more",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#045a8d"
+                  }
+                ]
+              },
+              "Housing, space and environment": {
+                "label": "Housing, space and environment",
+                "type": "graduated",
+                "field": "indtrans",
+                "cat_arr": [
+                  {
+                    "value": 0,
+                    "label": "Less than 40",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#d0d1e6"
+                  },
+                  {
+                    "value": 0.4,
+                    "label": "40-50",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#a6bddb"
+                  },
+                  {
+                    "value": 0.5,
+                    "label": "50-60",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#74a9cf"
+                  },
+                  {
+                    "value": 0.6,
+                    "label": "60-70",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#2b8cbe"
+                  },
+                  {
+                    "value": 0.7,
+                    "label": "70 or more",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#045a8d"
+                  }
+                ]
+              },
+              "Relationships and trust": {
+                "label": "Relationships and trust",
+                "type": "graduated",
+                "field": "indrelat",
+                "cat_arr": [
+                  {
+                    "value": 0,
+                    "label": "Less than 40",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#FBCBF0"
+                  },
+                  {
+                    "value": 0.4,
+                    "label": "40-50",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#F7A5E5"
+                  },
+                  {
+                    "value": 0.5,
+                    "label": "50-60",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#E459CE"
+                  },
+                  {
+                    "value": 0.6,
+                    "label": "60-70",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#BD15B8"
+                  },
+                  {
+                    "value": 0.7,
+                    "label": "70 or more",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#770087"
+                  }
+                ]
+              },
+              "Equality": {
+                "label": "Equality",
+                "type": "graduated",
+                "field": "indequal",
+                "cat_arr": [
+                  {
+                    "value": 0,
+                    "label": "Less than 40",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#FBCBF0"
+                  },
+                  {
+                    "value": 0.4,
+                    "label": "40-50",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#F7A5E5"
+                  },
+                  {
+                    "value": 0.5,
+                    "label": "50-60",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#E459CE"
+                  },
+                  {
+                    "value": 0.6,
+                    "label": "60-70",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#BD15B8"
+                  },
+                  {
+                    "value": 0.7,
+                    "label": "70 or more",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#770087"
+                  }
+                ]
+              },
+              "Voice and participation": {
+                "label": "Voice and participation",
+                "type": "graduated",
+                "field": "indvoice",
+                "cat_arr": [
+                  {
+                    "value": 0,
+                    "label": "Less than 40",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#FBCBF0"
+                  },
+                  {
+                    "value": 0.4,
+                    "label": "40-50",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#F7A5E5"
+                  },
+                  {
+                    "value": 0.5,
+                    "label": "50-60",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#E459CE"
+                  },
+                  {
+                    "value": 0.6,
+                    "label": "60-70",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#BD15B8"
+                  },
+                  {
+                    "value": 0.7,
+                    "label": "70 or more",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#770087"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "Community Wellbeing LAD": {
+          "format": "mvt",
+          "srid": "3857",
+          "geom": "geom_3857",
+          "dbs": "XYZ",
+          "__tables": {
+            "8": "coop.vw_uk_glx_geodata_admin_lad_new",
+            "9": null
+          },
+          "table": "coop.vw_uk_glx_geodata_admin_lad_new",
+          "mvt_cache": "coop.uk_coop_restrict_wellbeing_lad__mvt",
+          "qID": "id",
+          "infoj": [
+            {
+              "field": "id"
+            },
+            {
+              "field": "ind_wellb"
+            }
+          ],
+          "style": {
+            "default": {
+              "fillColor": "#EEE",
+              "fillOpacity": 0.5
+            },
+            "highlight": {
+              "fillColor": "#00729A",
+              "strokeWidth": 2,
+              "fillOpacity": 0.8
+            },
+            "themes": {
+              "Community Wellbeing Score": {
+                "label": "Community Wellbeing Score",
+                "type": "graduated",
+                "field": "ind_wellb",
+                "cat_arr": [
+                  {
+                    "value": 0,
+                    "label": "Less than 40",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#FBCBF0"
+                  },
+                  {
+                    "value": 0.4,
+                    "label": "40-50",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#F7A5E5"
+                  },
+                  {
+                    "value": 0.5,
+                    "label": "50-60",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#E459CE"
+                  },
+                  {
+                    "value": 0.6,
+                    "label": "60-70",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#BD15B8"
+                  },
+                  {
+                    "value": 0.7,
+                    "label": "70 or more",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#770087"
+                  }
+                ]
+              },
+              "Education and learning": {
+                "label": "Education and learning",
+                "type": "graduated",
+                "field": "indeduca",
+                "cat_arr": [
+                  {
+                    "value": 0,
+                    "label": "Less than 40",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#E4F3CB"
+                  },
+                  {
+                    "value": 0.4,
+                    "label": "40-50",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#CDE7A7"
+                  },
+                  {
+                    "value": 0.5,
+                    "label": "50-60",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#9DCF68"
+                  },
+                  {
+                    "value": 0.6,
+                    "label": "60-70",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#6EB733"
+                  },
+                  {
+                    "value": 0.7,
+                    "label": "70 or more",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#429F09"
+                  }
+                ]
+              },
+              "Health": {
+                "label": "Health",
+                "type": "graduated",
+                "field": "indhealt",
+                "cat_arr": [
+                  {
+                    "value": 0,
+                    "label": "Less than 40",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#E4F3CB"
+                  },
+                  {
+                    "value": 0.4,
+                    "label": "40-50",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#CDE7A7"
+                  },
+                  {
+                    "value": 0.5,
+                    "label": "50-60",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#9DCF68"
+                  },
+                  {
+                    "value": 0.6,
+                    "label": "60-70",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#6EB733"
+                  },
+                  {
+                    "value": 0.7,
+                    "label": "70 or more",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#429F09"
+                  }
+                ]
+              },
+              "Economy, work and employment": {
+                "label": "Economy, work and employment",
+                "type": "graduated",
+                "field": "indecono",
+                "cat_arr": [
+                  {
+                    "value": 0,
+                    "label": "Less than 40",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#E4F3CB"
+                  },
+                  {
+                    "value": 0.4,
+                    "label": "40-50",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#CDE7A7"
+                  },
+                  {
+                    "value": 0.5,
+                    "label": "50-60",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#9DCF68"
+                  },
+                  {
+                    "value": 0.6,
+                    "label": "60-70",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#6EB733"
+                  },
+                  {
+                    "value": 0.7,
+                    "label": "70 or more",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#429F09"
+                  }
+                ]
+              },
+              "Culture, hertiage and leisure": {
+                "label": "Culture, hertiage and leisure",
+                "type": "graduated",
+                "field": "indcultu",
+                "cat_arr": [
+                  {
+                    "value": 0,
+                    "label": "Less than 40",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#d0d1e6"
+                  },
+                  {
+                    "value": 0.4,
+                    "label": "40-50",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#a6bddb"
+                  },
+                  {
+                    "value": 0.5,
+                    "label": "50-60",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#74a9cf"
+                  },
+                  {
+                    "value": 0.6,
+                    "label": "60-70",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#2b8cbe"
+                  },
+                  {
+                    "value": 0.7,
+                    "label": "70 or more",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#045a8d"
+                  }
+                ]
+              },
+              "Transport, mobility and connectivity": {
+                "label": "Transport, mobility and connectivity",
+                "type": "graduated",
+                "field": "indtrans",
+                "cat_arr": [
+                  {
+                    "value": 0,
+                    "label": "Less than 40",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#d0d1e6"
+                  },
+                  {
+                    "value": 0.4,
+                    "label": "40-50",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#a6bddb"
+                  },
+                  {
+                    "value": 0.5,
+                    "label": "50-60",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#74a9cf"
+                  },
+                  {
+                    "value": 0.6,
+                    "label": "60-70",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#2b8cbe"
+                  },
+                  {
+                    "value": 0.7,
+                    "label": "70 or more",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#045a8d"
+                  }
+                ]
+              },
+              "Housing, space and environment": {
+                "label": "Housing, space and environment",
+                "type": "graduated",
+                "field": "indtrans",
+                "cat_arr": [
+                  {
+                    "value": 0,
+                    "label": "Less than 40",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#d0d1e6"
+                  },
+                  {
+                    "value": 0.4,
+                    "label": "40-50",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#a6bddb"
+                  },
+                  {
+                    "value": 0.5,
+                    "label": "50-60",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#74a9cf"
+                  },
+                  {
+                    "value": 0.6,
+                    "label": "60-70",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#2b8cbe"
+                  },
+                  {
+                    "value": 0.7,
+                    "label": "70 or more",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#045a8d"
+                  }
+                ]
+              },
+              "Relationships and trust": {
+                "label": "Relationships and trust",
+                "type": "graduated",
+                "field": "indrelat",
+                "cat_arr": [
+                  {
+                    "value": 0,
+                    "label": "Less than 40",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#FBCBF0"
+                  },
+                  {
+                    "value": 0.4,
+                    "label": "40-50",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#F7A5E5"
+                  },
+                  {
+                    "value": 0.5,
+                    "label": "50-60",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#E459CE"
+                  },
+                  {
+                    "value": 0.6,
+                    "label": "60-70",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#BD15B8"
+                  },
+                  {
+                    "value": 0.7,
+                    "label": "70 or more",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#770087"
+                  }
+                ]
+              },
+              "Equality": {
+                "label": "Equality",
+                "type": "graduated",
+                "field": "indequal",
+                "cat_arr": [
+                  {
+                    "value": 0,
+                    "label": "Less than 40",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#FBCBF0"
+                  },
+                  {
+                    "value": 0.4,
+                    "label": "40-50",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#F7A5E5"
+                  },
+                  {
+                    "value": 0.5,
+                    "label": "50-60",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#E459CE"
+                  },
+                  {
+                    "value": 0.6,
+                    "label": "60-70",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#BD15B8"
+                  },
+                  {
+                    "value": 0.7,
+                    "label": "70 or more",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#770087"
+                  }
+                ]
+              },
+              "Voice and participation": {
+                "label": "Voice and participation",
+                "type": "graduated",
+                "field": "indvoice",
+                "cat_arr": [
+                  {
+                    "value": 0,
+                    "label": "Less than 40",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#FBCBF0"
+                  },
+                  {
+                    "value": 0.4,
+                    "label": "40-50",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#F7A5E5"
+                  },
+                  {
+                    "value": 0.5,
+                    "label": "50-60",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#E459CE"
+                  },
+                  {
+                    "value": 0.6,
+                    "label": "60-70",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#BD15B8"
+                  },
+                  {
+                    "value": 0.7,
+                    "label": "70 or more",
+                    "strokeColor": "#FCFCFC",
+                    "fillColor": "#770087"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "Community Wellbeing Filter": {
+          "format": "mvt",
+          "srid": "3857",
+          "geom": "geom_3857",
+          "dbs": "XYZ",
+          "table": "coop.uk_coop_restrict_wellbeing",
+          "qID": "id",
+          "infoj": [
+            {
+              "title": "dd_name",
+              "field": "dd_name"
+            },
+            {
+              "title": "region",
+              "field": "region",
+              "filter": {
+                "in": [
+                  "Scotland",
+                  "Wales",
+                  "North East",
+                  "North West",
+                  "London",
+                  "South West",
+                  "Eastern",
+                  "Yorkshire and The Humber",
+                  "West Midlands",
+                  "East Midlands",
+                  "Northern Ireland",
+                  "South East"
+                ]
+              }
+            },
+            {
+              "title": "localename",
+              "field": "localename"
+            }
+          ],
+          "style": {
+            "default": {
+              "strokeWidt": 2,
+              "strokeColor": "#00729A",
+              "fillColor": "#eee",
+              "fillOpacity": 0.1
+            },
+            "highlight": {
+              "strokeWidth": 3,
+              "fillColor": "#00729A",
+              "fillOpacity": 0.3,
+              "strokeColor": "#00729A"
+            }
+          }
+        },
+        "Local Authority District": {
+          "format": "mvt",
+          "srid": "3857",
+          "geom": "geom_3857",
+          "dbs": "XYZ",
+          "qID": "id",
+          "table": "coop.vw_uk_glx_geodata_admin_lad_new",
+          "infoj": [
+            {
+              "type": "key"
+            },
+            {
+              "title": "ID",
+              "field": "id",
+              "inline": true
+            },
+            {
+              "title": "LAD Name",
+              "field": "lad_name",
+              "filter": "match",
+              "inline": true
+            },
+            {
+              "title": "Region Name",
+              "field": "regionname",
+              "filter": {
+                "in": [
+                  "Scotland",
+                  "Wales",
+                  "North East",
+                  "North West",
+                  "London",
+                  "South West",
+                  "Eastern",
+                  "Yorkshire and The Humber",
+                  "West Midlands",
+                  "East Midlands",
+                  "Northern Ireland",
+                  "South East"
+                ]
+              },
+              "inline": true
+            }
+          ],
+          "style": {
+            "default": {
+              "strokeWidth": 2,
+              "strokeColor": "#00729A",
+              "fillColor": "#eee",
+              "fillOpacity": 0.1
+            },
+            "highlight": {
+              "strokeWidth": 3,
+              "fillColor": "#00729A",
+              "fillOpacity": 0.3,
+              "strokeColor": "#00729A"
+            }
+          }
+        },
+        "Constituency": {
+          "format": "mvt",
+          "srid": "3857",
+          "geom": "geom_3857",
+          "dbs": "XYZ",
+          "table": "coop.uk_open_admin_constituencies_regions",
+          "mvt_cache": "coop.uk_open_admin_constituencies_regions__mvts",
+          "qID": "id",
+          "infoj": [
+            {
+              "type": "key"
+            },
+            {
+              "field": "constituency_id",
+              "title": "Constituency ID",
+              "inline": true
+            },
+            {
+              "field": "constituency_name",
+              "title": "Name",
+              "inline": true
+            },
+            {
+              "field": "regioncode",
+              "title": "Region code",
+              "inline": true
+            },
+            {
+              "field": "regionname",
+              "title": "Region name",
+              "inline": true
+            },
+            {
+              "type": "dataview",
+              "title": "Index",
+              "target": "",
+              "query": "",
+              "columns": [
+                {
+                  "title": "Locale name",
+                  "field": "dd_name"
+                },
+                {
+                  "title": "Wellbeing Score",
+                  "field": "ind_wellb"
+                },
+                {
+                  "title": "PEOPLE",
+                  "columns": [
+                    {
+                      "title": "Education",
+                      "field": "indeduca"
+                    },
+                    {
+                      "title": "Health",
+                      "field": "indhealt"
+                    },
+                    {
+                      "title": "Economy",
+                      "field": "indecono"
+                    }
+                  ]
+                },
+                {
+                  "title": "PLACE",
+                  "columns": [
+                    {
+                      "title": "Culture",
+                      "field": "indcultu"
+                    },
+                    {
+                      "title": "Transport",
+                      "field": "indtrans"
+                    },
+                    {
+                      "title": "Housing",
+                      "field": "indhousi"
+                    }
+                  ]
+                },
+                {
+                    "title": "RELATIONSHIPS",
+                    "columns": [
+                      {
+                        "title": "Relationships",
+                        "field": "indrelat"
+                      },
+                      {
+                         "title": "Equality",
+                         "field": "indequal"
+                      },
+                      {
+                         "title": "Voice",
+                         "field": "indvoice"
+                      }
+                    ]
+                  }
+                ]
+            },
+            {
+              "type": "dataview",
+              "title": "People",
+              "target": "",
+              "query": "",
+              "columns": [
+                {
+                  "title": "Locale name",
+                  "field": "dd_name"
+                },
+                {
+                  "title": "EDUCATION",
+                  "columns": [
+                    {
+                      "title": "Access to schools",
+                      "field": "edu_access_schools"
+                    },
+                    {
+                      "title": "Access to good schools",
+                      "field": "edu_access_good_schools"
+                    },
+                    {
+                      "title": "Access to adult edutcation",
+                      "field": "edu_access_adult_edu"
+                    },
+                    {
+                      "title": "Access to libraries",
+                      "field": "edu_access_libraries"
+                    },
+                    {
+                      "title": "School quality",
+                      "field": "edu_school_quality"
+                    }
+                  ]
+                },
+                {
+                  "title": "HEALTH",
+                  "columns": [
+                    {
+                      "title": "Access to health services",
+                      "field": "hea_access_health_services"
+                    },
+                    {
+                      "title": "Hypertension and Heart Failure",
+                      "field": "hea_hypertension_heart_failure"
+                    },
+                    {
+                      "title": "Drugs used in diabetes",
+                      "field": "hea_drugs_used_diabetes"
+                    },
+                    {
+                      "title": "Anti- depressants",
+                      "field": "hea_antidepressants"
+                    },
+                    {
+                      "title": "Obesity",
+                      "field": "hea_obesity"
+                    },
+                    {
+                      "title": "Dementia",
+                      "field": "hea_dementia"
+                    }
+                  ]
+                },
+                {
+                  "title": "ECONOMY",
+                  "columns": [
+                    {
+                    "title": "Proximity of work to home",
+                    "field": "eco_proximity_work_home"
+                  },
+                  {
+                    "title": "Hours worked",
+                    "field": "eco_hours_worked"
+                  },
+                  {
+                    "title": "Household Income",
+                    "field": "eco_household_income"
+                  },
+                  {
+                    "title": "Vacant commercial units",
+                    "field": "eco_vacant_commercial_units"
+                  },
+                  {
+                    "title": "Free school meals",
+                    "field": "eco_free_school_meals"
+                  },
+                  {
+                    "title": "Unemployment",
+                    "field": "eco_unemployment"
+                  }
+                ]
+                }
+              ]
+            },
+            {
+              "type": "dataview",
+              "title": "Place",
+              "target": "",
+              "query": "",
+              "columns": [
+                {
+                  "title": "Locale name",
+                  "field": "dd_name"
+                },
+                {
+                  "title": "CULTURE",
+                  "columns": [
+                    {
+                      "field": "cul_places_worship",
+                      "title": "Places of worship"
+                    },
+                    {
+                      "field": "cul_types_workers",
+                      "title": "Types of workers"
+                    },
+                    {
+                      "field": "cul_areas_leisure",
+                      "title": "Areas for leisure"
+                    },
+                    {
+                      "field": "cul_museums",
+                      "title": "Museums"
+                    },
+                    {
+                      "field": "cul_listed_buildings",
+                      "title": "Areas for leisure"
+                    }
+                  ]
+                },
+                {
+                  "title": "TRANSPORT",
+                  "columns": [
+                    {
+                      "field": "tra_communication_internet",
+                      "title": "Internet"
+                    },
+                    {
+                      "field": "tra_public_transport",
+                      "title": "Public Transport"
+                    }
+                  ]
+                },
+                {
+                  "title": "HOUSING",
+                  "columns": [
+                    {
+                      "field": "hou_affordability",
+                      "title": "Affordability"
+                    },
+                    {
+                      "field": "hou_overcrowding",
+                      "title": "Overcrowding"
+                    },
+                    {
+                      "field": "hou_green_space",
+                      "title": "Green Space"
+                    },
+                    {
+                      "field": "hou_public_spaces",
+                      "title": "Public spaces"
+                    },
+                    {
+                      "field": "hou_pollution",
+                      "title": "Pollution"
+                    },
+                    {
+                      "field": "hou_air_quality",
+                      "title": "Pollution"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "dataview",
+              "title": "Relationships",
+              "target": "",
+              "query": "",
+              "columns": [
+                {
+                  "title": "Locale name",
+                  "field": "dd_name"
+                },
+                {
+                  "title": "RELATIONSHIPS",
+                  "columns": [
+                    {
+                      "field": "rel_social_spaces",
+                      "title": "Social spaces"
+                    },
+                    {
+                      "field": "rel_presence_young",
+                      "title": "Presence of young children"
+                    },
+                    {
+                      "field": "rel_one_person_hhd_50plus",
+                      "title": "One person household, aged 50+"
+                    },
+                    {
+                      "field": "rel_proximity_work_home",
+                      "title": "Proximity of work to home"
+                    },
+                    {
+                      "field": "rel_hhd_churn",
+                      "title": "Household churn"
+                    },
+                    {
+                      "field": "rel_lt_health",
+                      "title": "Long-term health status"
+                    },
+                    {
+                      "field": "rel_crime",
+                      "title": "Crime in the locale"
+                    },
+                    {
+                      "field": "rel_crime_tc",
+                      "title": "Crime in town centre"
+                    }
+                  ]
+                },
+                {
+                  "title": "EQUALITY",
+                  "columns": [
+                    {
+                      "field": "equ_house_price_gap",
+                      "title": "House price gap"
+                    },
+                    {
+                      "field": "equ_second_home_own",
+                      "title": "Second home ownership"
+                    },
+                    {
+                      "field": "equ_indep_schools",
+                      "title": "Independent schools"
+                    },
+                    {
+                      "field": "equ_qualifications",
+                      "title": "Qualifications"
+                    },
+                    {
+                      "field": "equ_ethnic_equality",
+                      "title": "Ethnic eequality"
+                    },
+                    {
+                      "field": "equ_relative_affluence",
+                      "title": "Relative Affluence"
+                    },
+                    {
+                      "field": "equ_lt_security",
+                      "title": "Long term security"
+                    },
+                    {
+                      "field": "voi_voter_turnout",
+                      "title": "Voter turnout"
+                    },
+                    {
+                      "field": "voi_coop_member_engagement",
+                      "title": "Coop member engagement"
+                    },
+                    {
+                      "field": "voi_signing_petitions",
+                      "title": "Signing of petitions"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "style": {
+            "default": {
+              "strokeWidth": 2,
+              "strokeColor": "#00729A",
+              "fillColor": "#eee",
+              "fillOpacity": 0.1
+            },
+            "highlight": {
+              "strokeWidth": 3,
+              "fillColor": "#00729A",
+              "fillOpacity": 0.3,
+              "strokeColor": "#00729A"
+            }
+          }
+        },
+        "Mapbox Labels": {
+          "group": "Maps",
+          "display": true,
+          "attribution": {
+            "© Mapbox": "https://www.mapbox.com/about/maps",
+            "© OpenStreetMap": "http://www.openstreetmap.org/copyright"
+          },
+          "format": "tiles",
+          "URI": "/styles/v1/dbauszus/cj9puo8pr5o0c2sovhdwhkc7z/tiles/256/{z}/{x}/{y}?&provider=MAPBOX&host=https://api.mapbox.com"
+        }
+      }
+    },
+    "api": {
+      "gazetteer": {
+        "provider": "GOOGLE",
+        "code": "GB",
+        "placeholder": "eg. South Tottenham"
+      },
+      "bounds": {
+        "north": 67,
+        "east": 9,
+        "south": 44,
+        "west": -16
+      },
+      "view": {
+        "lng": -3,
+        "lat": 54
+      },
+      "maskBounds": true,
+      "minZoom": 7,
+      "maxZoom": 17,
+      "layers": {
+        "Mapbox Baselayer": {
+          "attribution": {
+            "© Mapbox": "https://www.mapbox.com/about/maps",
+            "© OpenStreetMap": "http://www.openstreetmap.org/copyright"
+          },
+          "format": "tiles",
+          "URI": "/styles/v1/dbauszus/ciozrimi3002bdsm8bjtn2v1y/tiles/256/{z}/{x}/{y}?&provider=MAPBOX&host=https://api.mapbox.com"
+        },
+        "Zoomstack": {
+          "display": true,
+          "attribution": {
+              "© Ordanance Survey": "https://ordnancesurvey.co.uk"
+          },
+          "format": "tiles",
+          "URI": "https://api.ordnancesurvey.co.uk/mapping_api/v1/service/zxy/EPSG%3A3857/Light%203857/{z}/{x}/{y}.png?key=4vmpYY1uFdimsAkyGwuaFbbHEyfvA5Gy"
+        },
+        "locales": {
+          "display": true,
+          "format": "mvt",
+          "srid": "3857",
+          "geom": "geom_3857",
+          "dbs": "XYZ",
+          "__table": "coop.uk_coop_restrict_wellbeing",
+          "tables": {
+            "8": null,
+            "9": "coop.uk_coop_restrict_wellbeing"
+          },
+          "qID": "id",
+          "infoj": [
+            {
+              "title": "id",
+              "field": "id",
+              "inline": true
+            },
+            {
+              "title": "localename",
+              "field": "localename",
+              "inline": true
+            },
+            {
+              "title": "dd_name",
+              "field": "dd_name",
+              "inline": true
+            },
+            {
+              "title": "region",
+              "field": "region",
+              "inline": true
+            },
+            {
+              "title": "country",
+              "field": "country",
+              "inline": true
+            },
+            {
+              "title": "census11pop",
+              "field": "census11pop",
+              "inline": true
+            },
+            {
+              "title": "census11dwelling",
+              "field": "census11dwelling",
+              "inline": true
+            },
+            {
+              "title": "urban",
+              "field": "urban",
+              "inline": true
+            },
+            {
+              "title": "rural",
+              "field": "rural",
+              "inline": true
+            },
+            {
+              "title": "area_sqm",
+              "field": "area_sqm",
+              "inline": true
+            },
+            {
+              "title": "indrelat",
+              "field": "indrelat",
+              "inline": true
+            },
+            {
+              "title": "indequal",
+              "field": "indequal",
+              "inline": true
+            },
+            {
+              "title": "indvoice",
+              "field": "indvoice",
+              "inline": true
+            },
+            {
+              "title": "indecono",
+              "field": "indecono",
+              "inline": true
+            },
+            {
+              "title": "indhealt",
+              "field": "indhealt",
+              "inline": true
+            },
+            {
+              "title": "indeduca",
+              "field": "indeduca",
+              "inline": true
+            },
+            {
+              "title": "indcultu",
+              "field": "indcultu",
+              "inline": true
+            },
+            {
+              "title": "indhousi",
+              "field": "indhousi",
+              "inline": true
+            },
+            {
+              "title": "indtrans",
+              "field": "indtrans",
+              "inline": true
+            },
+            {
+              "title": "ind_wellb",
+              "field": "ind_wellb",
+              "inline": true
+            }
+          ]
+        },
+        "Mapbox Labels": {
+          "attribution": {
+            "© Mapbox": "https://www.mapbox.com/about/maps",
+            "© OpenStreetMap": "http://www.openstreetmap.org/copyright"
+          },
+          "format": "tiles",
+          "URI": "/styles/v1/dbauszus/cj9puo8pr5o0c2sovhdwhkc7z/tiles/256/{z}/{x}/{y}?&provider=MAPBOX&host=https://api.mapbox.com"
+        }
+      }
+    }
+  }
+}
