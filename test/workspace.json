@@ -124,7 +124,7 @@
             "_source": "constituency",
             "layer": "Constituency",
             "table": "coop.uk_open_admin_constituencies_regions",
-            "label": "constituency_name",
+            "label": "constituency_search",
             "geom": "geom_4326",
             "dbs": "XYZ",
             "leading_wildcard": true
