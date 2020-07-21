@@ -686,10 +686,6 @@
                       "title": "Second home ownership"
                     },
                     {
-                      "field": "equ_indep_schools",
-                      "title": "Independent schools"
-                    },
-                    {
                       "field": "equ_qualifications",
                       "title": "Qualifications"
                     },
@@ -1946,10 +1942,6 @@
                     {
                       "field": "equ_second_home_own",
                       "title": "Second home ownership"
-                    },
-                    {
-                      "field": "equ_indep_schools",
-                      "title": "Independent schools"
                     },
                     {
                       "field": "equ_qualifications",
