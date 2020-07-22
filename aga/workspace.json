@@ -108,7 +108,7 @@
             "table": "geodata.uk_glx_geodata_postal_postcode",
             "label": "rm_format",
             "leading_wildcard": true,
-            "geom": "bbox_4326",
+            "geom": "geom_p_4326",
             "dbs": "XYZ"
           },
           {
