@@ -99,7 +99,7 @@
             "table": "coop.vw_uk_glx_geodata_admin_region",
             "label": "region_search",
             "leading_wildcard": true,
-            "geom": "bbox_4326",
+            "geom": "region_search",
             "dbs": "XYZ"
           },
           {
