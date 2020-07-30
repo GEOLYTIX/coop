@@ -132,7 +132,7 @@
           {
             "layer": "Community Wellbeing",
             "table": "coop.uk_coop_restrict_wellbeing",
-            "label": "locale_search",
+            "label": "localename",
             "geom": "geom_4326",
             "dbs": "XYZ",
             "leading_wildcard": true
