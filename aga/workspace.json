@@ -84,6 +84,10 @@
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/select_ll.sql",
       "dbs": "XYZ"
     },
+    "national_average": {
+      "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/national_average.sql",
+      "dbs": "XYZ"
+    },
     "nnearest_from_ll": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/nnearest_from_ll.sql",
       "dbs": "XYZ"
@@ -2039,6 +2043,14 @@
           "format": "tiles",
           "URI": "/styles/v1/dbauszus/ciozrimi3002bdsm8bjtn2v1y/tiles/256/{z}/{x}/{y}?&provider=MAPBOX&host=https://api.mapbox.com"
         },
+        "Mapbox Labels": {
+          "attribution": {
+            "© Mapbox": "https://www.mapbox.com/about/maps",
+            "© OpenStreetMap": "http://www.openstreetmap.org/copyright"
+          },
+          "format": "tiles",
+          "URI": "/styles/v1/dbauszus/cj9puo8pr5o0c2sovhdwhkc7z/tiles/256/{z}/{x}/{y}?&provider=MAPBOX&host=https://api.mapbox.com"
+        },
         "Zoomstack": {
           "display": true,
           "attribution": {
@@ -2053,7 +2065,6 @@
           "srid": "3857",
           "geom": "geom_3857",
           "dbs": "XYZ",
-          "__table": "coop.uk_coop_restrict_wellbeing",
           "tables": {
             "8": null,
             "9": "coop.uk_coop_restrict_wellbeing"
@@ -2161,14 +2172,6 @@
               "inline": true
             }
           ]
-        },
-        "Mapbox Labels": {
-          "attribution": {
-            "© Mapbox": "https://www.mapbox.com/about/maps",
-            "© OpenStreetMap": "http://www.openstreetmap.org/copyright"
-          },
-          "format": "tiles",
-          "URI": "/styles/v1/dbauszus/cj9puo8pr5o0c2sovhdwhkc7z/tiles/256/{z}/{x}/{y}?&provider=MAPBOX&host=https://api.mapbox.com"
         }
       }
     }
