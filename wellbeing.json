@@ -69,6 +69,10 @@
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/select_ll.sql",
       "dbs": "XYZ"
     },
+    "national_average": {
+      "src": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/national_average.sql",
+      "dbs": "MAPP"
+    },
     "nnearest_from_ll": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/nnearest_from_ll.sql",
       "dbs": "XYZ"
@@ -1513,6 +1517,14 @@
           "format": "tiles",
           "URI": "/styles/v1/dbauszus/ciozrimi3002bdsm8bjtn2v1y/tiles/256/{z}/{x}/{y}?&provider=MAPBOX&host=https://api.mapbox.com"
         },
+        "Mapbox Labels": {
+          "attribution": {
+            "© Mapbox": "https://www.mapbox.com/about/maps",
+            "© OpenStreetMap": "http://www.openstreetmap.org/copyright"
+          },
+          "format": "tiles",
+          "URI": "/styles/v1/dbauszus/cj9puo8pr5o0c2sovhdwhkc7z/tiles/256/{z}/{x}/{y}?&provider=MAPBOX&host=https://api.mapbox.com"
+        },
         "Zoomstack": {
           "display": true,
           "attribution": {
@@ -1527,7 +1539,6 @@
           "srid": "3857",
           "geom": "geom_3857",
           "dbs": "XYZ",
-          "__table": "coop.uk_coop_restrict_wellbeing",
           "tables": {
             "8": null,
             "9": "coop.uk_coop_restrict_wellbeing"
@@ -1535,114 +1546,106 @@
           "qID": "id",
           "infoj": [
             {
-              "label": "id",
+              "title": "id",
               "field": "id",
               "inline": true
             },
             {
-              "label": "localename",
+              "title": "localename",
               "field": "localename",
               "inline": true
             },
             {
-              "label": "dd_name",
+              "title": "dd_name",
               "field": "dd_name",
               "inline": true
             },
             {
-              "label": "region",
+              "title": "region",
               "field": "region",
               "inline": true
             },
             {
-              "label": "country",
+              "title": "country",
               "field": "country",
               "inline": true
             },
             {
-              "label": "census11pop",
+              "title": "census11pop",
               "field": "census11pop",
               "inline": true
             },
             {
-              "label": "census11dwelling",
+              "title": "census11dwelling",
               "field": "census11dwelling",
               "inline": true
             },
             {
-              "label": "urban",
+              "title": "urban",
               "field": "urban",
               "inline": true
             },
             {
-              "label": "rural",
+              "title": "rural",
               "field": "rural",
               "inline": true
             },
             {
-              "label": "area_sqm",
+              "title": "area_sqm",
               "field": "area_sqm",
               "inline": true
             },
             {
-              "label": "indrelat",
+              "title": "indrelat",
               "field": "indrelat",
               "inline": true
             },
             {
-              "label": "indequal",
+              "title": "indequal",
               "field": "indequal",
               "inline": true
             },
             {
-              "label": "indvoice",
+              "title": "indvoice",
               "field": "indvoice",
               "inline": true
             },
             {
-              "label": "indecono",
+              "title": "indecono",
               "field": "indecono",
               "inline": true
             },
             {
-              "label": "indhealt",
+              "title": "indhealt",
               "field": "indhealt",
               "inline": true
             },
             {
-              "label": "indeduca",
+              "title": "indeduca",
               "field": "indeduca",
               "inline": true
             },
             {
-              "label": "indcultu",
+              "title": "indcultu",
               "field": "indcultu",
               "inline": true
             },
             {
-              "label": "indhousi",
+              "title": "indhousi",
               "field": "indhousi",
               "inline": true
             },
             {
-              "label": "indtrans",
+              "title": "indtrans",
               "field": "indtrans",
               "inline": true
             },
             {
-              "label": "ind_wellb",
+              "title": "ind_wellb",
               "field": "ind_wellb",
               "inline": true
             }
           ]
-        },
-        "Mapbox Labels": {
-          "attribution": {
-            "© Mapbox": "https://www.mapbox.com/about/maps",
-            "© OpenStreetMap": "http://www.openstreetmap.org/copyright"
-          },
-          "format": "tiles",
-          "URI": "/styles/v1/dbauszus/cj9puo8pr5o0c2sovhdwhkc7z/tiles/256/{z}/{x}/{y}?&provider=MAPBOX&host=https://api.mapbox.com"
         }
       }
     }

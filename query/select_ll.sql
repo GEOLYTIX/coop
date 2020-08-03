@@ -1,5 +1,6 @@
 SELECT
   st_asgeojson(geom_4326) AS geomj,
+  st_x(st_centroid(geom_4326)) || ',' || st_y(st_centroid(geom_4326)) AS marker,
   id,
   localename,
   dd_name,
