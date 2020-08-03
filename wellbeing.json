@@ -71,7 +71,7 @@
     },
     "national_average": {
       "src": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/national_average.sql",
-      "dbs": "MAPP"
+      "dbs": "XYZ"
     },
     "nnearest_from_ll": {
       "template": "https://api.github.com/repos/GEOLYTIX/coop/contents/query/nnearest_from_ll.sql",
